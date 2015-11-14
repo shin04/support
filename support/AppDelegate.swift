@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var contactContent: NSMutableArray! = []
     
     //対メーの時間を保存
-    var timeLimit: NSString!
+    var timeLimit: String!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
