@@ -7,15 +7,32 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    //user nameを保存
+    var username: NSString?
+    
+    //メモのデータを保存
+    var saveData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    
+    //メモのタイトルとないようを保存する配列
+    var contactTitle: NSMutableArray! = []
+    var contactContent: NSMutableArray! = []
+    
+    //対メーの時間を保存
+    var timeLimit: NSString!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Parse.setApplicationId("6RrWmvlFfkgQDlXr65HAvlHv1nSHpAmah5JSECiH", clientKey: "9hbbjdkZQlIzhevLQQk0HnGJChEY0GdnvdRdeuqs")
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
         return true
     }
 
