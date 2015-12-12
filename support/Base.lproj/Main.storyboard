@@ -36,13 +36,6 @@
                                     <action selector="signUpAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="hbi-df-5ko"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0Q-pn-M60">
-                                <rect key="frame" x="140" y="246" width="80" height="30"/>
-                                <state key="normal" title="時間割設定"/>
-                                <connections>
-                                    <segue destination="AgA-X3-uSU" kind="modal" id="0vC-rq-WUU"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIS-UE-Wak">
                                 <rect key="frame" x="250" y="28" width="45" height="30"/>
                                 <state key="normal" title="sign in"/>
@@ -50,28 +43,56 @@
                                     <action selector="signInAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="p5W-1u-lvY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qzp-7N-DOM">
-                                <rect key="frame" x="121" y="413" width="78" height="30"/>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qzp-7N-DOM">
+                                <rect key="frame" x="85" y="399" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3AZ-ig-DHB"/>
+                                    <constraint firstAttribute="width" constant="150" id="N5f-u0-erp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="study timer"/>
                                 <connections>
                                     <segue destination="eOT-in-P3C" kind="modal" id="Z0A-l1-ixY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdO-Hg-a3s">
-                                <rect key="frame" x="130" y="361" width="60" height="30"/>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdO-Hg-a3s">
+                                <rect key="frame" x="85" y="329" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="aJe-Qd-ryJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="bdF-Cd-c7f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="連絡事項"/>
                                 <connections>
                                     <segue destination="dTU-Qb-odl" kind="modal" id="Db6-Kw-bcj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0Q-pn-M60">
+                                <rect key="frame" x="85" y="259" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="lx0-aS-aaP"/>
+                                    <constraint firstAttribute="height" constant="50" id="q5T-4l-xgm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="時間割設定"/>
+                                <connections>
+                                    <segue destination="AgA-X3-uSU" kind="modal" id="0vC-rq-WUU"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bIS-UE-Wak" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="2eF-mT-dco"/>
+                            <constraint firstItem="F0Q-pn-M60" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EiL-c7-3Ab"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CEz-17-m6L" secondAttribute="trailing" constant="7" id="FHc-cn-6N5"/>
+                            <constraint firstItem="LdO-Hg-a3s" firstAttribute="top" secondItem="F0Q-pn-M60" secondAttribute="bottom" constant="20" id="Hrx-Vf-K61"/>
                             <constraint firstItem="CEz-17-m6L" firstAttribute="top" secondItem="bIS-UE-Wak" secondAttribute="bottom" constant="15" id="Oym-iF-Rwc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="p1l-g5-jYa" secondAttribute="trailing" constant="5" id="Rfq-LY-zK3"/>
                             <constraint firstItem="p1l-g5-jYa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="acZ-h3-cnU"/>
+                            <constraint firstItem="F0Q-pn-M60" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="239" id="hmK-44-Ao3"/>
+                            <constraint firstItem="Qzp-7N-DOM" firstAttribute="top" secondItem="LdO-Hg-a3s" secondAttribute="bottom" constant="20" id="np3-Vt-F3Y"/>
+                            <constraint firstItem="LdO-Hg-a3s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ucd-11-qxX"/>
+                            <constraint firstItem="Qzp-7N-DOM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uhp-on-19c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bIS-UE-Wak" secondAttribute="trailing" constant="9" id="zjF-Gu-fPy"/>
                         </constraints>
                     </view>
@@ -291,8 +312,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vax-hP-0Ud">
-                                <rect key="frame" x="276" y="69" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vax-hP-0Ud">
+                                <rect key="frame" x="280" y="69" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1Tm-VA-irq"/>
+                                    <constraint firstAttribute="width" constant="30" id="aVY-qK-tmM"/>
+                                </constraints>
                                 <state key="normal" title="設定"/>
                                 <connections>
                                     <segue destination="lXa-vr-73W" kind="modal" id="EBc-0k-zJu"/>
@@ -308,9 +333,11 @@
                             <constraint firstItem="0To-nA-NDn" firstAttribute="trailing" secondItem="jla-6m-UvT" secondAttribute="trailingMargin" id="KOV-9n-dGT"/>
                             <constraint firstItem="f7a-wQ-de9" firstAttribute="top" secondItem="0To-nA-NDn" secondAttribute="bottom" constant="20" id="LgF-b3-9iB"/>
                             <constraint firstItem="0To-nA-NDn" firstAttribute="centerX" secondItem="jla-6m-UvT" secondAttribute="centerX" id="Qvo-et-Dyb"/>
+                            <constraint firstItem="Vax-hP-0Ud" firstAttribute="top" secondItem="ewM-ZZ-h98" secondAttribute="bottom" constant="10" id="Shx-iE-dOp"/>
                             <constraint firstItem="aVn-vi-xmR" firstAttribute="top" secondItem="ewM-ZZ-h98" secondAttribute="bottom" constant="11" id="Tjn-US-SDG"/>
                             <constraint firstItem="0To-nA-NDn" firstAttribute="top" secondItem="aVn-vi-xmR" secondAttribute="bottom" constant="13" id="VUW-VC-o3l"/>
                             <constraint firstItem="0To-nA-NDn" firstAttribute="leading" secondItem="jla-6m-UvT" secondAttribute="leadingMargin" id="XeE-vZ-orc"/>
+                            <constraint firstItem="Vax-hP-0Ud" firstAttribute="leading" secondItem="aVn-vi-xmR" secondAttribute="trailing" constant="20" id="jcz-gL-iTG"/>
                             <constraint firstItem="ewM-ZZ-h98" firstAttribute="leading" secondItem="jla-6m-UvT" secondAttribute="leadingMargin" constant="-20" id="zPb-dX-hjY"/>
                         </constraints>
                     </view>
