@@ -16,8 +16,6 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     var cellNum: Int = 0
     
-    
-    
     var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override func viewDidLoad() {
@@ -49,25 +47,59 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         titleText.resignFirstResponder()
         contentText.resignFirstResponder()
         
-        print("\(titleText.text!),\(contentText.text)を保存します")
         appDelegate.contactTitle[cellNum] = titleText.text!
         appDelegate.contactContent[cellNum] = contentText.text
-        print("\(appDelegate.contactTitle[cellNum]),\(appDelegate.contactContent[cellNum])を保存しました")
         
-        appDelegate.saveData.setObject(appDelegate.contactTitle, forKey: "title")
-        appDelegate.saveData.setObject(appDelegate.contactContent, forKey: "content")
-        appDelegate.saveData.synchronize()
+        let query = PFQuery(className:appDelegate.username as! String)
+        query.whereKey("kind", equalTo:"memo")
+        query.findObjectsInBackgroundWithBlock { objects, error in
+            if error == nil {
+                for object in objects! {
+                    query.getObjectInBackgroundWithId(object.objectId!) {
+                        (lesson: PFObject?, error: NSError?) -> Void in
+                        
+                        print(object.objectId!)
+                        lesson!["title"] = self.appDelegate.contactTitle
+                        lesson!["content"] = self.appDelegate.contactContent
+                        
+                        lesson!.saveInBackgroundWithBlock {
+                            (success: Bool, error: NSError?) -> Void in
+                            if (success) {
+                                print("sucsess")
+                            } else {
+                                print("\(error)")
+                            }
+                        }
+                    }
+                }
+            } else {
+                print("error")
+            }
+        }
         
-        let saveAlert = UIAlertController(title: "確認", message: "保存しました", preferredStyle: .Alert)
-        let ok:UIAlertAction = UIAlertAction(title: "OK",
-            style: UIAlertActionStyle.Cancel,
-            handler:{
-                (action:UIAlertAction!) -> Void in
-                print("OK")
-        })
         
-        saveAlert.addAction(ok)
-        presentViewController(saveAlert, animated: true, completion: nil)
+//        print("\(titleText.text!),\(contentText.text)を保存します")
+//        appDelegate.contactTitle[cellNum] = titleText.text!
+//        appDelegate.contactContent[cellNum] = contentText.text
+//        print("\(appDelegate.contactTitle[cellNum]),\(appDelegate.contactContent[cellNum])を保存しました")
+//        
+//        appDelegate.saveData.setObject(appDelegate.contactTitle, forKey: "title")
+//        appDelegate.saveData.setObject(appDelegate.contactContent, forKey: "content")
+//        appDelegate.saveData.synchronize()
+//        
+//        let saveAlert = UIAlertController(title: "確認", message: "保存しました", preferredStyle: .Alert)
+//        let ok:UIAlertAction = UIAlertAction(title: "OK",
+//            style: UIAlertActionStyle.Cancel,
+//            handler:{
+//                (action:UIAlertAction!) -> Void in
+//                print("OK")
+//        })
+//        
+//        saveAlert.addAction(ok)
+//        presentViewController(saveAlert, animated: true, completion: nil)
+    }
+    
+    func saveDate() {
         
     }
 

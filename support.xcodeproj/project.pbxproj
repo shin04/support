@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		064291301BE840F00062C7F9 /* setLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642912F1BE840F00062C7F9 /* setLessonViewController.swift */; };
 		064CCBF91BECD5FD0098D9E5 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064CCBF81BECD5FD0098D9E5 /* MemoViewController.swift */; };
+		066023281C02E9D300A61675 /* LessonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066023271C02E9D300A61675 /* LessonDetailViewController.swift */; };
 		06BECBD61BE4D438002C5FB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BECBD51BE4D438002C5FB5 /* AppDelegate.swift */; };
 		06BECBD81BE4D438002C5FB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BECBD71BE4D438002C5FB5 /* ViewController.swift */; };
 		06BECBDB1BE4D438002C5FB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06BECBD91BE4D438002C5FB5 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		0642912F1BE840F00062C7F9 /* setLessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setLessonViewController.swift; sourceTree = "<group>"; };
 		064CCBF81BECD5FD0098D9E5 /* MemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
+		066023271C02E9D300A61675 /* LessonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonDetailViewController.swift; sourceTree = "<group>"; };
 		06BECBD21BE4D438002C5FB5 /* support.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = support.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06BECBD51BE4D438002C5FB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06BECBD71BE4D438002C5FB5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				06E177B21BECA63A001120E3 /* ContactViewController.swift */,
 				064CCBF81BECD5FD0098D9E5 /* MemoViewController.swift */,
 				0642912F1BE840F00062C7F9 /* setLessonViewController.swift */,
+				066023271C02E9D300A61675 /* LessonDetailViewController.swift */,
 				06FC3FA61BF7140A005FFCBE /* detailViewController.swift */,
 				06FC3FA81BF71475005FFCBE /* setTimerViewController.swift */,
 				06FC3FAA1BF721A0005FFCBE /* timerViewController.swift */,
@@ -358,6 +361,7 @@
 				064CCBF91BECD5FD0098D9E5 /* MemoViewController.swift in Sources */,
 				06FC3FAB1BF721A0005FFCBE /* timerViewController.swift in Sources */,
 				06BECBD61BE4D438002C5FB5 /* AppDelegate.swift in Sources */,
+				066023281C02E9D300A61675 /* LessonDetailViewController.swift in Sources */,
 				064291301BE840F00062C7F9 /* setLessonViewController.swift in Sources */,
 				06FC3FA71BF7140A005FFCBE /* detailViewController.swift in Sources */,
 			);

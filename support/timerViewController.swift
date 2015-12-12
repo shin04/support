@@ -16,7 +16,9 @@ class timerViewController: UIViewController {
     
     var timeInt: Int = 0 //分
     var timeSecond: Int = 0 //秒
-    var timeCount: Int = 0
+    var second: Int = 60 //表示用の秒
+    var minute: Int = 0 //表示用の分
+    var timeCount: Int = 0 //カウントアップ用
     var blueLabelTimer:Int = 0
     var widthSize: CGFloat = 300
     
@@ -29,15 +31,17 @@ class timerViewController: UIViewController {
         
         print("\(appDelegate.timeLimit)")
         
-        //let timeInt: Int = Int(appDelegate.timeLimit)!
         timeInt = Int(appDelegate.timeLimit)!
         timeSecond = timeInt * 60
-        print("\(timeInt)分,\(timeSecond)秒")
+        print("\(timeInt)分 → \(timeSecond)秒")
         
-        timeLabel.text = "残り" + appDelegate.timeLimit + "分"
+        timeLabel.text = appDelegate.timeLimit + ":00"
         
         blueLabelTimer = 300 / (timeInt * 60)
         print("\(blueLabelTimer)")
+        
+        //blueLabelだけautoLayoutを向こう
+        blueLabel.translatesAutoresizingMaskIntoConstraints = true
         
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "countDown", userInfo: nil, repeats: true)
     }
@@ -49,11 +53,16 @@ class timerViewController: UIViewController {
     //NSTimerIntervalで指定された秒数毎に呼び出されるメソッド.
     func countDown() {
         timeSecond -= 1
+        second -= 1
         timeCount += 1
-        
+        print("\(timeCount)")
         if timeCount == 60 {
-            timeLabel.text = "残り" + String(timeInt - 1) + "分"
+            second = 59
+            timeInt -= 1
+            timeLabel.text = String(timeInt) + ":00"
             timeCount = 0
+        } else {
+            timeLabel.text = String(timeInt - 1) + ":" + String(second)
         }
         
         widthSize -= CGFloat(blueLabelTimer)
@@ -70,10 +79,22 @@ class timerViewController: UIViewController {
                 self.dismissViewControllerAnimated(true, completion: nil)
             })
             
+            let extendAction = UIAlertAction(title: "延長", style: .Default, handler:{
+                (action:UIAlertAction!) -> Void in
+                self.blueLabel.alpha = 0
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "countUp", userInfo: nil, repeats: true)
+            })
+            
             alertController.addAction(defaultAction)
+            alertController.addAction(extendAction)
             
             presentViewController(alertController, animated: true, completion: nil)
         }
+    }
+    
+    func countUp() {
+        timeCount += 1
+        timeLabel.text = String(timeCount)
     }
 
 }

@@ -20,9 +20,9 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     @IBOutlet var seventhLesson: UITextField!
     
     @IBOutlet var dayPicker: UIPickerView!
-    let dayArray: NSArray = ["choose the day","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY"]
+    let dayArray: NSArray = ["choose","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY"]
     
-    var dayStr: NSString!
+    var dayStr: NSString = ""
     var dayNum: Int = 0
     
     var lessonArray: NSMutableArray!
@@ -81,7 +81,8 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         
         //時間割の読み込み
         let query = PFQuery(className:appDelegate.username as! String)
-        query.whereKey("number", equalTo:dayNum)
+        //query.whereKey("number", equalTo:dayNum)
+        query.whereKey("kind", equalTo:"lesson")
         query.findObjectsInBackgroundWithBlock { objects, error in
             if error == nil {
                 if let objects = objects{
@@ -117,7 +118,6 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         return true
     }
     
-    // MARK: - picker
     //pickerに表示する列数を返す
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -154,20 +154,22 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         self.viewDidLoad()
     }
     
-    //MARK: - action
     @IBAction func back() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    //データ保存
     @IBAction func saveAc() {
         lessonArray = [firstLesson.text!, secondLesson.text!, thirdLesson.text!, fourthLesson.text!, fifthLesson.text!, sixthLesson.text!, seventhLesson.text!]
         self.save(lessonArray)
     }
     
-    //MARK: - fanction
+    //データ保存
     func save(lessonData: NSArray) {
         let query = PFQuery(className:appDelegate.username as! String)
-        query.whereKey("number", equalTo:dayNum)
+        //query.whereKey("number", equalTo:dayNum)
+        // TODO: ここきれいにしたい
+        query.whereKey("kind", equalTo:"lesson")
         query.findObjectsInBackgroundWithBlock { objects, error in
             if error == nil {
                 for object in objects! {

@@ -23,7 +23,7 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        appDelegate.saveData.removeObjectForKey("cellCount")
+        //appDelegate.saveData.removeObjectForKey("cellCount")
 //        appDelegate.saveData.removeObjectForKey("title")
 //        appDelegate.saveData.removeObjectForKey("content")
         
@@ -35,19 +35,41 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("cellcount = \(cellCount)")
+        cellCount = appDelegate.saveData.objectForKey("cellCount") as! Int
+            print("行数は\(cellCount)です")
         
         if appDelegate.saveData.objectForKey("cellCount") != nil {
-            cellCount = appDelegate.saveData.objectForKey("cellCount") as! Int
-            appDelegate.contactTitle = appDelegate.saveData.objectForKey("title")?.mutableCopy() as! NSMutableArray
-            appDelegate.contactContent = appDelegate.saveData.objectForKey("content")?.mutableCopy() as! NSMutableArray
+            let query = PFQuery(className:appDelegate.username as! String)
+            query.whereKey("kind", equalTo:"memo")
+            query.findObjectsInBackgroundWithBlock { objects, error in
+                if error == nil {
+                    if let objects = objects{
+                        for object in objects {
+                            query.getObjectInBackgroundWithId(object.objectId!) {
+                                (lesson: PFObject?, error: NSError?) -> Void in
+                                if(self.cellCount != 0) {
+                                    let array = lesson!["title"] as! NSMutableArray
+                                    self.appDelegate.contactTitle = array
+                                    let array2 = lesson!["content"] as! NSMutableArray
+                                    self.appDelegate.contactContent = array2
+                                    self.table.reloadData()
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    print("error")
+                }
+            }
+//            appDelegate.contactTitle = appDelegate.saveData.objectForKey("title")?.mutableCopy() as! NSMutableArray
+//            appDelegate.contactContent = appDelegate.saveData.objectForKey("content")?.mutableCopy() as! NSMutableArray
+//            
+//            print("\(cellCount),\(appDelegate.contactTitle),\(appDelegate.contactContent)")
             
-            print("\(cellCount),\(appDelegate.contactTitle),\(appDelegate.contactContent)")
+            
         }
         
-        print("行数は\(cellCount)です")
-        
-        table.reloadData()
+        //table.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,7 +92,9 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell!
         
-        cell.textLabel?.text = appDelegate.contactTitle![indexPath.row] as? String
+        if(appDelegate.contactTitle.count != 0){
+            cell.textLabel?.text = appDelegate.contactTitle![indexPath.row] as? String
+        }
         
         return cell
     }
@@ -109,6 +133,8 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
             appDelegate.contactContent.removeObjectAtIndex(index)
             appDelegate.contactContent.insertObject(targetContent, atIndex: destinationIndexPath.row)
         }
+        
+        self.saveDate()
     }
     
     //編集終了時の処理
@@ -119,10 +145,12 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
         appDelegate.contactContent.removeObjectAtIndex(indexPath.row)
         cellCount -= 1
         
-        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
-        appDelegate.saveData.setObject(appDelegate.contactTitle, forKey: "title")
-        appDelegate.saveData.setObject(appDelegate.contactContent, forKey: "content")
-        appDelegate.saveData.synchronize()
+        self.saveDate()
+        
+//        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
+//        appDelegate.saveData.setObject(appDelegate.contactTitle, forKey: "title")
+//        appDelegate.saveData.setObject(appDelegate.contactContent, forKey: "content")
+//        appDelegate.saveData.synchronize()
         
         // テーブルの更新
         tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: 0)],
@@ -149,11 +177,13 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("\(appDelegate.contactTitle![cellCount]),\(appDelegate.contactContent![cellCount])")
         cellCount++
         
+        self.saveDate()
+        
         //save data
-        appDelegate.saveData.setObject(cellCount as Int, forKey: "cellCount")
-        appDelegate.saveData.setObject(appDelegate.contactTitle, forKey: "title")
-        appDelegate.saveData.setObject(appDelegate.contactContent, forKey: "content")
-        appDelegate.saveData.synchronize()
+//        appDelegate.saveData.setObject(cellCount as Int, forKey: "cellCount")
+//        appDelegate.saveData.setObject(appDelegate.contactTitle, forKey: "title")
+//        appDelegate.saveData.setObject(appDelegate.contactContent, forKey: "content")
+//        appDelegate.saveData.synchronize()
         
         table.reloadData()
     }
@@ -167,6 +197,38 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
             editBtn.title = "edit"
             super.setEditing(false, animated: false)
             table.editing = false
+        }
+    }
+    
+    func saveDate() {
+        appDelegate.saveData.setObject(cellCount as Int, forKey: "cellCount")
+        appDelegate.saveData.synchronize()
+        
+        let query = PFQuery(className:appDelegate.username as! String)
+        query.whereKey("kind", equalTo:"memo")
+        query.findObjectsInBackgroundWithBlock { objects, error in
+            if error == nil {
+                for object in objects! {
+                    query.getObjectInBackgroundWithId(object.objectId!) {
+                        (lesson: PFObject?, error: NSError?) -> Void in
+                        
+                        print(object.objectId!)
+                        lesson!["title"] = self.appDelegate.contactTitle
+                        lesson!["content"] = self.appDelegate.contactContent
+                        
+                        lesson!.saveInBackgroundWithBlock {
+                            (success: Bool, error: NSError?) -> Void in
+                            if (success) {
+                                print("sucsess")
+                            } else {
+                                print("\(error)")
+                            }
+                        }
+                    }
+                }
+            } else {
+                print("error")
+            }
         }
     }
 
