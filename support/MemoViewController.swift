@@ -50,33 +50,20 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         appDelegate.contactTitle[cellNum] = titleText.text!
         appDelegate.contactContent[cellNum] = contentText.text
         
-        let query = PFQuery(className:appDelegate.username as! String)
-        query.whereKey("kind", equalTo:"memo")
-        query.findObjectsInBackgroundWithBlock { objects, error in
-            if error == nil {
-                for object in objects! {
-                    query.getObjectInBackgroundWithId(object.objectId!) {
-                        (lesson: PFObject?, error: NSError?) -> Void in
-                        
-                        print(object.objectId!)
-                        lesson!["title"] = self.appDelegate.contactTitle
-                        lesson!["content"] = self.appDelegate.contactContent
-                        
-                        lesson!.saveInBackgroundWithBlock {
-                            (success: Bool, error: NSError?) -> Void in
-                            if (success) {
-                                print("sucsess")
-                            } else {
-                                print("\(error)")
-                            }
-                        }
-                    }
-                }
-            } else {
-                print("error")
-            }
-        }
+        ParseManager.saveDate(appDelegate.contactTitle, contacts: appDelegate.contactContent, username: appDelegate.username!)
         
+//        let object = PFObject(className: "memo")
+//        object["title"] = self.appDelegate.contactTitle
+//        object["contents"] = self.appDelegate.contactContent
+//        object["createBy"] = appDelegate.username
+//        object.saveInBackgroundWithBlock {
+//            (success: Bool, error: NSError?) -> Void in
+//            if (success) {
+//                print("save date")
+//            } else {
+//                print(error)
+//            }
+//        }
         
 //        print("\(titleText.text!),\(contentText.text)を保存します")
 //        appDelegate.contactTitle[cellNum] = titleText.text!
@@ -97,10 +84,6 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
 //        
 //        saveAlert.addAction(ok)
 //        presentViewController(saveAlert, animated: true, completion: nil)
-    }
-    
-    func saveDate() {
-        
     }
 
 }

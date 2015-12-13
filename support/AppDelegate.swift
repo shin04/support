@@ -14,11 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    //user nameを保存
+    //usernameという名前だがemailを保存
     var username: NSString?
     
     //メモのデータを保存
     var saveData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    
+    //メモのPFObjectを保存
+    var memoObjects = [PFObject]()
+    //var memoObjects: NSMutableArray! = []
     
     //メモのタイトルとないようを保存する配列
     var contactTitle: NSMutableArray! = []

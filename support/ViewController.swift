@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             contactBtn.alpha = 1
             timerBtn.alpha = 1
             
-            appDelegate.username = currentUser?.username
+            appDelegate.username = currentUser?.email
             
             print("You are a member of the app!")
         } else {
@@ -92,12 +92,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(loginAction)
         alert.addAction(cancelAction)
         
-        //username
+//        //username
+//        alert.addTextFieldWithConfigurationHandler({(text: UITextField) -> Void in
+//            text.placeholder = "input username"
+//            text.delegate = self
+//            let label:UILabel = UILabel(frame: CGRectMake(0, 0, 50, 30))
+//            label.text = "ID"
+//            text.leftView = label
+//            text.leftViewMode = UITextFieldViewMode.Always
+//        })
+        
+        //e-mail
         alert.addTextFieldWithConfigurationHandler({(text: UITextField) -> Void in
-            text.placeholder = "input username"
+            text.placeholder = "input e-mail"
             text.delegate = self
             let label:UILabel = UILabel(frame: CGRectMake(0, 0, 50, 30))
-            label.text = "ID"
+            label.text = "MAIL"
             text.leftView = label
             text.leftViewMode = UITextFieldViewMode.Always
         })
@@ -135,10 +145,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             let textFields:Array<UITextField>? =  alert.textFields as Array<UITextField>?
             
-            if textFields![0].text != nil && textFields![1].text != nil {
+            if textFields![0].text != nil && textFields![1].text != nil && textFields![2].text != nil {
                 let user = PFUser()
                 user.username = textFields![0].text!
-                user.password = textFields![1].text!
+                user.password = textFields![2].text!
+                user.email = textFields![1].text!
                 
                 user.signUpInBackgroundWithBlock {
                     (succeeded, error) -> Void in
@@ -147,21 +158,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         print("Your name is \(user.username!)")
                         
                         //create new class
-                        for (var i = 1; i <= 5; i++) {
-                            let newclass = PFObject(className: user.username!)
-                            newclass["number"] = i as Int
-                            newclass.saveInBackgroundWithBlock{
-                                (success: Bool, error: NSError?) -> Void in
-                            }
-                        }
+//                        let newclass = PFObject(className: user.email!)
+//                        newclass.saveInBackgroundWithBlock{
+//                            (success: Bool, error: NSError?) -> Void in
+//                        }
                         
+//                        for (var i = 1; i <= 5; i++) {
+//                            let newclass = PFObject(className: user.email!)
+//                            newclass["number"] = i as Int
+//                            newclass.saveInBackgroundWithBlock{
+//                                (success: Bool, error: NSError?) -> Void in
+//                            }
+//                        }
                         
                         self.appDelegate.username = user.username!
                         print("\(self.appDelegate.username) is login")
                         
                         self.viewDidLoad()
                     } else {
-                        print("error")
+                        print(error)
                     }
                 }
             }
@@ -181,6 +196,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
             text.leftViewMode = UITextFieldViewMode.Always
         })
         
+        //e-mail
+        alert.addTextFieldWithConfigurationHandler({(text:UITextField!) -> Void in
+            text.placeholder = "input e-mail adress"
+            text.delegate = self
+            let label:UILabel = UILabel(frame: CGRectMake(0, 0, 50, 30))
+            label.text = "MAIL"
+            text.leftView = label
+            text.leftViewMode = UITextFieldViewMode.Always
+        })
+        
         //passward
         alert.addTextFieldWithConfigurationHandler({(text:UITextField!) -> Void in
             text.placeholder = "input passward"
@@ -192,6 +217,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             text.leftViewMode = UITextFieldViewMode.Always
         })
         
+        //self.viewDidLoad()
         presentViewController(alert, animated: true, completion: nil)
     }
     

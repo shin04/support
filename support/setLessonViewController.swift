@@ -80,12 +80,12 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         seventhLesson.leftViewMode = UITextFieldViewMode.Always
         
         //時間割の読み込み
-        let query = PFQuery(className:appDelegate.username as! String)
-        //query.whereKey("number", equalTo:dayNum)
-        query.whereKey("kind", equalTo:"lesson")
-        query.findObjectsInBackgroundWithBlock { objects, error in
+        let query = PFQuery(className: "Lessons")
+        query.whereKey("createBy", equalTo: appDelegate.username as! String)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                if let objects = objects{
+                if let objects = objects {
                     for object in objects {
                         query.getObjectInBackgroundWithId(object.objectId!) {
                             (lesson: PFObject?, error: NSError?) -> Void in
@@ -103,9 +103,35 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
                     }
                 }
             } else {
-                print("error")
             }
         }
+        
+//        let query = PFQuery(className:appDelegate.username as! String)
+//        //query.whereKey("number", equalTo:dayNum)
+//        query.whereKey("kind", equalTo:"lesson")
+//        query.findObjectsInBackgroundWithBlock { objects, error in
+//            if error == nil {
+//                if let objects = objects{
+//                    for object in objects {
+//                        query.getObjectInBackgroundWithId(object.objectId!) {
+//                            (lesson: PFObject?, error: NSError?) -> Void in
+//                            if lesson![self.dayStr as String] != nil {
+//                                let array = lesson![self.dayStr as String] as! NSMutableArray
+//                                self.firstLesson.text = array[0] as? String
+//                                self.secondLesson.text = array[1] as? String
+//                                self.thirdLesson.text = array[2] as? String
+//                                self.fourthLesson.text = array[3] as? String
+//                                self.fifthLesson.text = array[4] as? String
+//                                self.sixthLesson.text = array[5] as? String
+//                                self.seventhLesson.text = array[6] as? String
+//                            }
+//                        }
+//                    }
+//                }
+//            } else {
+//                print("error")
+//            }
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -166,35 +192,45 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     
     //データ保存
     func save(lessonData: NSArray) {
-        let query = PFQuery(className:appDelegate.username as! String)
-        //query.whereKey("number", equalTo:dayNum)
-        // TODO: ここきれいにしたい
-        query.whereKey("kind", equalTo:"lesson")
-        query.findObjectsInBackgroundWithBlock { objects, error in
-            if error == nil {
-                for object in objects! {
-                    query.getObjectInBackgroundWithId(object.objectId!) {
-                        (lesson: PFObject?, error: NSError?) -> Void in
-                        
-                        print(object.objectId!)
-                        
-                        //let saveData = PFObject(className: self.appDelegate.username as! String)
-                        lesson![self.dayStr as String] = lessonData
-                        lesson!.saveInBackgroundWithBlock {
-                            (success: Bool, error: NSError?) -> Void in
-                            if (success) {
-                                print("sucsess")
-                                print("\(lesson![self.dayStr as String]) is saved")
-                            } else {
-                                print("\(error)")
-                            }
-                        }
-                    }
-                }
+        let object = PFObject(className: "Lessons")
+        object[dayStr as String] = lessonData
+        object["createBy"] = appDelegate.username
+        object.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                print("save date")
             } else {
-                print("error")
+                print(error)
             }
         }
+        
+//        let query = PFQuery(className:appDelegate.username as! String)
+//        query.whereKey("kind", equalTo:"lesson")
+//        query.findObjectsInBackgroundWithBlock { objects, error in
+//            if error == nil {
+//                for object in objects! {
+//                    query.getObjectInBackgroundWithId(object.objectId!) {
+//                        (lesson: PFObject?, error: NSError?) -> Void in
+//                        
+//                        print(object.objectId!)
+//                        
+//                        //let saveData = PFObject(className: self.appDelegate.username as! String)
+//                        lesson![self.dayStr as String] = lessonData
+//                        lesson!.saveInBackgroundWithBlock {
+//                            (success: Bool, error: NSError?) -> Void in
+//                            if (success) {
+//                                print("sucsess")
+//                                print("\(lesson![self.dayStr as String]) is saved")
+//                            } else {
+//                                print("\(error)")
+//                            }
+//                        }
+//                    }
+//                }
+//            } else {
+//                print("error")
+//            }
+//        }
     }
 
 }
