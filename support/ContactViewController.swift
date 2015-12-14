@@ -26,8 +26,6 @@ class ContactViewController: UIViewController {
         print("called viewDidLoad")
         
         //appDelegate.saveData.removeObjectForKey("cellCount")
-        appDelegate.saveData.removeObjectForKey("title")
-        appDelegate.saveData.removeObjectForKey("content")
         
         let myLongPressGesture = UILongPressGestureRecognizer(target: self, action: "longPressGesture:")
         table.addGestureRecognizer(myLongPressGesture)
@@ -46,18 +44,20 @@ class ContactViewController: UIViewController {
             query.whereKey("createBy", equalTo: appDelegate.username as! String)
             query.findObjectsInBackgroundWithBlock {
                 (objects: [PFObject]?, error: NSError?) -> Void in
-                if error == nil {
-                    if let objects = objects {
-                        for object in objects {
-                            print("ID = \(object.objectId)")
-                            query.getObjectInBackgroundWithId(object.objectId!) {
-                                (memo: PFObject?, error: NSError?) -> Void in
-                                self.appDelegate.contactTitle = memo?["title"] as! NSMutableArray
-                                self.appDelegate.contactContent = memo?["contents"] as! NSMutableArray
-                                
-                                self.table.reloadData()
-                            }
-                        }
+                if error != nil {
+                    return
+                }
+                guard let objects = objects else {
+                    return
+                }
+                for object in objects {
+                    print("ID = \(object.objectId)")
+                    query.getObjectInBackgroundWithId(object.objectId!) {
+                        (memo: PFObject?, error: NSError?) -> Void in
+                        self.appDelegate.contactTitle = memo?["title"] as! NSMutableArray
+                        self.appDelegate.contactContent = memo?["contents"] as! NSMutableArray
+                            
+                        self.table.reloadData()
                     }
                 }
             }
@@ -77,9 +77,15 @@ class ContactViewController: UIViewController {
     
     //長押ししたときの処理
     func longPressGesture(sender: UILongPressGestureRecognizer) {
-        // 指が離れたことを検知
-        if(sender.state == UIGestureRecognizerState.Ended){
+        // 押された位置でcellのPathを取得
+        let point = sender.locationInView(table)
+        let indexPath = table.indexPathForRowAtPoint(point)
+        
+        if indexPath == nil {
+            
+        } else if sender.state == UIGestureRecognizerState.Began  {
             print("長押し")
+            selectCell = (indexPath?.row)!
             self.makeAlert(selectCell)
         }
     }
@@ -128,7 +134,7 @@ class ContactViewController: UIViewController {
     func saveDate(number: Int) {
         appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
         appDelegate.saveData.synchronize()
-        //ParseManager.saveDate(self.appDelegate.contactTitle, contacts: self.appDelegate.contactContent, username: self.appDelegate.username!)
+        
         ParseManager.save(self.appDelegate.username! as String, titles: self.appDelegate.contactTitle, contents: self.appDelegate.contactContent)
     }
 

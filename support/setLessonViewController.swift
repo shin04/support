@@ -84,26 +84,27 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         query.whereKey("createBy", equalTo: appDelegate.username as! String)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                if let objects = objects {
-                    for object in objects {
-                        print("ID = \(object.objectId)")
-                        query.getObjectInBackgroundWithId(object.objectId!) {
-                            (lesson: PFObject?, error: NSError?) -> Void in
-                            if lesson![self.dayStr as String] != nil {
-                                let array = lesson![self.dayStr as String] as! NSMutableArray
-                                self.firstLesson.text = array[0] as? String
-                                self.secondLesson.text = array[1] as? String
-                                self.thirdLesson.text = array[2] as? String
-                                self.fourthLesson.text = array[3] as? String
-                                self.fifthLesson.text = array[4] as? String
-                                self.sixthLesson.text = array[5] as? String
-                                self.seventhLesson.text = array[6] as? String
-                            }
-                        }
+            if error != nil {
+                return
+            }
+            guard let objects = objects else {
+                return
+            }
+            for object in objects {
+                print("ID = \(object.objectId)")
+                query.getObjectInBackgroundWithId(object.objectId!) {
+                    (lesson: PFObject?, error: NSError?) -> Void in
+                    if lesson![self.dayStr as String] != nil {
+                        let array = lesson![self.dayStr as String] as! NSMutableArray
+                        self.firstLesson.text = array[0] as? String
+                        self.secondLesson.text = array[1] as? String
+                        self.thirdLesson.text = array[2] as? String
+                        self.fourthLesson.text = array[3] as? String
+                        self.fifthLesson.text = array[4] as? String
+                        self.sixthLesson.text = array[5] as? String
+                        self.seventhLesson.text = array[6] as? String
                     }
                 }
-            } else {
             }
         }
     }
@@ -194,18 +195,6 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
                 }
             }
         }
-        
-//        let object = PFObject(className: "Lessons")
-//        object[dayStr as String] = lessonData
-//        object["createBy"] = appDelegate.username
-//        object.saveInBackgroundWithBlock {
-//            (success: Bool, error: NSError?) -> Void in
-//            if (success) {
-//                print("save date")
-//            } else {
-//                print(error)
-//            }
-//        }
     }
 
 }
