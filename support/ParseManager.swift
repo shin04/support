@@ -8,38 +8,35 @@
 
 import Parse
 
-var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-
 class ParseManager {
-    class func readDate() {
+    class func save(username: String, titles: NSMutableArray, contents: NSMutableArray) {
         let query = PFQuery(className: "memo")
-        query.orderByAscending("createBy")
-        query.findObjectsInBackgroundWithBlock { objects, error in
-            if(error == nil){
-                appDelegate.memoObjects = [PFObject]()
-                appDelegate.memoObjects = objects!
-                print("success")
-            }else {
-                print(error)
+        query.whereKey("createBy", equalTo: username)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error != nil {
+                return
             }
-            
+            guard let objects = objects else {
+                return
+            }
+            for object in objects {
+                print("ID = \(object.objectId)")
+                query.getObjectInBackgroundWithId(object.objectId!) {
+                    (memo: PFObject?, error: NSError?) -> Void in
+                    memo!["title"] = titles
+                    memo!["contents"] = contents
+                    memo!["createBy"] = username
+                    memo!.saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            print("save date")
+                        } else {
+                            print(error)
+                        }
+                    }
+                }
+            }
         }
     }
-    
-    class func saveDate(titles: NSMutableArray, contacts: NSMutableArray, username: NSString) {
-        let object = PFObject(className: "memo")
-        object["title"] = titles
-        object["contents"] = contacts
-        object["createBy"] = username
-        object.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                print("save date")
-                // self.appDelegate.memoObjects[number] = object
-            } else {
-                print(error)
-            }
-        }
-    }
-
 }

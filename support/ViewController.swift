@@ -92,19 +92,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(loginAction)
         alert.addAction(cancelAction)
         
-//        //username
-//        alert.addTextFieldWithConfigurationHandler({(text: UITextField) -> Void in
-//            text.placeholder = "input username"
-//            text.delegate = self
-//            let label:UILabel = UILabel(frame: CGRectMake(0, 0, 50, 30))
-//            label.text = "ID"
-//            text.leftView = label
-//            text.leftViewMode = UITextFieldViewMode.Always
-//        })
-        
         //e-mail
         alert.addTextFieldWithConfigurationHandler({(text: UITextField) -> Void in
-            text.placeholder = "input e-mail"
+            text.placeholder = "input email"
             text.delegate = self
             let label:UILabel = UILabel(frame: CGRectMake(0, 0, 50, 30))
             label.text = "MAIL"
@@ -148,8 +138,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if textFields![0].text != nil && textFields![1].text != nil && textFields![2].text != nil {
                 let user = PFUser()
                 user.username = textFields![0].text!
-                user.password = textFields![2].text!
                 user.email = textFields![1].text!
+                user.password = textFields![2].text!
                 
                 user.signUpInBackgroundWithBlock {
                     (succeeded, error) -> Void in
@@ -157,22 +147,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         print("success")
                         print("Your name is \(user.username!)")
                         
-                        //create new class
-//                        let newclass = PFObject(className: user.email!)
-//                        newclass.saveInBackgroundWithBlock{
-//                            (success: Bool, error: NSError?) -> Void in
-//                        }
-                        
-//                        for (var i = 1; i <= 5; i++) {
-//                            let newclass = PFObject(className: user.email!)
-//                            newclass["number"] = i as Int
-//                            newclass.saveInBackgroundWithBlock{
-//                                (success: Bool, error: NSError?) -> Void in
-//                            }
-//                        }
-                        
                         self.appDelegate.username = user.username!
                         print("\(self.appDelegate.username) is login")
+                        
+                        self.newObject("Lessons", email: user.email!)
+                        self.newObject("memo", email: user.email!)
+                        
+//                        let object = PFObject(className: "Lessons")
+//                        object["createBy"] = user.email
+//                        object.saveInBackgroundWithBlock {
+//                            (success: Bool, error: NSError?) -> Void in
+//                            if (success) {
+//                                print("save date")
+//                            } else {
+//                                print(error)
+//                            }
+//                        }
                         
                         self.viewDidLoad()
                     } else {
@@ -226,6 +216,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         PFUser.logOut()
         print("See you!")
         loadView()
+    }
+    
+    func newObject(className: String, email: String) {
+        let object = PFObject(className: className)
+        object["createBy"] = email
+        object.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                print("save date")
+            } else {
+                print(error)
+            }
+        }
     }
 
 }

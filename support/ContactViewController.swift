@@ -23,10 +23,11 @@ class ContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        appDelegate.saveData.removeObjectForKey("cellCount")
-        print(cellCount)
-//        appDelegate.saveData.removeObjectForKey("title")
-//        appDelegate.saveData.removeObjectForKey("content")
+        print("called viewDidLoad")
+        
+        //appDelegate.saveData.removeObjectForKey("cellCount")
+        appDelegate.saveData.removeObjectForKey("title")
+        appDelegate.saveData.removeObjectForKey("content")
         
         let myLongPressGesture = UILongPressGestureRecognizer(target: self, action: "longPressGesture:")
         table.addGestureRecognizer(myLongPressGesture)
@@ -36,53 +37,38 @@ class ContactViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        print("called viewWillAppear")
+        
         if appDelegate.saveData.objectForKey("cellCount") != nil {
+            print("not nil")
+            
+            let query = PFQuery(className: "memo")
+            query.whereKey("createBy", equalTo: appDelegate.username as! String)
+            query.findObjectsInBackgroundWithBlock {
+                (objects: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    if let objects = objects {
+                        for object in objects {
+                            print("ID = \(object.objectId)")
+                            query.getObjectInBackgroundWithId(object.objectId!) {
+                                (memo: PFObject?, error: NSError?) -> Void in
+                                self.appDelegate.contactTitle = memo?["title"] as! NSMutableArray
+                                self.appDelegate.contactContent = memo?["contents"] as! NSMutableArray
+                                
+                                self.table.reloadData()
+                            }
+                        }
+                    }
+                }
+            }
+            
             cellCount = appDelegate.saveData.objectForKey("cellCount") as! Int
+            
             print("行数は\(cellCount)です")
-            
-            ParseManager.readDate()
-            
-//            let query = PFQuery(className: "memo")
-//            query.whereKey("createBy", equalTo: appDelegate.username as! String)
-//            query.findObjectsInBackgroundWithBlock { objects, error in
-//                if error == nil {
-//                    if let objects = objects{
-//                        var count:Int = 0
-//                        for object in objects {
-//                            query.getObjectInBackgroundWithId(object.objectId!) {
-//                                (memo: PFObject?, error: NSError?) -> Void in
-//                                print("called1 \(self.cellCount)")
-//                                if(self.cellCount != 0) {
-//                                    print("called2")
-//                                    
-//                                    self.appDelegate.memoObjects[count] = memo!
-//                                    count++
-//                                    
-//                                    print("ID = \(object.objectId)")
-//                                    
-//                                    let array = memo!["title"] as! NSMutableArray
-//                                    self.appDelegate.contactTitle = array
-//                                    let array2 = memo!["content"] as? NSMutableArray
-//                                    self.appDelegate.contactContent = array2
-//                                    self.table.reloadData()
-//                                }
-//                            }
-//                        }
-//                    }
-//                } else {
-//                    print("error")
-//                }
-//            }
-            
-            appDelegate.contactTitle = appDelegate.saveData.objectForKey("title")?.mutableCopy() as! NSMutableArray
-            appDelegate.contactContent = appDelegate.saveData.objectForKey("content")?.mutableCopy() as! NSMutableArray
-            
             print("\(cellCount),\(appDelegate.contactTitle),\(appDelegate.contactContent)")
             
-            
+            table.reloadData()
         }
-        
-        //table.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -121,11 +107,8 @@ class ContactViewController: UIViewController {
         self.saveDate(cellCount)
         
         cellCount++
-        //save data
-        appDelegate.saveData.setObject(cellCount as Int, forKey: "cellCount")
-//        appDelegate.saveData.setObject(appDelegate.contactTitle, forKey: "title")
-//        appDelegate.saveData.setObject(appDelegate.contactContent, forKey: "content")
-//        appDelegate.saveData.synchronize()
+        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
+        appDelegate.saveData.synchronize()
         
         table.reloadData()
     }
@@ -143,15 +126,19 @@ class ContactViewController: UIViewController {
     }
     
     func saveDate(number: Int) {
-        appDelegate.saveData.setObject(cellCount as Int, forKey: "cellCount")
+        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
         appDelegate.saveData.synchronize()
-        ParseManager.saveDate(self.appDelegate.contactTitle, contacts: self.appDelegate.contactContent, username: self.appDelegate.username!)
+        //ParseManager.saveDate(self.appDelegate.contactTitle, contacts: self.appDelegate.contactContent, username: self.appDelegate.username!)
+        ParseManager.save(self.appDelegate.username! as String, titles: self.appDelegate.contactTitle, contents: self.appDelegate.contactContent)
     }
 
 }
 
 extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("called tableView")
+        print("\(appDelegate.contactContent), \(appDelegate.contactTitle)")
+        
         return cellCount
     }
     
@@ -212,11 +199,6 @@ extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
         cellCount -= 1
         
         self.saveDate(indexPath.row)
-        
-        //        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
-        //        appDelegate.saveData.setObject(appDelegate.contactTitle, forKey: "title")
-        //        appDelegate.saveData.setObject(appDelegate.contactContent, forKey: "content")
-        //        appDelegate.saveData.synchronize()
         
         // テーブルの更新
         tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: 0)],
