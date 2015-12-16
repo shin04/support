@@ -8,17 +8,53 @@
 
 import UIKit
 
-class LessonDetailViewController: UIViewController {
+class LessonDetailViewController: UIViewController, UITextViewDelegate {
+    
+    @IBOutlet var noticeSwich: UISwitch!
+    @IBOutlet var noticeMessage: UITextView!
+    @IBOutlet var picker: UIDatePicker!
+    
+    var hour: String!
+    var minute: String!
+    
+    var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        noticeSwich.on = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func pickerAc() {
+        let hourFormatter: NSDateFormatter = NSDateFormatter()
+        hourFormatter.dateFormat = "hh"
+        hour = hourFormatter.stringFromDate(picker.date)
+        
+        let minuteFormatter: NSDateFormatter = NSDateFormatter()
+        minuteFormatter.dateFormat = "mm"
+        minute = minuteFormatter.stringFromDate(picker.date)
+        
+        print("\(hour) : \(minute)")
+    }
+    
+    @IBAction func swichAc() {
+        if noticeSwich.on == true {
+            print("noticeSwich is on")
+        } else {
+            print("noticeSwich is off")
+        }
+    }
+    
+    @IBAction func saveAc() {
+        appDelegate.noticeMg = noticeMessage.text!
+        
+        appDelegate.noticeHour = Int(hour)!
+        appDelegate.noticeMinute = Int(minute)!
+        print("\(noticeMessage.text!) and \(time) is saved")
     }
 
 }

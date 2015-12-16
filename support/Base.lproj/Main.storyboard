@@ -9,7 +9,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="support" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" id="BYZ-38-t0r" customClass="ViewController" customModule="support" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -79,6 +79,20 @@
                                     <segue destination="AgA-X3-uSU" kind="modal" id="0vC-rq-WUU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDv-TW-Gso">
+                                <rect key="frame" x="60" y="41" width="30" height="30"/>
+                                <state key="normal" title="test"/>
+                                <connections>
+                                    <action selector="push" destination="BYZ-38-t0r" eventType="touchUpInside" id="PrI-0m-gg3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sV-6i-v7f">
+                                <rect key="frame" x="58" y="79" width="34" height="30"/>
+                                <state key="normal" title="push"/>
+                                <connections>
+                                    <action selector="sendPush" destination="BYZ-38-t0r" eventType="touchUpInside" id="8LG-7Z-i7u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -139,12 +153,14 @@
                                 <rect key="frame" x="-4" y="15" width="328" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="3qP-cX-twT">
-                                        <barButtonItem key="leftBarButtonItem" title="back" id="x39-YA-iM5">
+                                        <barButtonItem key="leftBarButtonItem" image="back.png" id="x39-YA-iM5">
+                                            <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                             <connections>
                                                 <action selector="back" destination="dTU-Qb-odl" id="CoV-mK-Kox"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="edit" id="MUB-bF-UfW">
+                                        <barButtonItem key="rightBarButtonItem" image="edit.png" id="MUB-bF-UfW">
+                                            <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                             <connections>
                                                 <action selector="edit" destination="dTU-Qb-odl" id="xOM-bh-a5a"/>
                                             </connections>
@@ -152,12 +168,12 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ss-vA-GDu">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ss-vA-GDu">
                                 <rect key="frame" x="-4" y="59" width="328" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="3Vt-nc-Wxi"/>
                                 </constraints>
-                                <state key="normal" title="新規"/>
+                                <state key="normal" image="new.png"/>
                                 <connections>
                                     <action selector="newContent" destination="dTU-Qb-odl" eventType="touchUpInside" id="uVm-zp-IiA"/>
                                 </connections>
@@ -284,7 +300,8 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Title" id="1Pi-qR-8IM">
-                                        <barButtonItem key="leftBarButtonItem" title="back" id="05D-SC-gAr">
+                                        <barButtonItem key="leftBarButtonItem" image="back.png" id="05D-SC-gAr">
+                                            <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                             <connections>
                                                 <action selector="back" destination="i0J-FL-6e8" id="SbE-6i-Pgz"/>
                                             </connections>
@@ -312,13 +329,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vax-hP-0Ud">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vax-hP-0Ud">
                                 <rect key="frame" x="280" y="69" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1Tm-VA-irq"/>
                                     <constraint firstAttribute="width" constant="30" id="aVY-qK-tmM"/>
                                 </constraints>
-                                <state key="normal" title="設定"/>
+                                <state key="normal" title="設定" image="setting.png"/>
                                 <connections>
                                     <segue destination="lXa-vr-73W" kind="modal" id="EBc-0k-zJu"/>
                                 </connections>
@@ -366,7 +383,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="HO0-dA-t7o">
-                                        <barButtonItem key="leftBarButtonItem" title="back" id="fxy-C1-ZPK"/>
+                                        <barButtonItem key="leftBarButtonItem" image="back.png" id="fxy-C1-ZPK">
+                                            <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="save" id="Yfb-hZ-CTn"/>
                                     </navigationItem>
                                 </items>
@@ -489,7 +508,8 @@
                                 <rect key="frame" x="-4" y="15" width="328" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="Jda-P8-ud4">
-                                        <barButtonItem key="leftBarButtonItem" title="back" id="apn-oY-A98">
+                                        <barButtonItem key="leftBarButtonItem" image="back.png" id="apn-oY-A98">
+                                            <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                             <connections>
                                                 <action selector="back" destination="AgA-X3-uSU" id="G70-e2-96k"/>
                                             </connections>
@@ -502,9 +522,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fih-eX-OSr">
-                                <rect key="frame" x="272" y="79" width="30" height="30"/>
-                                <state key="normal" title="設定"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fih-eX-OSr">
+                                <rect key="frame" x="255" y="79" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Lv5-8O-bkl"/>
+                                    <constraint firstAttribute="height" constant="30" id="Wol-Lg-fyq"/>
+                                </constraints>
+                                <state key="normal" title="設定" image="setting.png"/>
                                 <connections>
                                     <segue destination="DKr-TH-LoV" kind="modal" id="KEk-kN-pGo"/>
                                 </connections>
@@ -518,9 +542,11 @@
                             <constraint firstItem="CwP-4l-8Ox" firstAttribute="centerX" secondItem="gve-NR-1hm" secondAttribute="centerX" id="3FL-SI-yIS"/>
                             <constraint firstItem="8eW-5U-2fa" firstAttribute="centerY" secondItem="gve-NR-1hm" secondAttribute="centerY" constant="-50" id="COa-CE-JSh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wem-dX-ngB" secondAttribute="trailing" constant="-20" id="Fl9-Hf-4XO"/>
+                            <constraint firstItem="fih-eX-OSr" firstAttribute="leading" secondItem="d00-NI-Fxy" secondAttribute="trailing" constant="20" id="HeC-9z-Bu2"/>
                             <constraint firstItem="WyG-gR-bEx" firstAttribute="centerY" secondItem="gve-NR-1hm" secondAttribute="centerY" constant="200" id="Iez-5W-Ee7"/>
                             <constraint firstItem="tgU-sZ-PjT" firstAttribute="centerX" secondItem="gve-NR-1hm" secondAttribute="centerX" id="NA1-fm-qgO"/>
                             <constraint firstItem="CwP-4l-8Ox" firstAttribute="centerY" secondItem="gve-NR-1hm" secondAttribute="centerY" constant="-100" id="Qfh-MA-gB9"/>
+                            <constraint firstItem="fih-eX-OSr" firstAttribute="top" secondItem="Wem-dX-ngB" secondAttribute="bottom" constant="20" id="Qhz-tZ-3qT"/>
                             <constraint firstItem="BUJ-FT-7pa" firstAttribute="centerX" secondItem="gve-NR-1hm" secondAttribute="centerX" id="R5S-X2-2Ag"/>
                             <constraint firstItem="d00-NI-Fxy" firstAttribute="centerX" secondItem="gve-NR-1hm" secondAttribute="centerX" id="TuR-Nf-CHf"/>
                             <constraint firstItem="8eW-5U-2fa" firstAttribute="centerX" secondItem="gve-NR-1hm" secondAttribute="centerX" id="U8v-Rd-kwA"/>
@@ -565,8 +591,14 @@
                                 <rect key="frame" x="-4" y="15" width="328" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="dED-zI-hlj">
-                                        <barButtonItem key="leftBarButtonItem" title="back" id="hiv-hz-oTj"/>
-                                        <barButtonItem key="rightBarButtonItem" title="save" id="QUH-mz-mKt"/>
+                                        <barButtonItem key="leftBarButtonItem" image="back.png" id="hiv-hz-oTj">
+                                            <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="save" id="QUH-mz-mKt">
+                                            <connections>
+                                                <action selector="saveAc" destination="DKr-TH-LoV" id="bWP-d5-uTY"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -588,14 +620,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zJO-m3-aQW">
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zJO-m3-aQW">
                                 <rect key="frame" x="0.0" y="203" width="320" height="180"/>
                                 <date key="date" timeIntervalSinceReferenceDate="471570501.48004299">
                                     <!--2015-12-11 23:48:21 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="pickerAc" destination="DKr-TH-LoV" eventType="valueChanged" id="XPo-WT-3DQ"/>
+                                </connections>
                             </datePicker>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HTz-rF-f3y">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HTz-rF-f3y">
                                 <rect key="frame" x="96" y="111" width="51" height="31"/>
+                                <connections>
+                                    <action selector="swichAc" destination="DKr-TH-LoV" eventType="valueChanged" id="med-bN-S2p"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="通知時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0L-tm-5rD">
                                 <rect key="frame" x="20" y="174" width="68" height="21"/>
@@ -612,10 +650,21 @@
                             <constraint firstItem="tCF-fA-r0a" firstAttribute="leading" secondItem="vVj-vc-fFZ" secondAttribute="leadingMargin" constant="-20" id="heC-wc-Ed4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="noticeMessage" destination="Hj0-se-Hw2" id="FJ0-MJ-W3N"/>
+                        <outlet property="noticeSwich" destination="HTz-rF-f3y" id="RNp-mK-4EE"/>
+                        <outlet property="picker" destination="zJO-m3-aQW" id="q2E-r7-kvl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9c-0t-bL6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1038" y="-334"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back.png" width="50" height="50"/>
+        <image name="edit.png" width="50" height="50"/>
+        <image name="new.png" width="50" height="50"/>
+        <image name="setting.png" width="50" height="50"/>
+    </resources>
 </document>

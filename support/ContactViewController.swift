@@ -122,10 +122,13 @@ class ContactViewController: UIViewController {
     @IBAction func edit() {
         if table.editing == false {
             editBtn.title = "done"
+            editBtn.image = nil
             super.setEditing(true, animated: true)
             table.editing = true
         } else {
-            editBtn.title = "edit"
+            //editBtn.title = "edit"
+            let btnImg = UIImage(named: "edit.png")?.resizableImageWithCapInsets(UIEdgeInsetsMake(10, 10, 10, 10))
+            editBtn.image = btnImg
             super.setEditing(false, animated: false)
             table.editing = false
         }

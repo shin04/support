@@ -55,6 +55,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @IBAction func push() {
+        let currentInstallation = PFInstallation.currentInstallation()
+        currentInstallation.addUniqueObject("Giants", forKey: "channels")
+        currentInstallation.saveInBackground()
+    }
+    
+    @IBAction func sendPush() {
+        let push = PFPush()
+        push.setChannel("Giants")
+        push.setMessage("The Giants just scored!")
+        push.sendPushInBackground()
+    }
+    
     // MARK: - sign in action
     @IBAction func signInAction() {
         let alert = UIAlertController(title: "Sign In",
