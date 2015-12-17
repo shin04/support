@@ -23,7 +23,6 @@
 		06BECBEB1BE4D438002C5FB5 /* supportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BECBEA1BE4D438002C5FB5 /* supportTests.swift */; };
 		06BECBF61BE4D438002C5FB5 /* supportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BECBF51BE4D438002C5FB5 /* supportUITests.swift */; };
 		06E177B31BECA63A001120E3 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E177B21BECA63A001120E3 /* ContactViewController.swift */; };
-		06FC3FA71BF7140A005FFCBE /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC3FA61BF7140A005FFCBE /* detailViewController.swift */; };
 		06FC3FA91BF71475005FFCBE /* setTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC3FA81BF71475005FFCBE /* setTimerViewController.swift */; };
 		06FC3FAB1BF721A0005FFCBE /* timerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC3FAA1BF721A0005FFCBE /* timerViewController.swift */; };
 		208BEBBCEB8A67EF8BE9ABB6 /* Pods_support.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E376036B947D2AC811A85613 /* Pods_support.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -70,7 +69,6 @@
 		06BECBF71BE4D438002C5FB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06CB2A411C1FFAEE00A6CD3F /* support.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = support.mobileprovision; sourceTree = "<group>"; };
 		06E177B21BECA63A001120E3 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
-		06FC3FA61BF7140A005FFCBE /* detailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
 		06FC3FA81BF71475005FFCBE /* setTimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setTimerViewController.swift; sourceTree = "<group>"; };
 		06FC3FAA1BF721A0005FFCBE /* timerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timerViewController.swift; sourceTree = "<group>"; };
 		3CA8B6D17D3D151665C72D2F /* Pods-support.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-support.release.xcconfig"; path = "Pods/Target Support Files/Pods-support/Pods-support.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 				064CCBF81BECD5FD0098D9E5 /* MemoViewController.swift */,
 				0642912F1BE840F00062C7F9 /* setLessonViewController.swift */,
 				066023271C02E9D300A61675 /* LessonDetailViewController.swift */,
-				06FC3FA61BF7140A005FFCBE /* detailViewController.swift */,
 				06FC3FA81BF71475005FFCBE /* setTimerViewController.swift */,
 				06FC3FAA1BF721A0005FFCBE /* timerViewController.swift */,
 				06BECBD91BE4D438002C5FB5 /* Main.storyboard */,
@@ -393,7 +390,6 @@
 				06BECBD61BE4D438002C5FB5 /* AppDelegate.swift in Sources */,
 				066023281C02E9D300A61675 /* LessonDetailViewController.swift in Sources */,
 				064291301BE840F00062C7F9 /* setLessonViewController.swift in Sources */,
-				06FC3FA71BF7140A005FFCBE /* detailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

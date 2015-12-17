@@ -31,14 +31,14 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func pickerAc() {
         let hourFormatter: NSDateFormatter = NSDateFormatter()
-        hourFormatter.dateFormat = "hh"
+        hourFormatter.dateFormat = "HH"
         hour = hourFormatter.stringFromDate(picker.date)
         
         let minuteFormatter: NSDateFormatter = NSDateFormatter()
         minuteFormatter.dateFormat = "mm"
         minute = minuteFormatter.stringFromDate(picker.date)
         
-        print("\(hour) : \(minute)")
+        print("\(hour):\(minute)")
     }
     
     @IBAction func swichAc() {
@@ -51,7 +51,6 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func saveAc() {
         appDelegate.noticeMg = noticeMessage.text!
-        
         appDelegate.noticeHour = Int(hour)!
         appDelegate.noticeMinute = Int(minute)!
         print("\(noticeMessage.text!) and \(time) is saved")
