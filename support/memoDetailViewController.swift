@@ -1,15 +1,14 @@
 //
-//  LessonDetailViewController.swift
+//  memoDetailViewController.swift
 //  support
 //
-//  Created by 梶原大進 on 2015/11/23.
+//  Created by 梶原大進 on 2015/12/17.
 //  Copyright © 2015年 梶原大進. All rights reserved.
 //
 
 import UIKit
 
-class LessonDetailViewController: UIViewController, UITextViewDelegate {
-    
+class memoDetailViewController: UIViewController {
     @IBOutlet var noticeSwich: UISwitch!
     @IBOutlet var noticeMessage: UITextView!
     @IBOutlet var picker: UIDatePicker!
@@ -18,30 +17,37 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
     var minute: String!
     var date: NSDate!
     
+    var selectCell: Int!
+    var keyStr: String!
+    
     var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if appDelegate.saveData.objectForKey("lessonState") as! Bool{
+        selectCell = appDelegate.saveData.objectForKey("cellNum") as! Int
+        keyStr = "memoState" + String(selectCell)
+        print("key is \"\(keyStr)\"")
+        
+        //appDelegate.saveData.setBool(false, forKey: keyStr)
+        
+        if appDelegate.saveData.objectForKey(keyStr) as? Bool == true{
             noticeSwich.on = true
-            picker.date = appDelegate.noticeDic["lessonDate"] as! NSDate
+            
+            let dateKey: String = keyStr + "date"
+            picker.date = appDelegate.noticeDic[dateKey] as! NSDate
         } else {
             noticeSwich.on = false
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func back() {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     @IBAction func pickerAc() {
         date = picker.date
-        print("date")
+        print(date)
         
         let hourFormatter: NSDateFormatter = NSDateFormatter()
         hourFormatter.dateFormat = "HH"
@@ -57,21 +63,25 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
     @IBAction func swichAc() {
         if noticeSwich.on == true {
             print("noticeSwich is on")
-            appDelegate.saveData.setBool(true, forKey: "lessonState")
+            appDelegate.saveData.setBool(true, forKey: keyStr)
         } else {
             print("noticeSwich is off")
-            appDelegate.saveData.setBool(false, forKey: "lessonState")
+            appDelegate.saveData.setBool(false, forKey: keyStr)
         }
     }
     
     @IBAction func saveAc() {
-        if appDelegate.saveData.objectForKey("lessonState") as! Bool == true{
-            appDelegate.noticeDic["lessonMg"] = noticeMessage.text!
-            appDelegate.noticeDic["lessonHour"] = Int(hour)!
-            appDelegate.noticeDic["lessonMinute"] = Int(minute)!
-            appDelegate.noticeDic["lessonDate"] = date
-        print("\(noticeMessage.text!) and \(hour):\(minute) is saved")
-        }
+        let hourKey: String = keyStr + "hour"
+        let minuteKey: String = keyStr + "minute"
+        let dateKey: String = keyStr + "date"
+        appDelegate.noticeDic[keyStr] = noticeMessage.text!
+        appDelegate.noticeDic[hourKey] = hour
+        appDelegate.noticeDic[minuteKey] = minute
+        appDelegate.noticeDic[dateKey] = date
+        print("keyStr = \(keyStr), hourKey = \(hourKey), minuteKey = \(minuteKey)")
     }
-
+    
+    @IBAction func back() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

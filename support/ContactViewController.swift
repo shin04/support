@@ -86,17 +86,18 @@ class ContactViewController: UIViewController {
         } else if sender.state == UIGestureRecognizerState.Began  {
             print("長押し")
             selectCell = (indexPath?.row)!
-            self.makeAlert(selectCell)
+            self.makeAlert(appDelegate.contactTitle[selectCell] as! String, messages: appDelegate.contactContent[selectCell] as! String)
         }
     }
     
-    
     //長押ししたときに表示する
-    func makeAlert(number: Int) {
-        let alertController = UIAlertController(title: appDelegate.contactTitle[number] as? String, message: appDelegate.contactContent[number] as? String, preferredStyle: .Alert)
+    func makeAlert(titles: String, messages: String) {
+        let alertController = UIAlertController(title: titles, message: messages, preferredStyle: .Alert)
         
-        let defaultAction = UIAlertAction(title: "戻る", style: .Default, handler: nil)
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let calcelAction = UIAlertAction(title: "キャンセル", style: .Cancel, handler: nil)
         alertController.addAction(defaultAction)
+        alertController.addAction(calcelAction)
         
         presentViewController(alertController, animated: true, completion: nil)
     }

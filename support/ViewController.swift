@@ -23,6 +23,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //let appDomain:String = NSBundle.mainBundle().bundleIdentifier!
+        //NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+        appDelegate.saveData.setObject(1, forKey: "cellCount")
+        
         let currentUser = PFUser.currentUser()
         if currentUser != nil {
             inBtn.alpha = 0
@@ -53,19 +57,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         textField.resignFirstResponder()
         return true
-    }
-    
-    @IBAction func push() {
-        let currentInstallation = PFInstallation.currentInstallation()
-        currentInstallation.addUniqueObject("Giants", forKey: "channels")
-        currentInstallation.saveInBackground()
-    }
-    
-    @IBAction func sendPush() {
-        let push = PFPush()
-        push.setChannel("Giants")
-        push.setMessage("The Giants just scored!")
-        push.sendPushInBackground()
     }
     
     // MARK: - sign in action
@@ -166,16 +157,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         self.newObject("Lessons", email: user.email!)
                         self.newObject("memo", email: user.email!)
                         
-//                        let object = PFObject(className: "Lessons")
-//                        object["createBy"] = user.email
-//                        object.saveInBackgroundWithBlock {
-//                            (success: Bool, error: NSError?) -> Void in
-//                            if (success) {
-//                                print("save date")
-//                            } else {
-//                                print(error)
-//                            }
-//                        }
+//                        let currentInstallation = PFInstallation.currentInstallation()
+//                        currentInstallation.addUniqueObject("Giants", forKey: "channels")
+//                        currentInstallation.saveInBackground()
                         
                         self.viewDidLoad()
                     } else {

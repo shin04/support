@@ -19,19 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var username: NSString?
     
     //時間割の通知時間を保存
-    var noticeDic: NSMutableDictionary = ["lessonHour": 10, "lessonMinute": 10, "lessonMg": "hoge", "memoTime": 10, "memoMg": "hoge"]
-    var noticeMg: String!
-    var noticeHour: Int = 0
-    var noticeMinute: Int = 0
+    var noticeDic: NSMutableDictionary = ["lessonHour": 0, "lessonMinute": 0, "lessonMg": "hoge"]
     var noticeTime: NSDate?
     
-    //メモのデータを保存
+    //メモの数、通知のon/offの状態を保存
     var saveData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     //メモのPFObjectを保存
     var memoObjects = [PFObject]()
     
-    //メモのタイトルとないようを保存する配列
+    //メモのタイトルと内容を保存する配列
     var contactTitle: NSMutableArray! = []
     var contactContent: NSMutableArray! = []
     
@@ -76,34 +73,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        // push設定
-        // 登録済みのスケジュールをすべてリセット
+        //通知のデータを保存
+        saveData.setObject(noticeDic, forKey: "noticeDic")
+        saveData.synchronize()
+        
+        
         application.cancelAllLocalNotifications()
+        // 時間割の通知
+        if saveData.objectForKey("lessonState") as? Bool == true {
+            //application.cancelAllLocalNotifications()
+            application.scheduleLocalNotification(notificationManeger.setting(noticeDic["lessonMg"] as! String, hour: noticeDic["lessonHour"] as! Int, minute: noticeDic["lessonMinute"] as! Int))
+        }
         
-        let notification = UILocalNotification()
-        notification.alertAction = "アプリに戻る"
-        notification.alertBody = noticeMg
-        notification.timeZone = NSTimeZone.defaultTimeZone();
-        
-        let now = NSDate()
-        print(now);
-        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
-        let comps:NSDateComponents = calendar!.components([NSCalendarUnit.Year, .Month, .Day], fromDate: now)
-        comps.calendar = calendar
-        comps.hour = noticeHour
-        comps.minute = noticeMinute
-        
-        let now2 = comps.date;
-        print(now2!);
-        
-        notification.fireDate = now2
-        
-        notification.soundName = UILocalNotificationDefaultSoundName
-        // アイコンバッジに1を表示
-        notification.applicationIconBadgeNumber = 1
-        // あとのためにIdを割り振っておく
-        notification.userInfo = ["notifyId": "ranking_update"]
-        application.scheduleLocalNotification(notification)
+        // 連絡事項の通日
+        for (var i = 0; saveData.objectForKey("cellCount") as! Int > i; i++) {
+            let keyStr: String = "memoState" + String(i)
+            let hourKey: String = keyStr + "hour"
+            let minuteKey: String = keyStr + "minute"
+            if saveData.objectForKey(keyStr) as? Bool == true {
+                //application.cancelAllLocalNotifications()
+                application.scheduleLocalNotification(notificationManeger.setting(noticeDic[keyStr] as! String,
+                    hour:Int(noticeDic[hourKey] as! String)!
+                    , minute: Int(noticeDic[minuteKey] as! String)!))
+            }
+        }
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
