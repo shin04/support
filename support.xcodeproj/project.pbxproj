@@ -27,12 +27,11 @@
 		06BECBE01BE4D438002C5FB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06BECBDE1BE4D438002C5FB5 /* LaunchScreen.storyboard */; };
 		06BECBEB1BE4D438002C5FB5 /* supportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BECBEA1BE4D438002C5FB5 /* supportTests.swift */; };
 		06BECBF61BE4D438002C5FB5 /* supportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BECBF51BE4D438002C5FB5 /* supportUITests.swift */; };
+		06D800B81C2A830B0023C63F /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D800B71C2A830B0023C63F /* main.png */; };
 		06DA87001C228D24003D8143 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DA86FF1C228D24003D8143 /* MemoViewController.swift */; };
 		06E177B31BECA63A001120E3 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E177B21BECA63A001120E3 /* ContactViewController.swift */; };
 		06F1A2821C241D38003FEC2A /* btn_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 06F1A2801C241D38003FEC2A /* btn_in.png */; };
 		06F1A2831C241D38003FEC2A /* btn_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 06F1A2811C241D38003FEC2A /* btn_up.png */; };
-		06FC3FA91BF71475005FFCBE /* setTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC3FA81BF71475005FFCBE /* setTimerViewController.swift */; };
-		06FC3FAB1BF721A0005FFCBE /* timerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC3FAA1BF721A0005FFCBE /* timerViewController.swift */; };
 		208BEBBCEB8A67EF8BE9ABB6 /* Pods_support.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E376036B947D2AC811A85613 /* Pods_support.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -81,12 +80,11 @@
 		06BECBF51BE4D438002C5FB5 /* supportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = supportUITests.swift; sourceTree = "<group>"; };
 		06BECBF71BE4D438002C5FB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06CB2A411C1FFAEE00A6CD3F /* support.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = support.mobileprovision; sourceTree = "<group>"; };
+		06D800B71C2A830B0023C63F /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		06DA86FF1C228D24003D8143 /* MemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		06E177B21BECA63A001120E3 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		06F1A2801C241D38003FEC2A /* btn_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_in.png; sourceTree = "<group>"; };
 		06F1A2811C241D38003FEC2A /* btn_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_up.png; sourceTree = "<group>"; };
-		06FC3FA81BF71475005FFCBE /* setTimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setTimerViewController.swift; sourceTree = "<group>"; };
-		06FC3FAA1BF721A0005FFCBE /* timerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timerViewController.swift; sourceTree = "<group>"; };
 		3CA8B6D17D3D151665C72D2F /* Pods-support.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-support.release.xcconfig"; path = "Pods/Target Support Files/Pods-support/Pods-support.release.xcconfig"; sourceTree = "<group>"; };
 		E376036B947D2AC811A85613 /* Pods_support.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_support.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C9C81B4E5662DBDC20330B /* Pods-support.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-support.debug.xcconfig"; path = "Pods/Target Support Files/Pods-support/Pods-support.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +119,7 @@
 		0670FB801C1E9D1D005B39B8 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				06D800B71C2A830B0023C63F /* main.png */,
 				0670FB811C1E9DD4005B39B8 /* edit.png */,
 				0670FB821C1E9DD4005B39B8 /* back.png */,
 				0670FB831C1E9DD4005B39B8 /* new.png */,
@@ -171,8 +170,6 @@
 				06E177B21BECA63A001120E3 /* ContactViewController.swift */,
 				06DA86FF1C228D24003D8143 /* MemoViewController.swift */,
 				06B622A21C22797500F896E9 /* memoDetailViewController.swift */,
-				06FC3FA81BF71475005FFCBE /* setTimerViewController.swift */,
-				06FC3FAA1BF721A0005FFCBE /* timerViewController.swift */,
 				06BECBD91BE4D438002C5FB5 /* Main.storyboard */,
 				06BECBDC1BE4D438002C5FB5 /* Assets.xcassets */,
 				06BECBDE1BE4D438002C5FB5 /* LaunchScreen.storyboard */,
@@ -334,6 +331,7 @@
 				06BECBE01BE4D438002C5FB5 /* LaunchScreen.storyboard in Resources */,
 				06F1A2831C241D38003FEC2A /* btn_up.png in Resources */,
 				0670FB871C1E9DD4005B39B8 /* new.png in Resources */,
+				06D800B81C2A830B0023C63F /* main.png in Resources */,
 				0670FB851C1E9DD4005B39B8 /* edit.png in Resources */,
 				06B7A0441C22D7820068DE3B /* btn_memo.png in Resources */,
 				06BECBDD1BE4D438002C5FB5 /* Assets.xcassets in Resources */,
@@ -412,11 +410,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				06DA87001C228D24003D8143 /* MemoViewController.swift in Sources */,
-				06FC3FA91BF71475005FFCBE /* setTimerViewController.swift in Sources */,
 				069E53871C1D089A004DEEA4 /* ParseManager.swift in Sources */,
 				06BECBD81BE4D438002C5FB5 /* ViewController.swift in Sources */,
 				06E177B31BECA63A001120E3 /* ContactViewController.swift in Sources */,
-				06FC3FAB1BF721A0005FFCBE /* timerViewController.swift in Sources */,
 				06B622A51C227C3E00F896E9 /* notificationManager.swift in Sources */,
 				06BECBD61BE4D438002C5FB5 /* AppDelegate.swift in Sources */,
 				06B622A31C22797500F896E9 /* memoDetailViewController.swift in Sources */,

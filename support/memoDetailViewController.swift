@@ -13,8 +13,8 @@ class memoDetailViewController: UIViewController {
     @IBOutlet var noticeMessage: UITextView!
     @IBOutlet var picker: UIDatePicker!
     
-    var hour: String!
-    var minute: String!
+//    var hour: String!
+//    var minute: String!
     var date: NSDate!
     
     var selectCell: Int!
@@ -35,6 +35,7 @@ class memoDetailViewController: UIViewController {
             noticeSwich.on = true
             
             let dateKey: String = keyStr + "date"
+            
             picker.date = appDelegate.noticeDic[dateKey] as! NSDate
         } else {
             noticeSwich.on = false
@@ -48,16 +49,6 @@ class memoDetailViewController: UIViewController {
     @IBAction func pickerAc() {
         date = picker.date
         print(date)
-        
-        let hourFormatter: NSDateFormatter = NSDateFormatter()
-        hourFormatter.dateFormat = "HH"
-        hour = hourFormatter.stringFromDate(picker.date)
-        
-        let minuteFormatter: NSDateFormatter = NSDateFormatter()
-        minuteFormatter.dateFormat = "mm"
-        minute = minuteFormatter.stringFromDate(picker.date)
-        
-        print("\(hour):\(minute)")
     }
     
     @IBAction func swichAc() {
@@ -71,14 +62,14 @@ class memoDetailViewController: UIViewController {
     }
     
     @IBAction func saveAc() {
-        let hourKey: String = keyStr + "hour"
-        let minuteKey: String = keyStr + "minute"
+//        let hourKey: String = keyStr + "hour"
+//        let minuteKey: String = keyStr + "minute"
         let dateKey: String = keyStr + "date"
         appDelegate.noticeDic[keyStr] = noticeMessage.text!
-        appDelegate.noticeDic[hourKey] = hour
-        appDelegate.noticeDic[minuteKey] = minute
+//        appDelegate.noticeDic[hourKey] = hour
+//        appDelegate.noticeDic[minuteKey] = minute
         appDelegate.noticeDic[dateKey] = date
-        print("keyStr = \(keyStr), hourKey = \(hourKey), minuteKey = \(minuteKey)")
+        print("keyStr = \(keyStr), \(appDelegate.noticeDic[dateKey])")
     }
     
     @IBAction func back() {

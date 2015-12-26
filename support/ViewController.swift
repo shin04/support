@@ -16,16 +16,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var outBtn: UIButton!
     @IBOutlet var setBtn: UIButton!
     @IBOutlet var contactBtn: UIButton!
-    @IBOutlet var timerBtn: UIButton!
     
     var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //let appDomain:String = NSBundle.mainBundle().bundleIdentifier!
-        //NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
-        appDelegate.saveData.setObject(1, forKey: "cellCount")
+//        let appDomain:String = NSBundle.mainBundle().bundleIdentifier!
+//        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+//        appDelegate.saveData.setObject(1, forKey: "cellCount")
         
         let currentUser = PFUser.currentUser()
         if currentUser != nil {
@@ -34,9 +33,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
             outBtn.alpha = 1
             setBtn.alpha = 1
             contactBtn.alpha = 1
-            timerBtn.alpha = 1
             
             appDelegate.username = currentUser?.email
+            
+            if appDelegate.saveData.objectForKey("noticeDic") != nil {
+                appDelegate.noticeDic = appDelegate.saveData.objectForKey("noticeDic")?.mutableCopy() as! NSMutableDictionary
+            }
+            
             
             print("You are a member of the app!")
         } else {
@@ -46,7 +49,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             outBtn.alpha = 0
             setBtn.alpha = 0
             contactBtn.alpha = 0
-            timerBtn.alpha = 0
         }
     }
 
@@ -59,6 +61,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    
+    
     // MARK: - sign in action
     @IBAction func signInAction() {
         let alert = UIAlertController(title: "Sign In",
@@ -67,11 +71,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         //cancel
         let cancelAction:UIAlertAction = UIAlertAction(title: "Cancel",
-            style: UIAlertActionStyle.Cancel,
-            handler:{
-                (action:UIAlertAction!) -> Void in
-                print("Cancel")
-        })
+            style: UIAlertActionStyle.Cancel,handler: nil)
         
         //login
         let loginAction:UIAlertAction = UIAlertAction(title: "sign in", style: .Default, handler:{
@@ -127,11 +127,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             preferredStyle: .Alert)
         
         let cancelAction:UIAlertAction = UIAlertAction(title: "Cancel",
-            style: UIAlertActionStyle.Cancel,
-            handler:{
-                (action:UIAlertAction!) -> Void in
-                print("Cancel")
-        })
+            style: UIAlertActionStyle.Cancel,handler: nil)
         
         let registerAction:UIAlertAction = UIAlertAction(title: "sign up", style: .Default, handler:{
             (action:UIAlertAction!) -> Void in
@@ -227,5 +223,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-
 }
+
+

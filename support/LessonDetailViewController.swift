@@ -23,9 +23,23 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if appDelegate.saveData.objectForKey("lessonState") as! Bool{
+        //appDelegate.saveData.setBool(false, forKey: "lessonState")
+        
+        if appDelegate.saveData.objectForKey("lessonState") as? Bool == true{
             noticeSwich.on = true
-            picker.date = appDelegate.noticeDic["lessonDate"] as! NSDate
+            //picker.date = appDelegate.noticeDic["lessonDate"] as! NSDate
+            let now = NSDate()
+            print(now)
+            let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+            let comps:NSDateComponents = calendar!.components([NSCalendarUnit.Year, .Month, .Day], fromDate: now)
+            comps.calendar = calendar
+            comps.hour = appDelegate.noticeDic["lessonHour"] as! Int
+            comps.minute = appDelegate.noticeDic["lessonMinute"] as! Int
+            let now2 = comps.date
+            print(now2!)
+            
+            picker.date = now2!
+            noticeMessage.text = appDelegate.noticeDic["lessonMg"] as! String
         } else {
             noticeSwich.on = false
         }

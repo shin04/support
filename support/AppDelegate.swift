@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //時間割の通知時間を保存
     var noticeDic: NSMutableDictionary = ["lessonHour": 0, "lessonMinute": 0, "lessonMg": "hoge"]
+    //var noticeDic: NSMutableDictionary?
     var noticeTime: NSDate?
     
     //メモの数、通知のon/offの状態を保存
@@ -31,9 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //メモのタイトルと内容を保存する配列
     var contactTitle: NSMutableArray! = []
     var contactContent: NSMutableArray! = []
-    
-    //対メーの時間を保存
-    var timeLimit: String!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -81,20 +79,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.cancelAllLocalNotifications()
         // 時間割の通知
         if saveData.objectForKey("lessonState") as? Bool == true {
-            //application.cancelAllLocalNotifications()
-            application.scheduleLocalNotification(notificationManeger.setting(noticeDic["lessonMg"] as! String, hour: noticeDic["lessonHour"] as! Int, minute: noticeDic["lessonMinute"] as! Int))
+            application.scheduleLocalNotification(notificationManeger.settingLs(noticeDic["lessonMg"] as! String, hour: noticeDic["lessonHour"] as! Int, minute: noticeDic["lessonMinute"] as! Int))
         }
         
         // 連絡事項の通日
         for (var i = 0; saveData.objectForKey("cellCount") as! Int > i; i++) {
             let keyStr: String = "memoState" + String(i)
-            let hourKey: String = keyStr + "hour"
-            let minuteKey: String = keyStr + "minute"
+            let dateKey: String = keyStr + "date"
             if saveData.objectForKey(keyStr) as? Bool == true {
-                //application.cancelAllLocalNotifications()
-                application.scheduleLocalNotification(notificationManeger.setting(noticeDic[keyStr] as! String,
-                    hour:Int(noticeDic[hourKey] as! String)!
-                    , minute: Int(noticeDic[minuteKey] as! String)!))
+                application.scheduleLocalNotification(notificationManeger.settingMm(noticeDic[keyStr] as! String, date: noticeDic[dateKey] as! NSDate))
             }
         }
     }
