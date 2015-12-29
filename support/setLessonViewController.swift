@@ -79,6 +79,12 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         seventhLesson.leftView = label7
         seventhLesson.leftViewMode = UITextFieldViewMode.Always
         
+        //左スワイプ
+        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipe:")
+        swipeGesture.numberOfTouchesRequired = 1
+        swipeGesture.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeGesture)
+        
         //時間割の読み込み
         let query = PFQuery(className: "Lessons")
         query.whereKey("createBy", equalTo: appDelegate.username as! String)
@@ -165,36 +171,15 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         self.save(lessonArray)
     }
     
+    func swipe(sender: UISwipeGestureRecognizer) {
+        print("スワイプ")
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     //データ保存
     func save(lessonData: NSArray) {
-        
-        let query = PFQuery(className: "Lessons")
-        query.whereKey("createBy", equalTo: appDelegate.username as! String)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error != nil {
-                return
-            }
-            guard let objects = objects else {
-                return
-            }
-            for object in objects {
-                print("ID = \(object.objectId)")
-                query.getObjectInBackgroundWithId(object.objectId!) {
-                    (lesson: PFObject?, error: NSError?) -> Void in
-                    lesson![self.dayStr as String] = lessonData
-                    lesson!["createBy"] = self.appDelegate.username
-                    lesson!.saveInBackgroundWithBlock {
-                        (success: Bool, error: NSError?) -> Void in
-                        if (success) {
-                            print("save date")
-                        } else {
-                            print(error)
-                        }
-                    }
-                }
-            }
-        }
+        ParseManager.saveData("Lessons",username: appDelegate.username as! String,
+            column: dayStr as String, data:lessonData)
     }
 
 }

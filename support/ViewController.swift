@@ -61,8 +61,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    
-    
     // MARK: - sign in action
     @IBAction func signInAction() {
         let alert = UIAlertController(title: "Sign In",
@@ -152,10 +150,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         
                         self.newObject("Lessons", email: user.email!)
                         self.newObject("memo", email: user.email!)
-                        
-//                        let currentInstallation = PFInstallation.currentInstallation()
-//                        currentInstallation.addUniqueObject("Giants", forKey: "channels")
-//                        currentInstallation.saveInBackground()
                         
                         self.viewDidLoad()
                     } else {

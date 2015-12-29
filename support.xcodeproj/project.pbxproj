@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		064291301BE840F00062C7F9 /* setLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642912F1BE840F00062C7F9 /* setLessonViewController.swift */; };
+		065A05171C2E4E0A000C69B9 /* support-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 065A05101C2E4D3B000C69B9 /* support-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		065FB9D81C22B8C700F64970 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 065FB9D71C22B8C700F64970 /* background.png */; };
 		066023281C02E9D300A61675 /* LessonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066023271C02E9D300A61675 /* LessonDetailViewController.swift */; };
 		0670FB851C1E9DD4005B39B8 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 0670FB811C1E9DD4005B39B8 /* edit.png */; };
@@ -54,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		0642912F1BE840F00062C7F9 /* setLessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setLessonViewController.swift; sourceTree = "<group>"; };
+		065A05101C2E4D3B000C69B9 /* support-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "support-Bridging-Header.h"; sourceTree = "<group>"; };
+		065A05111C2E4D3B000C69B9 /* supportTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "supportTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		065FB9D71C22B8C700F64970 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		066023271C02E9D300A61675 /* LessonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonDetailViewController.swift; sourceTree = "<group>"; };
 		0670FB811C1E9DD4005B39B8 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
@@ -159,8 +162,8 @@
 		06BECBD41BE4D438002C5FB5 /* support */ = {
 			isa = PBXGroup;
 			children = (
-				06CB2A411C1FFAEE00A6CD3F /* support.mobileprovision */,
 				0670FB801C1E9D1D005B39B8 /* image */,
+				06CB2A411C1FFAEE00A6CD3F /* support.mobileprovision */,
 				06BECBD51BE4D438002C5FB5 /* AppDelegate.swift */,
 				069E53861C1D089A004DEEA4 /* ParseManager.swift */,
 				06B622A41C227C3E00F896E9 /* notificationManager.swift */,
@@ -174,6 +177,8 @@
 				06BECBDC1BE4D438002C5FB5 /* Assets.xcassets */,
 				06BECBDE1BE4D438002C5FB5 /* LaunchScreen.storyboard */,
 				06BECBE11BE4D438002C5FB5 /* Info.plist */,
+				065A05101C2E4D3B000C69B9 /* support-Bridging-Header.h */,
+				065A05111C2E4D3B000C69B9 /* supportTests-Bridging-Header.h */,
 			);
 			path = support;
 			sourceTree = "<group>";
@@ -215,6 +220,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		065A05151C2E4DE6000C69B9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				065A05171C2E4E0A000C69B9 /* support-Bridging-Header.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		06BECBD11BE4D438002C5FB5 /* support */ = {
 			isa = PBXNativeTarget;
@@ -226,6 +242,7 @@
 				06BECBD01BE4D438002C5FB5 /* Resources */,
 				182E69A91A3382E595EBD2DE /* Embed Pods Frameworks */,
 				88090A794158691BF6526FA9 /* Copy Pods Resources */,
+				065A05151C2E4DE6000C69B9 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -278,7 +295,7 @@
 		06BECBCA1BE4D438002C5FB5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "梶原大進";
 				TargetAttributes = {
@@ -492,6 +509,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -512,6 +530,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -536,6 +555,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -549,6 +569,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -558,13 +579,17 @@
 			baseConfigurationReference = F4C9C81B4E5662DBDC20330B /* Pods-support.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = NO;
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = shisaku.support;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "support/support-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -573,13 +598,16 @@
 			baseConfigurationReference = 3CA8B6D17D3D151665C72D2F /* Pods-support.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = NO;
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = shisaku.support;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "support/support-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -587,10 +615,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = supportTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = shisaku.supportTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "support/supportTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/support.app/support";
 			};
 			name = Debug;
@@ -599,10 +630,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = supportTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = shisaku.supportTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "support/supportTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/support.app/support";
 			};
 			name = Release;

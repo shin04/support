@@ -9,8 +9,8 @@
 import Parse
 
 class ParseManager {
-    class func save(username: String, titles: NSMutableArray, contents: NSMutableArray) {
-        let query = PFQuery(className: "memo")
+    class func saveData(className: String, username: String, column: String,data: AnyObject) {
+        let query = PFQuery(className: className)
         query.whereKey("createBy", equalTo: username)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -23,11 +23,11 @@ class ParseManager {
             for object in objects {
                 print("ID = \(object.objectId)")
                 query.getObjectInBackgroundWithId(object.objectId!) {
-                    (memo: PFObject?, error: NSError?) -> Void in
-                    memo!["title"] = titles
-                    memo!["contents"] = contents
-                    memo!["createBy"] = username
-                    memo!.saveInBackgroundWithBlock {
+                    (object: PFObject?, error: NSError?) -> Void in
+                    
+                    object![column] = data
+                    
+                    object!.saveInBackgroundWithBlock {
                         (success: Bool, error: NSError?) -> Void in
                         if (success) {
                             print("save date")

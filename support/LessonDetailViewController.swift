@@ -23,6 +23,12 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //左スワイプ
+        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipe:")
+        swipeGesture.numberOfTouchesRequired = 1
+        swipeGesture.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeGesture)
+        
         //appDelegate.saveData.setBool(false, forKey: "lessonState")
         
         if appDelegate.saveData.objectForKey("lessonState") as? Bool == true{
@@ -86,6 +92,11 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
             appDelegate.noticeDic["lessonDate"] = date
         print("\(noticeMessage.text!) and \(hour):\(minute) is saved")
         }
+    }
+    
+    func swipe(sender: UISwipeGestureRecognizer) {
+        print("スワイプ")
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }

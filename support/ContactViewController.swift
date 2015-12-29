@@ -32,6 +32,12 @@ class ContactViewController: UIViewController {
         
         table.delegate = self
         table.dataSource = self
+        
+        //左スワイプ
+        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipe:")
+        swipeGesture.numberOfTouchesRequired = 1
+        swipeGesture.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeGesture)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -139,7 +145,15 @@ class ContactViewController: UIViewController {
         appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
         appDelegate.saveData.synchronize()
         
-        ParseManager.save(self.appDelegate.username! as String, titles: self.appDelegate.contactTitle, contents: self.appDelegate.contactContent)
+        ParseManager.saveData("memo", username: appDelegate.username as! String, column: "title",
+            data: appDelegate.contactTitle)
+        ParseManager.saveData("memo", username: appDelegate.username as! String, column: "contents",
+            data: appDelegate.contactContent)
+    }
+    
+    func swipe(sender: UISwipeGestureRecognizer) {
+        print("スワイプ")
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
@@ -170,6 +184,7 @@ extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
         appDelegate.saveData.setObject(selectCell, forKey: "cellNum")
         
         let segue: MemoViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Memo") as! MemoViewController
+        segue.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
         self.presentViewController(segue, animated: true, completion: nil)
     }
     

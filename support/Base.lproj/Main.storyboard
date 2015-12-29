@@ -40,7 +40,7 @@
                                 </constraints>
                                 <state key="normal" image="btn_lesson.png"/>
                                 <connections>
-                                    <segue destination="AgA-X3-uSU" kind="modal" id="0vC-rq-WUU"/>
+                                    <segue destination="AgA-X3-uSU" kind="modal" modalTransitionStyle="flipHorizontal" id="0vC-rq-WUU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdO-Hg-a3s">
@@ -51,7 +51,7 @@
                                 </constraints>
                                 <state key="normal" image="btn_memo.png"/>
                                 <connections>
-                                    <segue destination="dTU-Qb-odl" kind="modal" id="Db6-Kw-bcj"/>
+                                    <segue destination="dTU-Qb-odl" kind="modal" modalTransitionStyle="flipHorizontal" id="Db6-Kw-bcj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIS-UE-Wak">
@@ -116,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="153" y="316"/>
+            <point key="canvasLocation" x="154" y="-26"/>
         </scene>
         <!--Contact View Controller-->
         <scene sceneID="O12-gW-4gO">
@@ -257,7 +257,7 @@
                                 </constraints>
                                 <state key="normal" title="設定" image="setting.png"/>
                                 <connections>
-                                    <segue destination="lXa-vr-73W" kind="modal" id="EBc-0k-zJu"/>
+                                    <segue destination="lXa-vr-73W" kind="modal" modalTransitionStyle="flipHorizontal" id="EBc-0k-zJu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -496,7 +496,7 @@
                                 </constraints>
                                 <state key="normal" title="設定" image="setting.png"/>
                                 <connections>
-                                    <segue destination="DKr-TH-LoV" kind="modal" id="KEk-kN-pGo"/>
+                                    <segue destination="DKr-TH-LoV" kind="modal" modalTransitionStyle="flipHorizontal" id="KEk-kN-pGo"/>
                                 </connections>
                             </button>
                         </subviews>

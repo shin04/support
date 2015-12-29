@@ -34,6 +34,9 @@ class notificationManeger {
         
         notification.fireDate = now2
         
+        //毎日通知
+        notification.repeatInterval = .Day
+        //サウンドの設定
         notification.soundName = UILocalNotificationDefaultSoundName
         // アイコンバッジに1を表示
         notification.applicationIconBadgeNumber++
