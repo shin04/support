@@ -24,7 +24,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
 //        let appDomain:String = NSBundle.mainBundle().bundleIdentifier!
 //        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
-//        appDelegate.saveData.setObject(1, forKey: "cellCount")
+//        appDelegate.saveData.setObject(4, forKey: "cellCount")
         
         let currentUser = PFUser.currentUser()
         if currentUser != nil {

@@ -77,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         application.cancelAllLocalNotifications()
+        
         // 時間割の通知
         if saveData.objectForKey("lessonState") as? Bool == true {
             application.scheduleLocalNotification(notificationManeger.settingLs(noticeDic["lessonMg"] as! String, hour: noticeDic["lessonHour"] as! Int, minute: noticeDic["lessonMinute"] as! Int))
@@ -87,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let keyStr: String = "memoState" + String(i)
             let dateKey: String = keyStr + "date"
             if saveData.objectForKey(keyStr) as? Bool == true {
-                application.scheduleLocalNotification(notificationManeger.settingMm(noticeDic[keyStr] as! String, date: noticeDic[dateKey] as! NSDate))
+                application.scheduleLocalNotification(notificationManeger.settingMm(noticeDic[keyStr] as! String, date: noticeDic[dateKey] as! NSDate, key: keyStr))
             }
         }
     }
@@ -114,19 +115,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //ローカル通知を受け取った時の処理
     func localPushRecieve(application: UIApplication, notification: UILocalNotification) {
-        if let userInfo = notification.userInfo {
-            switch userInfo["notifyId"] as? String {
-            case .Some("ranking_update"):
-                
-                break
-            default:
-                break
+        for (var i = 0; saveData.objectForKey("cellCount") as! Int > i; i++) {
+            let keyStr: String = "memoState" + String(i)
+            let dateKey: String = keyStr + "date"
+            if let info = notification.userInfo as! [String: String]! {
+                if info["memoId"] == keyStr {
+                    UIApplication.sharedApplication().cancelLocalNotification(notification)
+                    noticeDic.removeObjectForKey(keyStr)
+                    noticeDic.removeObjectForKey(dateKey)
+                    saveData.setBool(false, forKey: keyStr)
+                    saveData.setObject(noticeDic, forKey: "noticeDic")
+                    saveData.synchronize()
+                    print("delete")
+                }
             }
-            // バッジをリセット
-            application.applicationIconBadgeNumber = 0
-            // 通知領域からこの通知を削除
-            application.cancelLocalNotification(notification)
         }
+        // バッジをリセット
+        application.applicationIconBadgeNumber = 0
     }
 
 }

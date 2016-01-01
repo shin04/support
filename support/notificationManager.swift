@@ -41,12 +41,12 @@ class notificationManeger {
         // アイコンバッジに1を表示
         notification.applicationIconBadgeNumber++
         // あとのためにIdを割り振っておく
-        notification.userInfo = ["notifyId": "ranking_update"]
+        notification.userInfo = ["notifyId": "lesson"]
         
         return notification
     }
     
-    class func settingMm(message: String, date: NSDate) -> UILocalNotification {
+    class func settingMm(message: String, date: NSDate, key: String) -> UILocalNotification {
         // 通知設定
         let notification = UILocalNotification()
         notification.alertAction = "アプリに戻る"
@@ -59,7 +59,7 @@ class notificationManeger {
         // アイコンバッジに1を表示
         notification.applicationIconBadgeNumber++
         // あとのためにIdを割り振っておく
-        notification.userInfo = ["notifyId": "ranking_update"]
+        notification.userInfo = ["memoId": key]
         
         return notification
     }
