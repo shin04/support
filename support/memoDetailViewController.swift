@@ -12,9 +12,8 @@ class memoDetailViewController: UIViewController {
     @IBOutlet var noticeSwich: UISwitch!
     @IBOutlet var noticeMessage: UITextView!
     @IBOutlet var picker: UIDatePicker!
+    @IBOutlet var navi: UINavigationBar?
     
-//    var hour: String!
-//    var minute: String!
     var date: NSDate!
     
     var selectCell: Int!
@@ -25,6 +24,11 @@ class memoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //ナビ透過
+        navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navi?.shadowImage = UIImage()
+        navi?.translucent = true
+        
         selectCell = appDelegate.saveData.objectForKey("cellNum") as! Int
         keyStr = "memoState" + String(selectCell)
         print("key is \"\(keyStr)\"")
@@ -33,13 +37,18 @@ class memoDetailViewController: UIViewController {
         
         if appDelegate.saveData.objectForKey(keyStr) as? Bool == true{
             noticeSwich.on = true
-            
+            noticeMessage.text = appDelegate.noticeDic[keyStr] as! String
             let dateKey: String = keyStr + "date"
-            
             picker.date = appDelegate.noticeDic[dateKey] as! NSDate
         } else {
             noticeSwich.on = false
         }
+        
+        //左スワイプ
+        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipe:")
+        swipeGesture.numberOfTouchesRequired = 1
+        swipeGesture.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeGesture)
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,17 +71,18 @@ class memoDetailViewController: UIViewController {
     }
     
     @IBAction func saveAc() {
-//        let hourKey: String = keyStr + "hour"
-//        let minuteKey: String = keyStr + "minute"
         let dateKey: String = keyStr + "date"
         appDelegate.noticeDic[keyStr] = noticeMessage.text!
-//        appDelegate.noticeDic[hourKey] = hour
-//        appDelegate.noticeDic[minuteKey] = minute
         appDelegate.noticeDic[dateKey] = date
         print("keyStr = \(keyStr), \(appDelegate.noticeDic[dateKey])")
     }
     
     @IBAction func back() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func swipe(sender: UISwipeGestureRecognizer) {
+        print("スワイプ")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -12,8 +12,8 @@ import Parse
 class ContactViewController: UIViewController {
     
     @IBOutlet var table: UITableView!
-    
     @IBOutlet var editBtn: UIBarButtonItem!
+    @IBOutlet var navi: UINavigationBar?
     
     var cellCount: Int = 0 //セル数を保存
     var selectCell: Int = 0 //選択されたセルを保存
@@ -23,7 +23,10 @@ class ContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("called viewDidLoad")
+        //ナビ透過
+        navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navi?.shadowImage = UIImage()
+        navi?.translucent = true
         
         //appDelegate.saveData.removeObjectForKey("cellCount")
         
@@ -41,11 +44,7 @@ class ContactViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("called viewWillAppear")
-        
         if appDelegate.saveData.objectForKey("cellCount") != nil {
-            print("not nil")
-            
             let query = PFQuery(className: "memo")
             query.whereKey("createBy", equalTo: appDelegate.username as! String)
             query.findObjectsInBackgroundWithBlock {

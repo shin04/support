@@ -18,6 +18,7 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     @IBOutlet var fifthLesson: UITextField!
     @IBOutlet var sixthLesson: UITextField!
     @IBOutlet var seventhLesson: UITextField!
+    @IBOutlet var navi: UINavigationBar?
     
     @IBOutlet var dayPicker: UIPickerView!
     let dayArray: NSArray = ["choose","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY"]
@@ -31,6 +32,11 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //ナビ透過
+        navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navi?.shadowImage = UIImage()
+        navi?.translucent = true
         
         //pickerの設定
         dayPicker.delegate = self

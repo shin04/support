@@ -14,6 +14,7 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     @IBOutlet var titleText: UITextField!
     @IBOutlet var contentText: UITextView!
+    @IBOutlet var navi: UINavigationBar?
     
     var cellNum: Int = 0
     
@@ -21,6 +22,11 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //ナビ透過
+        navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navi?.shadowImage = UIImage()
+        navi?.translucent = true
         
         titleText.delegate = self
         contentText.delegate = self

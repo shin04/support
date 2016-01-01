@@ -13,6 +13,7 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var noticeSwich: UISwitch!
     @IBOutlet var noticeMessage: UITextView!
     @IBOutlet var picker: UIDatePicker!
+    @IBOutlet var navi: UINavigationBar?
     
     var hour: String!
     var minute: String!
@@ -22,6 +23,11 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //ナビ透過
+        navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navi?.shadowImage = UIImage()
+        navi?.translucent = true
         
         //左スワイプ
         let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipe:")

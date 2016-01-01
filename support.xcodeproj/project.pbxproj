@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		064291301BE840F00062C7F9 /* setLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642912F1BE840F00062C7F9 /* setLessonViewController.swift */; };
 		065A05171C2E4E0A000C69B9 /* support-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 065A05101C2E4D3B000C69B9 /* support-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		065FB9D81C22B8C700F64970 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 065FB9D71C22B8C700F64970 /* background.png */; };
 		066023281C02E9D300A61675 /* LessonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066023271C02E9D300A61675 /* LessonDetailViewController.swift */; };
 		0670FB851C1E9DD4005B39B8 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 0670FB811C1E9DD4005B39B8 /* edit.png */; };
 		0670FB861C1E9DD4005B39B8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0670FB821C1E9DD4005B39B8 /* back.png */; };
@@ -57,7 +56,6 @@
 		0642912F1BE840F00062C7F9 /* setLessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setLessonViewController.swift; sourceTree = "<group>"; };
 		065A05101C2E4D3B000C69B9 /* support-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "support-Bridging-Header.h"; sourceTree = "<group>"; };
 		065A05111C2E4D3B000C69B9 /* supportTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "supportTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		065FB9D71C22B8C700F64970 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		066023271C02E9D300A61675 /* LessonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonDetailViewController.swift; sourceTree = "<group>"; };
 		0670FB811C1E9DD4005B39B8 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		0670FB821C1E9DD4005B39B8 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 				0670FB821C1E9DD4005B39B8 /* back.png */,
 				0670FB831C1E9DD4005B39B8 /* new.png */,
 				0670FB841C1E9DD4005B39B8 /* setting.png */,
-				065FB9D71C22B8C700F64970 /* background.png */,
 				06B7A0411C22D7820068DE3B /* btn_lesson.png */,
 				06B7A0421C22D7820068DE3B /* btn_memo.png */,
 				06B7A0451C22DC670068DE3B /* btn_out.png */,
@@ -342,7 +339,6 @@
 			files = (
 				06B7A0461C22DC670068DE3B /* btn_out.png in Resources */,
 				0670FB881C1E9DD4005B39B8 /* setting.png in Resources */,
-				065FB9D81C22B8C700F64970 /* background.png in Resources */,
 				06F1A2821C241D38003FEC2A /* btn_in.png in Resources */,
 				0670FB861C1E9DD4005B39B8 /* back.png in Resources */,
 				06BECBE01BE4D438002C5FB5 /* LaunchScreen.storyboard in Resources */,
