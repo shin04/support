@@ -136,18 +136,15 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         return 1
     }
     
-    
     //pickerに表示する行数を返す
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dayArray.count
     }
     
-    
     //pickerに表示する値を返す
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return dayArray[row] as? String
     }
-    
     
     //pickerが選択された際に呼ばれる
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

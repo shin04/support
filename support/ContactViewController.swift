@@ -44,7 +44,7 @@ class ContactViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        if appDelegate.saveData.objectForKey("cellCount") != nil {
+        if appDelegate.saveData.objectForKey("cellNum") != nil { //cellCountをcellNumに変更
             let query = PFQuery(className: "memo")
             query.whereKey("createBy", equalTo: appDelegate.username as! String)
             query.findObjectsInBackgroundWithBlock {
@@ -61,13 +61,14 @@ class ContactViewController: UIViewController {
                         (memo: PFObject?, error: NSError?) -> Void in
                         self.appDelegate.contactTitle = memo?["title"] as! NSMutableArray
                         self.appDelegate.contactContent = memo?["contents"] as! NSMutableArray
-                            
+                        self.cellCount = memo?["cellCount"] as! Int
+                        
                         self.table.reloadData()
                     }
                 }
             }
             
-            cellCount = appDelegate.saveData.objectForKey("cellCount") as! Int
+            //cellCount = appDelegate.saveData.objectForKey("cellCount") as! Int
             
             print("行数は\(cellCount)です")
             print("\(cellCount),\(appDelegate.contactTitle),\(appDelegate.contactContent)")
@@ -119,8 +120,9 @@ class ContactViewController: UIViewController {
         self.saveDate(cellCount)
         
         cellCount++
-        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
-        appDelegate.saveData.synchronize()
+        ParseManager.saveData("memo", username: appDelegate.username as! String, column: "cellCount", data: cellCount)
+//        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
+//        appDelegate.saveData.synchronize()
         
         table.reloadData()
     }
@@ -141,8 +143,9 @@ class ContactViewController: UIViewController {
     }
     
     func saveDate(number: Int) {
-        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
-        appDelegate.saveData.synchronize()
+//        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
+//        appDelegate.saveData.synchronize()
+        ParseManager.saveData("memo", username: appDelegate.username as! String, column: "cellCount", data: cellCount)
         
         ParseManager.saveData("memo", username: appDelegate.username as! String, column: "title",
             data: appDelegate.contactTitle)

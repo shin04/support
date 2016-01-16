@@ -61,7 +61,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    // MARK: - sign in action
     @IBAction func signInAction() {
         let alert = UIAlertController(title: "Sign In",
             message: "Please input your username and passward.",
@@ -118,7 +117,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         presentViewController(alert, animated: true, completion: nil)
     }
     
-    // MARK: - sign up action
     @IBAction func signUpAction() {
         let alert = UIAlertController(title: "Sign Up",
             message: "Please input your informstion",
@@ -198,7 +196,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         presentViewController(alert, animated: true, completion: nil)
     }
     
-    // MARK: - sign out action
     @IBAction func signOut() {
         PFUser.logOut()
         print("See you!")

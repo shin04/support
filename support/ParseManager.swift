@@ -9,7 +9,7 @@
 import Parse
 
 class ParseManager {
-    class func saveData(className: String, username: String, column: String,data: AnyObject) {
+    class func saveData(className: String, username: String, column: String, data: AnyObject) {
         let query = PFQuery(className: className)
         query.whereKey("createBy", equalTo: username)
         query.findObjectsInBackgroundWithBlock {

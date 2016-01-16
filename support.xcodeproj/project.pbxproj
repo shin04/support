@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		064291301BE840F00062C7F9 /* setLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642912F1BE840F00062C7F9 /* setLessonViewController.swift */; };
+		0657F93A1C3BE17800CCCA72 /* Image File-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 0657F9391C3BE17800CCCA72 /* Image File-50.png */; };
 		065A05171C2E4E0A000C69B9 /* support-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 065A05101C2E4D3B000C69B9 /* support-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		066023281C02E9D300A61675 /* LessonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066023271C02E9D300A61675 /* LessonDetailViewController.swift */; };
 		0670FB851C1E9DD4005B39B8 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 0670FB811C1E9DD4005B39B8 /* edit.png */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		0642912F1BE840F00062C7F9 /* setLessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setLessonViewController.swift; sourceTree = "<group>"; };
+		0657F9391C3BE17800CCCA72 /* Image File-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Image File-50.png"; sourceTree = "<group>"; };
 		065A05101C2E4D3B000C69B9 /* support-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "support-Bridging-Header.h"; sourceTree = "<group>"; };
 		065A05111C2E4D3B000C69B9 /* supportTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "supportTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		066023271C02E9D300A61675 /* LessonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonDetailViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +82,6 @@
 		06BECBF11BE4D438002C5FB5 /* supportUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = supportUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06BECBF51BE4D438002C5FB5 /* supportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = supportUITests.swift; sourceTree = "<group>"; };
 		06BECBF71BE4D438002C5FB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		06CB2A411C1FFAEE00A6CD3F /* support.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = support.mobileprovision; sourceTree = "<group>"; };
 		06D800B71C2A830B0023C63F /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		06DA86FF1C228D24003D8143 /* MemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		06E177B21BECA63A001120E3 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +121,7 @@
 		0670FB801C1E9D1D005B39B8 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				0657F9391C3BE17800CCCA72 /* Image File-50.png */,
 				06D800B71C2A830B0023C63F /* main.png */,
 				0670FB811C1E9DD4005B39B8 /* edit.png */,
 				0670FB821C1E9DD4005B39B8 /* back.png */,
@@ -160,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				0670FB801C1E9D1D005B39B8 /* image */,
-				06CB2A411C1FFAEE00A6CD3F /* support.mobileprovision */,
 				06BECBD51BE4D438002C5FB5 /* AppDelegate.swift */,
 				069E53861C1D089A004DEEA4 /* ParseManager.swift */,
 				06B622A41C227C3E00F896E9 /* notificationManager.swift */,
@@ -350,6 +351,7 @@
 				06BECBDD1BE4D438002C5FB5 /* Assets.xcassets in Resources */,
 				06BECBDB1BE4D438002C5FB5 /* Main.storyboard in Resources */,
 				06B7A0431C22D7820068DE3B /* btn_lesson.png in Resources */,
+				0657F93A1C3BE17800CCCA72 /* Image File-50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
