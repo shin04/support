@@ -21,7 +21,7 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     @IBOutlet var navi: UINavigationBar?
     
     @IBOutlet var dayPicker: UIPickerView!
-    let dayArray: NSArray = ["choose","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY"]
+    let dayArray: NSArray = ["choose", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
     
     var dayStr: NSString = ""
     var dayNum: Int = 0
