@@ -6,6 +6,7 @@ use_frameworks!
 target 'support' do
 
 pod 'Parse'
+pod 'Google/Analytics', '~> 1.0.0'
 
 end
 

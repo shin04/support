@@ -44,6 +44,14 @@ class ContactViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        //google analyticsの設定
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "contact")
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+        
+        //データ読み込み
         if appDelegate.saveData.objectForKey("cellNum") != nil { //cellCountをcellNumに変更
             let query = PFQuery(className: "memo")
             query.whereKey("createBy", equalTo: appDelegate.username as! String)

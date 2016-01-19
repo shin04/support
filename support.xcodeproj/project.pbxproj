@@ -28,6 +28,9 @@
 		06BECBE01BE4D438002C5FB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06BECBDE1BE4D438002C5FB5 /* LaunchScreen.storyboard */; };
 		06BECBEB1BE4D438002C5FB5 /* supportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BECBEA1BE4D438002C5FB5 /* supportTests.swift */; };
 		06BECBF61BE4D438002C5FB5 /* supportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BECBF51BE4D438002C5FB5 /* supportUITests.swift */; };
+		06CF1EAE1C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */; };
+		06CF1EAF1C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */; };
+		06CF1EB01C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */; };
 		06D800B81C2A830B0023C63F /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D800B71C2A830B0023C63F /* main.png */; };
 		06DA87001C228D24003D8143 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DA86FF1C228D24003D8143 /* MemoViewController.swift */; };
 		06E177B31BECA63A001120E3 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E177B21BECA63A001120E3 /* ContactViewController.swift */; };
@@ -82,6 +85,7 @@
 		06BECBF11BE4D438002C5FB5 /* supportUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = supportUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06BECBF51BE4D438002C5FB5 /* supportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = supportUITests.swift; sourceTree = "<group>"; };
 		06BECBF71BE4D438002C5FB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		06D800B71C2A830B0023C63F /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		06DA86FF1C228D24003D8143 /* MemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		06E177B21BECA63A001120E3 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				06BECBDC1BE4D438002C5FB5 /* Assets.xcassets */,
 				06BECBDE1BE4D438002C5FB5 /* LaunchScreen.storyboard */,
 				06BECBE11BE4D438002C5FB5 /* Info.plist */,
+				06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */,
 				065A05101C2E4D3B000C69B9 /* support-Bridging-Header.h */,
 				065A05111C2E4D3B000C69B9 /* supportTests-Bridging-Header.h */,
 			);
@@ -340,6 +345,7 @@
 			files = (
 				06B7A0461C22DC670068DE3B /* btn_out.png in Resources */,
 				0670FB881C1E9DD4005B39B8 /* setting.png in Resources */,
+				06CF1EAE1C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */,
 				06F1A2821C241D38003FEC2A /* btn_in.png in Resources */,
 				0670FB861C1E9DD4005B39B8 /* back.png in Resources */,
 				06BECBE01BE4D438002C5FB5 /* LaunchScreen.storyboard in Resources */,
@@ -359,6 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06CF1EAF1C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06CF1EB01C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

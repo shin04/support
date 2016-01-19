@@ -56,6 +56,15 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
             noticeSwich.on = false
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        //google analyticsの設定
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "lessonDetail")
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

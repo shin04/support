@@ -10,6 +10,19 @@ import UIKit
 import Foundation
 
 class notificationManeger {
+    class func checkSun() -> Int {
+        //日曜日の場合は通知しない
+        let now = NSDate()
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+        let comps: NSDateComponents = calendar!.components([NSCalendarUnit.Weekday], fromDate: now)
+        
+        if Int(comps.weekday) == 0 {
+            return 0
+        } else {
+            return 1
+        }
+    }
+    
     class func settingLs(message: String, hour: Int, minute: Int) -> UILocalNotification {
         // 通知設定
         let notification = UILocalNotification()
@@ -18,13 +31,13 @@ class notificationManeger {
         notification.timeZone = NSTimeZone.defaultTimeZone();
         
         let now = NSDate()
-        print(now)
         let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
-        let comps:NSDateComponents = calendar!.components([NSCalendarUnit.Year, .Month, .Day], fromDate: now)
+        let comps: NSDateComponents = calendar!.components([NSCalendarUnit.Year, .Month, .Day], fromDate: now)
         comps.calendar = calendar
         comps.hour = hour
         comps.minute = minute
         
+        //もし、設定している時間を過ぎているなら次の日にする
         if now.compare(comps.date!) != NSComparisonResult.OrderedAscending {
             comps.day++
         }

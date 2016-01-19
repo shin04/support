@@ -39,6 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("6RrWmvlFfkgQDlXr65HAvlHv1nSHpAmah5JSECiH", clientKey: "9hbbjdkZQlIzhevLQQk0HnGJChEY0GdnvdRdeuqs")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
+        //google analyticsの設定
+        var configureError:NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        let gai = GAI.sharedInstance()
+        gai.trackUncaughtExceptions = true
+        gai.logger.logLevel = GAILogLevel.Verbose
+        
         //通知の設定
         let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, .Badge, .Sound], categories: nil)
         application.registerUserNotificationSettings(settings)
@@ -75,12 +84,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveData.setObject(noticeDic, forKey: "noticeDic")
         saveData.synchronize()
         
-        
         application.cancelAllLocalNotifications()
         
         // 時間割の通知
         if saveData.objectForKey("lessonState") as? Bool == true {
-            application.scheduleLocalNotification(notificationManeger.settingLs(noticeDic["lessonMg"] as! String, hour: noticeDic["lessonHour"] as! Int, minute: noticeDic["lessonMinute"] as! Int))
+            // 日曜なら通知しない
+            if notificationManeger.checkSun() == 0 {
+                print("通知しませーん")
+            } else {
+                application.scheduleLocalNotification(notificationManeger.settingLs(noticeDic["lessonMg"] as! String, hour: noticeDic["lessonHour"] as! Int, minute: noticeDic["lessonMinute"] as! Int))
+            }
         }
         
         // 連絡事項の通日
