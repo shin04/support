@@ -180,6 +180,17 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     @IBAction func saveAc() {
         lessonArray = [firstLesson.text!, secondLesson.text!, thirdLesson.text!, fourthLesson.text!, fifthLesson.text!, sixthLesson.text!, seventhLesson.text!]
         self.save(lessonArray)
+        
+        let saveAlert = UIAlertController(title: "確認", message: "保存しました", preferredStyle: .Alert)
+        let ok:UIAlertAction = UIAlertAction(title: "OK",
+            style: UIAlertActionStyle.Cancel,
+            handler:{
+                (action:UIAlertAction!) -> Void in
+                print("OK")
+        })
+        
+        saveAlert.addAction(ok)
+        presentViewController(saveAlert, animated: true, completion: nil)
     }
     
     func swipe(sender: UISwipeGestureRecognizer) {

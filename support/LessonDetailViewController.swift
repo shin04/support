@@ -100,6 +100,8 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func saveAc() {
+        noticeMessage.resignFirstResponder()
+        
         if appDelegate.saveData.objectForKey("lessonState") as! Bool == true{
             appDelegate.noticeDic["lessonMg"] = noticeMessage.text!
             appDelegate.noticeDic["lessonHour"] = Int(hour)!
@@ -107,6 +109,17 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
             appDelegate.noticeDic["lessonDate"] = date
         print("\(noticeMessage.text!) and \(hour):\(minute) is saved")
         }
+        
+        let saveAlert = UIAlertController(title: "確認", message: "保存しました", preferredStyle: .Alert)
+        let ok:UIAlertAction = UIAlertAction(title: "OK",
+            style: UIAlertActionStyle.Cancel,
+            handler:{
+                (action:UIAlertAction!) -> Void in
+                print("OK")
+        })
+        
+        saveAlert.addAction(ok)
+        presentViewController(saveAlert, animated: true, completion: nil)
     }
     
     func swipe(sender: UISwipeGestureRecognizer) {

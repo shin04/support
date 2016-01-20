@@ -80,10 +80,23 @@ class memoDetailViewController: UIViewController {
     }
     
     @IBAction func saveAc() {
+        noticeMessage.resignFirstResponder()
+        
         let dateKey: String = keyStr + "date"
         appDelegate.noticeDic[keyStr] = noticeMessage.text!
         appDelegate.noticeDic[dateKey] = date
         print("keyStr = \(keyStr), \(appDelegate.noticeDic[dateKey])")
+        
+        let saveAlert = UIAlertController(title: "確認", message: "保存しました", preferredStyle: .Alert)
+        let ok:UIAlertAction = UIAlertAction(title: "OK",
+            style: UIAlertActionStyle.Cancel,
+            handler:{
+                (action:UIAlertAction!) -> Void in
+                print("OK")
+        })
+        
+        saveAlert.addAction(ok)
+        presentViewController(saveAlert, animated: true, completion: nil)
     }
     
     @IBAction func back() {

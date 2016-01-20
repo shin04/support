@@ -124,6 +124,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if application.applicationState != .Active {
             localPushRecieve(application, notification: notification)
         }
+        // バッジをリセット
+        application.applicationIconBadgeNumber = 0
     }
     
     //ローカル通知を受け取った時の処理
@@ -139,12 +141,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     saveData.setBool(false, forKey: keyStr)
                     saveData.setObject(noticeDic, forKey: "noticeDic")
                     saveData.synchronize()
-                    print("delete")
                 }
             }
         }
-        // バッジをリセット
-        application.applicationIconBadgeNumber = 0
     }
 
 }
