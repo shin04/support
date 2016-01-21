@@ -505,6 +505,7 @@
                         <outlet property="fourthLesson" destination="4hS-LA-cfo" id="AdU-oz-eEb"/>
                         <outlet property="navi" destination="Wem-dX-ngB" id="fYP-mD-oaa"/>
                         <outlet property="secondLesson" destination="8eW-5U-2fa" id="N38-Uy-QfB"/>
+                        <outlet property="setBtn" destination="fih-eX-OSr" id="G4L-Zh-YOg"/>
                         <outlet property="seventhLesson" destination="WyG-gR-bEx" id="6o1-8p-msK"/>
                         <outlet property="sixthLesson" destination="tgU-sZ-PjT" id="Fba-CQ-6Ry"/>
                         <outlet property="thirdLesson" destination="BUJ-FT-7pa" id="TEq-Mu-ifE"/>

@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIScrollViewDelegate {
 
     @IBOutlet var firstLesson: UITextField!
     @IBOutlet var secondLesson: UITextField!
@@ -19,6 +19,9 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     @IBOutlet var sixthLesson: UITextField!
     @IBOutlet var seventhLesson: UITextField!
     @IBOutlet var navi: UINavigationBar?
+    @IBOutlet var setBtn: UIButton!
+    
+    var activeText: UITextField!
     
     @IBOutlet var dayPicker: UIPickerView!
     let dayArray: NSArray = ["choose", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
@@ -119,6 +122,7 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
                 }
             }
         }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -128,10 +132,30 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])
+        
+        
+        //NotificationCenterクラスに通知を登録
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "handleKeyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: "handleKeyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        //NotificationCenterクラスの通知を解除
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        notificationCenter.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        activeText = textField
+        return true
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool{
@@ -203,5 +227,34 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         ParseManager.saveData("Lessons",username: appDelegate.username as! String,
             column: dayStr as String, data:lessonData)
     }
-
+    
+    
+    func handleKeyboardWillShowNotification(notification: NSNotification) {
+        if activeText == firstLesson || activeText == secondLesson ||
+            activeText == thirdLesson || activeText == fourthLesson{
+            return
+        }
+        
+        //通知受け取り
+        let userInfo = notification.userInfo!
+        
+        let duration: NSTimeInterval = ((userInfo[UIKeyboardAnimationDurationUserInfoKey])?.doubleValue)!
+        UIView.animateWithDuration(duration) { () -> Void in
+            
+            //キーボードの高さだけViewをあげる
+            let transform: CGAffineTransform = CGAffineTransformMakeTranslation(0, -150)
+            self.view.transform = transform
+        }
+    }
+    
+    func handleKeyboardWillHideNotification(notification: NSNotification) {
+        //ずらした分だけ戻す
+        let userInfo = notification.userInfo!
+        let _ = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let duration: NSTimeInterval = ((userInfo[UIKeyboardAnimationDurationUserInfoKey])?.doubleValue)!
+        UIView.animateWithDuration(duration) { () -> Void in
+            self.view.transform = CGAffineTransformIdentity
+        }
+    }
+    
 }

@@ -31,6 +31,17 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         titleText.delegate = self
         contentText.delegate = self
         
+        //textViewに閉じるボタン追加
+        let accessoryView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 44))
+        accessoryView.backgroundColor = UIColor.whiteColor()
+        let closeButton = UIButton(frame: CGRectMake(self.view.frame.size.width - 60, 0, 50, 30))
+        closeButton.setTitle("完了", forState: UIControlState.Normal)
+        closeButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
+        closeButton.addTarget(self, action: "onClickCloseButton:", forControlEvents: .TouchUpInside)
+        accessoryView.addSubview(closeButton)
+        contentText.inputAccessoryView = accessoryView
+        
         cellNum = appDelegate.saveData.objectForKey("cellNum") as! Int
         
         titleText.text = appDelegate.contactTitle[cellNum] as? String
@@ -88,6 +99,10 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
         saveAlert.addAction(ok)
         presentViewController(saveAlert, animated: true, completion: nil)
+    }
+    
+    func onClickCloseButton(sender: UIButton) {
+        contentText.resignFirstResponder()
     }
     
     func swipe(sender: UISwipeGestureRecognizer) {
