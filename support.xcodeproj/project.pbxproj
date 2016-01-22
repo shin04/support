@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		064291301BE840F00062C7F9 /* setLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642912F1BE840F00062C7F9 /* setLessonViewController.swift */; };
+		06467C271C5235900080C6E8 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 06467C251C5235900080C6E8 /* background.png */; };
+		06467C281C5235900080C6E8 /* icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 06467C261C5235900080C6E8 /* icon-60.png */; };
 		0657F93A1C3BE17800CCCA72 /* Image File-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 0657F9391C3BE17800CCCA72 /* Image File-50.png */; };
 		065A05171C2E4E0A000C69B9 /* support-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 065A05101C2E4D3B000C69B9 /* support-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		066023281C02E9D300A61675 /* LessonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066023271C02E9D300A61675 /* LessonDetailViewController.swift */; };
@@ -31,6 +33,8 @@
 		06CF1EAE1C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */; };
 		06CF1EAF1C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */; };
 		06CF1EB01C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */; };
+		06D3B9331C52367700E9CFE4 /* icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D3B9311C52367700E9CFE4 /* icon-60@2x.png */; };
+		06D3B9341C52367700E9CFE4 /* icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D3B9321C52367700E9CFE4 /* icon-60@3x.png */; };
 		06D800B81C2A830B0023C63F /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D800B71C2A830B0023C63F /* main.png */; };
 		06DA87001C228D24003D8143 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DA86FF1C228D24003D8143 /* MemoViewController.swift */; };
 		06E177B31BECA63A001120E3 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E177B21BECA63A001120E3 /* ContactViewController.swift */; };
@@ -58,6 +62,8 @@
 
 /* Begin PBXFileReference section */
 		0642912F1BE840F00062C7F9 /* setLessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setLessonViewController.swift; sourceTree = "<group>"; };
+		06467C251C5235900080C6E8 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		06467C261C5235900080C6E8 /* icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60.png"; sourceTree = "<group>"; };
 		0657F9391C3BE17800CCCA72 /* Image File-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Image File-50.png"; sourceTree = "<group>"; };
 		065A05101C2E4D3B000C69B9 /* support-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "support-Bridging-Header.h"; sourceTree = "<group>"; };
 		065A05111C2E4D3B000C69B9 /* supportTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "supportTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -86,6 +92,8 @@
 		06BECBF51BE4D438002C5FB5 /* supportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = supportUITests.swift; sourceTree = "<group>"; };
 		06BECBF71BE4D438002C5FB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		06D3B9311C52367700E9CFE4 /* icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60@2x.png"; sourceTree = "<group>"; };
+		06D3B9321C52367700E9CFE4 /* icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60@3x.png"; sourceTree = "<group>"; };
 		06D800B71C2A830B0023C63F /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		06DA86FF1C228D24003D8143 /* MemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		06E177B21BECA63A001120E3 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +133,10 @@
 		0670FB801C1E9D1D005B39B8 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				06467C251C5235900080C6E8 /* background.png */,
+				06467C261C5235900080C6E8 /* icon-60.png */,
+				06D3B9311C52367700E9CFE4 /* icon-60@2x.png */,
+				06D3B9321C52367700E9CFE4 /* icon-60@3x.png */,
 				0657F9391C3BE17800CCCA72 /* Image File-50.png */,
 				06D800B71C2A830B0023C63F /* main.png */,
 				0670FB811C1E9DD4005B39B8 /* edit.png */,
@@ -344,9 +356,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				06B7A0461C22DC670068DE3B /* btn_out.png in Resources */,
+				06D3B9341C52367700E9CFE4 /* icon-60@3x.png in Resources */,
+				06467C271C5235900080C6E8 /* background.png in Resources */,
 				0670FB881C1E9DD4005B39B8 /* setting.png in Resources */,
 				06CF1EAE1C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */,
 				06F1A2821C241D38003FEC2A /* btn_in.png in Resources */,
+				06467C281C5235900080C6E8 /* icon-60.png in Resources */,
 				0670FB861C1E9DD4005B39B8 /* back.png in Resources */,
 				06BECBE01BE4D438002C5FB5 /* LaunchScreen.storyboard in Resources */,
 				06F1A2831C241D38003FEC2A /* btn_up.png in Resources */,
@@ -356,6 +371,7 @@
 				06B7A0441C22D7820068DE3B /* btn_memo.png in Resources */,
 				06BECBDD1BE4D438002C5FB5 /* Assets.xcassets in Resources */,
 				06BECBDB1BE4D438002C5FB5 /* Main.storyboard in Resources */,
+				06D3B9331C52367700E9CFE4 /* icon-60@2x.png in Resources */,
 				06B7A0431C22D7820068DE3B /* btn_lesson.png in Resources */,
 				0657F93A1C3BE17800CCCA72 /* Image File-50.png in Resources */,
 			);
