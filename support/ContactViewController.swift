@@ -52,37 +52,64 @@ class ContactViewController: UIViewController {
         tracker.send(builder.build() as [NSObject : AnyObject])
         
         //データ読み込み
-        if appDelegate.saveData.objectForKey("cellNum") != nil { //cellCountをcellNumに変更
-            let query = PFQuery(className: "memo")
-            query.whereKey("createBy", equalTo: appDelegate.username as! String)
-            query.findObjectsInBackgroundWithBlock {
-                (objects: [PFObject]?, error: NSError?) -> Void in
-                if error != nil {
-                    return
-                }
-                guard let objects = objects else {
-                    return
-                }
-                for object in objects {
-                    print("ID = \(object.objectId)")
-                    query.getObjectInBackgroundWithId(object.objectId!) {
-                        (memo: PFObject?, error: NSError?) -> Void in
-                        self.appDelegate.contactTitle = memo?["title"] as! NSMutableArray
-                        self.appDelegate.contactContent = memo?["contents"] as! NSMutableArray
-                        self.cellCount = memo?["cellCount"] as! Int
-                        
-                        self.table.reloadData()
+        let query = PFQuery(className: "memo")
+        query.whereKey("createBy", equalTo: appDelegate.username as! String)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error != nil {
+                return
+            }
+            guard let objects = objects else {
+                return
+            }
+            for object in objects {
+                query.getObjectInBackgroundWithId(object.objectId!) {
+                    (memo: PFObject?, error: NSError?) -> Void in
+                    if memo?["checkRow"] as! Bool != true {
+                        return
                     }
+                    self.appDelegate.contactTitle = memo?["title"] as! NSMutableArray
+                    self.appDelegate.contactContent = memo?["contents"] as! NSMutableArray
+                    self.cellCount = memo?["cellCount"] as! Int
+                
+                    self.table.reloadData()
                 }
             }
-            
-            //cellCount = appDelegate.saveData.objectForKey("cellCount") as! Int
-            
-            print("行数は\(cellCount)です")
-            print("\(cellCount),\(appDelegate.contactTitle),\(appDelegate.contactContent)")
-            
-            table.reloadData()
         }
+        
+        table.reloadData()
+        
+//        if appDelegate.saveData.objectForKey("cellNum") != nil { //cellCountをcellNumに変更
+//            let query = PFQuery(className: "memo")
+//            query.whereKey("createBy", equalTo: appDelegate.username as! String)
+//            query.findObjectsInBackgroundWithBlock {
+//                (objects: [PFObject]?, error: NSError?) -> Void in
+//                if error != nil {
+//                    return
+//                }
+//                guard let objects = objects else {
+//                    return
+//                }
+//                for object in objects {
+//                    print("ID = \(object.objectId)")
+//                    query.getObjectInBackgroundWithId(object.objectId!) {
+//                        (memo: PFObject?, error: NSError?) -> Void in
+//                        self.appDelegate.contactTitle = memo?["title"] as! NSMutableArray
+//                        self.appDelegate.contactContent = memo?["contents"] as! NSMutableArray
+//                        self.cellCount = memo?["cellCount"] as! Int
+//                        
+//                        self.table.reloadData()
+//                    }
+//                }
+//            }
+//            
+//            //cellCount = appDelegate.saveData.objectForKey("cellCount") as! Int
+//            
+//            print("行数は\(cellCount)です")
+//            print("\(cellCount),\(appDelegate.contactTitle),\(appDelegate.contactContent)")
+//            
+//            table.reloadData()
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -121,9 +148,13 @@ class ContactViewController: UIViewController {
     }
     
     @IBAction func newContent() {
+        if cellCount == 0 {
+            ParseManager.saveData("memo", username: appDelegate.username as! String, column: "checkRow",
+                data: true)
+        }
+        
         appDelegate.contactTitle?.insertObject("title", atIndex: cellCount)
         appDelegate.contactContent?.insertObject("contents", atIndex: cellCount)
-        print("\(appDelegate.contactTitle![cellCount]),\(appDelegate.contactContent![cellCount]),\(cellCount)")
         
         self.saveDate(cellCount)
         
@@ -131,6 +162,7 @@ class ContactViewController: UIViewController {
         ParseManager.saveData("memo", username: appDelegate.username as! String, column: "cellCount", data: cellCount)
 //        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
 //        appDelegate.saveData.synchronize()
+        print("cellcount = ",cellCount)
         
         table.reloadData()
     }
@@ -151,8 +183,9 @@ class ContactViewController: UIViewController {
     }
     
     func saveDate(number: Int) {
-//        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
-//        appDelegate.saveData.synchronize()
+        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
+        appDelegate.saveData.synchronize()
+        
         ParseManager.saveData("memo", username: appDelegate.username as! String, column: "cellCount", data: cellCount)
         
         ParseManager.saveData("memo", username: appDelegate.username as! String, column: "title",
@@ -170,8 +203,6 @@ class ContactViewController: UIViewController {
 
 extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("called tableView")
-        print("\(appDelegate.contactContent), \(appDelegate.contactTitle)")
         
         return cellCount
     }

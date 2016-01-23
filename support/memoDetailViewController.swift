@@ -30,8 +30,10 @@ class memoDetailViewController: UIViewController {
         navi?.translucent = true
         
         selectCell = appDelegate.saveData.objectForKey("cellNum") as! Int
+        
         keyStr = "memoState" + String(selectCell)
         print("key is \"\(keyStr)\"")
+        
         
         //appDelegate.saveData.setBool(false, forKey: keyStr)
         
@@ -71,7 +73,7 @@ class memoDetailViewController: UIViewController {
         tracker.send(builder.build() as [NSObject : AnyObject])
         
         
-        //NotificationCenterクラスに通知を登録
+        //キーボードのだあ仕入れのの時に呼び出す通知をNotificationCenterクラスに登録
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "handleKeyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: "handleKeyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		061C4F6E1C52790400C20BC4 /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = 061C4F6D1C52790400C20BC4 /* background2.png */; };
+		0627BD0E1C53046F0084E845 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 0627BD0B1C53046F0084E845 /* Icon-40.png */; };
+		0627BD0F1C53046F0084E845 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0627BD0C1C53046F0084E845 /* Icon-40@2x.png */; };
+		0627BD101C53046F0084E845 /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0627BD0D1C53046F0084E845 /* Icon-40@3x.png */; };
+		0627BD131C5305DB0084E845 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0627BD111C5305DB0084E845 /* Icon-60@2x.png */; };
+		0627BD141C5305DB0084E845 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0627BD121C5305DB0084E845 /* Icon-60@3x.png */; };
+		0627BD171C53061E0084E845 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0627BD151C53061E0084E845 /* Icon-Small@2x.png */; };
+		0627BD181C53061E0084E845 /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0627BD161C53061E0084E845 /* Icon-Small@3x.png */; };
 		064291301BE840F00062C7F9 /* setLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642912F1BE840F00062C7F9 /* setLessonViewController.swift */; };
 		06467C271C5235900080C6E8 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 06467C251C5235900080C6E8 /* background.png */; };
 		06467C281C5235900080C6E8 /* icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 06467C261C5235900080C6E8 /* icon-60.png */; };
@@ -33,8 +41,6 @@
 		06CF1EAE1C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */; };
 		06CF1EAF1C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */; };
 		06CF1EB01C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */; };
-		06D3B9331C52367700E9CFE4 /* icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D3B9311C52367700E9CFE4 /* icon-60@2x.png */; };
-		06D3B9341C52367700E9CFE4 /* icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D3B9321C52367700E9CFE4 /* icon-60@3x.png */; };
 		06D800B81C2A830B0023C63F /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D800B71C2A830B0023C63F /* main.png */; };
 		06DA87001C228D24003D8143 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DA86FF1C228D24003D8143 /* MemoViewController.swift */; };
 		06E177B31BECA63A001120E3 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E177B21BECA63A001120E3 /* ContactViewController.swift */; };
@@ -61,6 +67,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		061C4F6D1C52790400C20BC4 /* background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background2.png; sourceTree = "<group>"; };
+		0627BD0B1C53046F0084E845 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
+		0627BD0C1C53046F0084E845 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
+		0627BD0D1C53046F0084E845 /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@3x.png"; sourceTree = "<group>"; };
+		0627BD111C5305DB0084E845 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
+		0627BD121C5305DB0084E845 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
+		0627BD151C53061E0084E845 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		0627BD161C53061E0084E845 /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
 		0642912F1BE840F00062C7F9 /* setLessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setLessonViewController.swift; sourceTree = "<group>"; };
 		06467C251C5235900080C6E8 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		06467C261C5235900080C6E8 /* icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60.png"; sourceTree = "<group>"; };
@@ -92,8 +106,6 @@
 		06BECBF51BE4D438002C5FB5 /* supportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = supportUITests.swift; sourceTree = "<group>"; };
 		06BECBF71BE4D438002C5FB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06CF1EAD1C4E337200A1F0D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		06D3B9311C52367700E9CFE4 /* icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60@2x.png"; sourceTree = "<group>"; };
-		06D3B9321C52367700E9CFE4 /* icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60@3x.png"; sourceTree = "<group>"; };
 		06D800B71C2A830B0023C63F /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		06DA86FF1C228D24003D8143 /* MemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		06E177B21BECA63A001120E3 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -133,10 +145,16 @@
 		0670FB801C1E9D1D005B39B8 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				06467C251C5235900080C6E8 /* background.png */,
+				0627BD151C53061E0084E845 /* Icon-Small@2x.png */,
+				0627BD161C53061E0084E845 /* Icon-Small@3x.png */,
+				0627BD0B1C53046F0084E845 /* Icon-40.png */,
+				0627BD0C1C53046F0084E845 /* Icon-40@2x.png */,
+				0627BD0D1C53046F0084E845 /* Icon-40@3x.png */,
 				06467C261C5235900080C6E8 /* icon-60.png */,
-				06D3B9311C52367700E9CFE4 /* icon-60@2x.png */,
-				06D3B9321C52367700E9CFE4 /* icon-60@3x.png */,
+				0627BD111C5305DB0084E845 /* Icon-60@2x.png */,
+				0627BD121C5305DB0084E845 /* Icon-60@3x.png */,
+				061C4F6D1C52790400C20BC4 /* background2.png */,
+				06467C251C5235900080C6E8 /* background.png */,
 				0657F9391C3BE17800CCCA72 /* Image File-50.png */,
 				06D800B71C2A830B0023C63F /* main.png */,
 				0670FB811C1E9DD4005B39B8 /* edit.png */,
@@ -356,22 +374,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				06B7A0461C22DC670068DE3B /* btn_out.png in Resources */,
-				06D3B9341C52367700E9CFE4 /* icon-60@3x.png in Resources */,
 				06467C271C5235900080C6E8 /* background.png in Resources */,
 				0670FB881C1E9DD4005B39B8 /* setting.png in Resources */,
+				0627BD181C53061E0084E845 /* Icon-Small@3x.png in Resources */,
 				06CF1EAE1C4E337200A1F0D8 /* GoogleService-Info.plist in Resources */,
 				06F1A2821C241D38003FEC2A /* btn_in.png in Resources */,
 				06467C281C5235900080C6E8 /* icon-60.png in Resources */,
+				0627BD141C5305DB0084E845 /* Icon-60@3x.png in Resources */,
 				0670FB861C1E9DD4005B39B8 /* back.png in Resources */,
 				06BECBE01BE4D438002C5FB5 /* LaunchScreen.storyboard in Resources */,
 				06F1A2831C241D38003FEC2A /* btn_up.png in Resources */,
 				0670FB871C1E9DD4005B39B8 /* new.png in Resources */,
 				06D800B81C2A830B0023C63F /* main.png in Resources */,
+				061C4F6E1C52790400C20BC4 /* background2.png in Resources */,
 				0670FB851C1E9DD4005B39B8 /* edit.png in Resources */,
 				06B7A0441C22D7820068DE3B /* btn_memo.png in Resources */,
+				0627BD0F1C53046F0084E845 /* Icon-40@2x.png in Resources */,
+				0627BD131C5305DB0084E845 /* Icon-60@2x.png in Resources */,
 				06BECBDD1BE4D438002C5FB5 /* Assets.xcassets in Resources */,
 				06BECBDB1BE4D438002C5FB5 /* Main.storyboard in Resources */,
-				06D3B9331C52367700E9CFE4 /* icon-60@2x.png in Resources */,
+				0627BD0E1C53046F0084E845 /* Icon-40.png in Resources */,
+				0627BD101C53046F0084E845 /* Icon-40@3x.png in Resources */,
+				0627BD171C53061E0084E845 /* Icon-Small@2x.png in Resources */,
 				06B7A0431C22D7820068DE3B /* btn_lesson.png in Resources */,
 				0657F93A1C3BE17800CCCA72 /* Image File-50.png in Resources */,
 			);
@@ -605,6 +629,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = shisaku.support;
@@ -624,6 +649,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = shisaku.support;

@@ -96,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        // 連絡事項の通日
+        // 連絡事項の通知
         for (var i = 0; saveData.objectForKey("cellCount") as! Int > i; i++) {
             let keyStr: String = "memoState" + String(i)
             let dateKey: String = keyStr + "date"

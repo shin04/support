@@ -18,6 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2.png" translatesAutoresizingMaskIntoConstraints="NO" id="ShI-k5-KZv">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
+                            </imageView>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0Q-pn-M60">
                                 <rect key="frame" x="10" y="250" width="300" height="50"/>
                                 <state key="normal" image="btn_lesson.png"/>
@@ -68,8 +71,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="bIS-UE-Wak" secondAttribute="trailing" constant="-6" id="1jt-c0-u7v"/>
                             <constraint firstAttribute="trailingMargin" secondItem="F0Q-pn-M60" secondAttribute="trailing" constant="-6" id="88k-BM-fWF"/>
                             <constraint firstItem="F0Q-pn-M60" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-6" id="Cwe-AH-mtu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ShI-k5-KZv" secondAttribute="trailing" constant="-20" id="EPQ-yH-2Cd"/>
                             <constraint firstItem="CEz-17-m6L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-6" id="Epm-Jg-9yW"/>
                             <constraint firstItem="LdO-Hg-a3s" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-6" id="FLs-e9-XhD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ShI-k5-KZv" secondAttribute="bottom" id="NoP-Nr-EqW"/>
                             <constraint firstItem="F0Q-pn-M60" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OOZ-eb-1E5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CEz-17-m6L" secondAttribute="trailing" constant="-6" id="Obj-7z-Xjh"/>
                             <constraint firstItem="bIS-UE-Wak" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PLR-O4-Da3"/>
@@ -79,8 +84,10 @@
                             <constraint firstItem="bIS-UE-Wak" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-6" id="VTh-rH-bzb"/>
                             <constraint firstItem="bIS-UE-Wak" firstAttribute="top" secondItem="Z15-VJ-K1d" secondAttribute="bottom" constant="60" id="WXI-LT-WI1"/>
                             <constraint firstItem="p1l-g5-jYa" firstAttribute="top" secondItem="CEz-17-m6L" secondAttribute="bottom" constant="20" id="e3N-XU-IMl"/>
+                            <constraint firstItem="ShI-k5-KZv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="fCg-cw-IRj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Z15-VJ-K1d" secondAttribute="trailing" constant="19" id="gla-BP-rUF"/>
                             <constraint firstItem="CEz-17-m6L" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kIp-G4-10R"/>
+                            <constraint firstItem="ShI-k5-KZv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="ltF-vk-YJ4"/>
                             <constraint firstItem="CEz-17-m6L" firstAttribute="top" secondItem="bIS-UE-Wak" secondAttribute="bottom" constant="20" id="niZ-5H-IFu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LdO-Hg-a3s" secondAttribute="trailing" constant="-6" id="o4Y-uk-JiW"/>
                             <constraint firstItem="LdO-Hg-a3s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yxk-Bs-Zus"/>
@@ -111,6 +118,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2.png" translatesAutoresizingMaskIntoConstraints="NO" id="94N-Ed-ye1">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Fh-26-0AC">
                                 <rect key="frame" x="-4" y="120" width="328" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -128,7 +138,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYU-oo-yJ3">
                                 <rect key="frame" x="-4" y="15" width="328" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="3qP-cX-twT">
+                                    <navigationItem title="連絡事項" id="3qP-cX-twT">
                                         <barButtonItem key="leftBarButtonItem" image="back.png" id="x39-YA-iM5">
                                             <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                             <connections>
@@ -166,7 +176,11 @@
                             <constraint firstItem="qYU-oo-yJ3" firstAttribute="top" secondItem="fb1-oU-u0a" secondAttribute="topMargin" constant="15" id="ear-iW-mpe"/>
                             <constraint firstItem="3ss-vA-GDu" firstAttribute="top" secondItem="qYU-oo-yJ3" secondAttribute="bottom" id="f2q-e8-hdx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qYU-oo-yJ3" secondAttribute="trailing" constant="-20" id="gXH-yI-TIK"/>
+                            <constraint firstItem="5OM-iX-xGw" firstAttribute="top" secondItem="94N-Ed-ye1" secondAttribute="bottom" id="nRO-ui-vPT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="94N-Ed-ye1" secondAttribute="trailing" constant="-20" id="pUJ-gH-cr0"/>
                             <constraint firstItem="5OM-iX-xGw" firstAttribute="top" secondItem="6Fh-26-0AC" secondAttribute="bottom" id="qNH-MT-ERs"/>
+                            <constraint firstItem="94N-Ed-ye1" firstAttribute="top" secondItem="fb1-oU-u0a" secondAttribute="topMargin" id="tRm-sd-lHn"/>
+                            <constraint firstItem="94N-Ed-ye1" firstAttribute="leading" secondItem="fb1-oU-u0a" secondAttribute="leadingMargin" constant="-20" id="wO6-ui-iS1"/>
                         </constraints>
                     </view>
                     <connections>
@@ -191,13 +205,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2.png" translatesAutoresizingMaskIntoConstraints="NO" id="vI7-Gy-jDi">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
+                            </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewM-ZZ-h98">
                                 <rect key="frame" x="-4" y="15" width="328" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="TgM-VH-0uZ"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Title" id="1Pi-qR-8IM">
+                                    <navigationItem title="設定" id="1Pi-qR-8IM">
                                         <barButtonItem key="leftBarButtonItem" image="back.png" id="05D-SC-gAr">
                                             <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                             <connections>
@@ -241,6 +258,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="vI7-Gy-jDi" secondAttribute="trailing" constant="-20" id="1CD-S1-B1G"/>
+                            <constraint firstItem="vI7-Gy-jDi" firstAttribute="top" secondItem="jla-6m-UvT" secondAttribute="topMargin" id="36R-KM-OUJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ewM-ZZ-h98" secondAttribute="trailing" constant="-20" id="CqY-3M-2bM"/>
                             <constraint firstItem="ewM-ZZ-h98" firstAttribute="centerX" secondItem="jla-6m-UvT" secondAttribute="centerX" id="Crv-LX-hSk"/>
                             <constraint firstItem="aVn-vi-xmR" firstAttribute="centerX" secondItem="jla-6m-UvT" secondAttribute="centerX" id="DEN-Ri-Fus"/>
@@ -248,10 +267,12 @@
                             <constraint firstItem="0To-nA-NDn" firstAttribute="trailing" secondItem="jla-6m-UvT" secondAttribute="trailingMargin" id="KOV-9n-dGT"/>
                             <constraint firstItem="f7a-wQ-de9" firstAttribute="top" secondItem="0To-nA-NDn" secondAttribute="bottom" constant="20" id="LgF-b3-9iB"/>
                             <constraint firstItem="0To-nA-NDn" firstAttribute="centerX" secondItem="jla-6m-UvT" secondAttribute="centerX" id="Qvo-et-Dyb"/>
+                            <constraint firstItem="f7a-wQ-de9" firstAttribute="top" secondItem="vI7-Gy-jDi" secondAttribute="bottom" id="Rlg-rd-CPj"/>
                             <constraint firstItem="Vax-hP-0Ud" firstAttribute="top" secondItem="ewM-ZZ-h98" secondAttribute="bottom" constant="10" id="Shx-iE-dOp"/>
                             <constraint firstItem="aVn-vi-xmR" firstAttribute="top" secondItem="ewM-ZZ-h98" secondAttribute="bottom" constant="11" id="Tjn-US-SDG"/>
                             <constraint firstItem="0To-nA-NDn" firstAttribute="top" secondItem="aVn-vi-xmR" secondAttribute="bottom" constant="13" id="VUW-VC-o3l"/>
                             <constraint firstItem="0To-nA-NDn" firstAttribute="leading" secondItem="jla-6m-UvT" secondAttribute="leadingMargin" id="XeE-vZ-orc"/>
+                            <constraint firstItem="vI7-Gy-jDi" firstAttribute="leading" secondItem="jla-6m-UvT" secondAttribute="leadingMargin" constant="-20" id="Xrb-IU-pU0"/>
                             <constraint firstItem="Vax-hP-0Ud" firstAttribute="leading" secondItem="aVn-vi-xmR" secondAttribute="trailing" constant="20" id="jcz-gL-iTG"/>
                             <constraint firstItem="ewM-ZZ-h98" firstAttribute="leading" secondItem="jla-6m-UvT" secondAttribute="leadingMargin" constant="-20" id="zPb-dX-hjY"/>
                         </constraints>
@@ -278,6 +299,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xvo-jK-XBa">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
+                            </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Gr-qn-pOa">
                                 <rect key="frame" x="-4" y="15" width="328" height="44"/>
                                 <items>
@@ -364,15 +388,19 @@
                             <constraint firstAttribute="trailingMargin" secondItem="kjx-yw-ixg" secondAttribute="trailing" constant="-20" id="HCJ-rq-dvq"/>
                             <constraint firstItem="YLp-EM-Zlp" firstAttribute="leading" secondItem="AVP-kQ-y2t" secondAttribute="leadingMargin" id="IUn-TQ-5Gr"/>
                             <constraint firstItem="6Gr-qn-pOa" firstAttribute="top" secondItem="AVP-kQ-y2t" secondAttribute="topMargin" constant="15" id="K92-Tt-iYc"/>
+                            <constraint firstItem="lVg-vk-4Ys" firstAttribute="top" secondItem="Xvo-jK-XBa" secondAttribute="bottom" id="PBy-HU-GUO"/>
                             <constraint firstItem="Oi6-1E-eNZ" firstAttribute="leading" secondItem="AVP-kQ-y2t" secondAttribute="leadingMargin" id="Sa0-jQ-Vl9"/>
                             <constraint firstItem="kjx-yw-ixg" firstAttribute="top" secondItem="sz7-Us-6fM" secondAttribute="bottom" constant="9" id="Wma-mO-4Cy"/>
                             <constraint firstItem="Oi6-1E-eNZ" firstAttribute="top" secondItem="kjx-yw-ixg" secondAttribute="bottom" constant="20" id="XR9-fd-imC"/>
+                            <constraint firstItem="Xvo-jK-XBa" firstAttribute="top" secondItem="AVP-kQ-y2t" secondAttribute="topMargin" id="Yy2-39-fMs"/>
                             <constraint firstItem="kjx-yw-ixg" firstAttribute="leading" secondItem="AVP-kQ-y2t" secondAttribute="leadingMargin" constant="-20" id="ZTH-qZ-b3B"/>
+                            <constraint firstItem="Xvo-jK-XBa" firstAttribute="leading" secondItem="AVP-kQ-y2t" secondAttribute="leadingMargin" constant="-20" id="aUa-98-ASJ"/>
                             <constraint firstItem="8Jf-n3-EEa" firstAttribute="leading" secondItem="AVP-kQ-y2t" secondAttribute="leadingMargin" id="cl4-Vp-ggi"/>
                             <constraint firstItem="lVg-vk-4Ys" firstAttribute="top" secondItem="YLp-EM-Zlp" secondAttribute="bottom" constant="30" id="hW3-1R-Hbg"/>
                             <constraint firstItem="6Gr-qn-pOa" firstAttribute="leading" secondItem="AVP-kQ-y2t" secondAttribute="leadingMargin" constant="-20" id="inx-qa-VEE"/>
                             <constraint firstItem="YLp-EM-Zlp" firstAttribute="top" secondItem="Oi6-1E-eNZ" secondAttribute="bottom" constant="9" id="k50-At-Hqh"/>
                             <constraint firstItem="fOc-7k-ehv" firstAttribute="top" secondItem="6Gr-qn-pOa" secondAttribute="bottom" constant="36" id="kEe-Hp-Y63"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xvo-jK-XBa" secondAttribute="trailing" constant="-20" id="krD-b6-Dqr"/>
                             <constraint firstItem="8Jf-n3-EEa" firstAttribute="top" secondItem="6Gr-qn-pOa" secondAttribute="bottom" constant="41" id="rOG-J4-ehy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6Gr-qn-pOa" secondAttribute="trailing" constant="-20" id="uff-2C-UBx"/>
                         </constraints>
@@ -400,6 +428,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2.png" translatesAutoresizingMaskIntoConstraints="NO" id="yOo-0g-zqQ">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-5U-2fa">
                                 <rect key="frame" x="60" y="219" width="200" height="30"/>
                                 <constraints>
@@ -473,7 +504,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wem-dX-ngB">
                                 <rect key="frame" x="-4" y="15" width="328" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="Jda-P8-ud4">
+                                    <navigationItem title="時間割" id="Jda-P8-ud4">
                                         <barButtonItem key="leftBarButtonItem" image="back.png" id="apn-oY-A98">
                                             <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                             <connections>
@@ -506,10 +537,12 @@
                             <constraint firstItem="WyG-gR-bEx" firstAttribute="centerX" secondItem="gve-NR-1hm" secondAttribute="centerX" id="1Jr-oV-wjr"/>
                             <constraint firstItem="BUJ-FT-7pa" firstAttribute="centerY" secondItem="gve-NR-1hm" secondAttribute="centerY" id="22I-Nf-xip"/>
                             <constraint firstItem="CwP-4l-8Ox" firstAttribute="centerX" secondItem="gve-NR-1hm" secondAttribute="centerX" id="3FL-SI-yIS"/>
+                            <constraint firstItem="lYL-h4-veD" firstAttribute="top" secondItem="yOo-0g-zqQ" secondAttribute="bottom" id="9YS-E9-lhY"/>
                             <constraint firstItem="8eW-5U-2fa" firstAttribute="centerY" secondItem="gve-NR-1hm" secondAttribute="centerY" constant="-50" id="COa-CE-JSh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wem-dX-ngB" secondAttribute="trailing" constant="-20" id="Fl9-Hf-4XO"/>
                             <constraint firstItem="fih-eX-OSr" firstAttribute="leading" secondItem="d00-NI-Fxy" secondAttribute="trailing" constant="20" id="HeC-9z-Bu2"/>
                             <constraint firstItem="WyG-gR-bEx" firstAttribute="centerY" secondItem="gve-NR-1hm" secondAttribute="centerY" constant="200" id="Iez-5W-Ee7"/>
+                            <constraint firstItem="yOo-0g-zqQ" firstAttribute="leading" secondItem="gve-NR-1hm" secondAttribute="leadingMargin" constant="-20" id="Ivo-Ho-ytp"/>
                             <constraint firstItem="tgU-sZ-PjT" firstAttribute="centerX" secondItem="gve-NR-1hm" secondAttribute="centerX" id="NA1-fm-qgO"/>
                             <constraint firstItem="CwP-4l-8Ox" firstAttribute="centerY" secondItem="gve-NR-1hm" secondAttribute="centerY" constant="-100" id="Qfh-MA-gB9"/>
                             <constraint firstItem="fih-eX-OSr" firstAttribute="top" secondItem="Wem-dX-ngB" secondAttribute="bottom" constant="20" id="Qhz-tZ-3qT"/>
@@ -519,9 +552,11 @@
                             <constraint firstItem="Wem-dX-ngB" firstAttribute="centerX" secondItem="gve-NR-1hm" secondAttribute="centerX" id="UXi-pr-I4l"/>
                             <constraint firstItem="Wem-dX-ngB" firstAttribute="leading" secondItem="gve-NR-1hm" secondAttribute="leadingMargin" constant="-20" id="WEv-8k-Qea"/>
                             <constraint firstItem="4hS-LA-cfo" firstAttribute="centerX" secondItem="gve-NR-1hm" secondAttribute="centerX" id="XUL-dB-vYk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yOo-0g-zqQ" secondAttribute="trailing" constant="-20" id="aRs-Wo-pEr"/>
                             <constraint firstItem="tgU-sZ-PjT" firstAttribute="centerY" secondItem="gve-NR-1hm" secondAttribute="centerY" constant="150" id="cru-b0-9UD"/>
                             <constraint firstItem="I7f-W7-DSw" firstAttribute="centerX" secondItem="gve-NR-1hm" secondAttribute="centerX" id="eYc-IH-OzK"/>
                             <constraint firstItem="4hS-LA-cfo" firstAttribute="centerY" secondItem="gve-NR-1hm" secondAttribute="centerY" constant="50" id="ifk-Lu-Ki3"/>
+                            <constraint firstItem="yOo-0g-zqQ" firstAttribute="top" secondItem="gve-NR-1hm" secondAttribute="topMargin" id="jU2-gz-4ux"/>
                             <constraint firstItem="Wem-dX-ngB" firstAttribute="top" secondItem="gve-NR-1hm" secondAttribute="topMargin" constant="15" id="s84-iK-APd"/>
                             <constraint firstItem="d00-NI-Fxy" firstAttribute="top" secondItem="Wem-dX-ngB" secondAttribute="bottom" constant="20" id="vfT-b5-rTr"/>
                         </constraints>
@@ -678,10 +713,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2.png" translatesAutoresizingMaskIntoConstraints="NO" id="FmC-wd-Z3O">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
+                            </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFY-Kw-cSM">
                                 <rect key="frame" x="-4" y="15" width="328" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="0uU-G8-nxL">
+                                    <navigationItem title="設定" id="0uU-G8-nxL">
                                         <barButtonItem key="leftBarButtonItem" image="back.png" id="Emq-cl-JpO">
                                             <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                             <connections>
@@ -739,8 +777,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="RFY-Kw-cSM" secondAttribute="trailing" constant="-20" id="2qH-KW-Sym"/>
+                            <constraint firstItem="MfZ-2l-fS6" firstAttribute="top" secondItem="FmC-wd-Z3O" secondAttribute="bottom" id="3Xy-ji-gjm"/>
                             <constraint firstItem="RFY-Kw-cSM" firstAttribute="centerX" secondItem="dbK-aj-M0H" secondAttribute="centerX" id="7EW-d2-v3X"/>
                             <constraint firstItem="RFY-Kw-cSM" firstAttribute="top" secondItem="dbK-aj-M0H" secondAttribute="topMargin" constant="15" id="DKX-vv-5Dd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FmC-wd-Z3O" secondAttribute="trailing" constant="-20" id="R8b-nu-7Kb"/>
+                            <constraint firstItem="FmC-wd-Z3O" firstAttribute="top" secondItem="dbK-aj-M0H" secondAttribute="topMargin" id="ZmW-LD-r3X"/>
+                            <constraint firstItem="FmC-wd-Z3O" firstAttribute="leading" secondItem="dbK-aj-M0H" secondAttribute="leadingMargin" constant="-20" id="m1c-ZX-Xty"/>
                             <constraint firstItem="RFY-Kw-cSM" firstAttribute="leading" secondItem="dbK-aj-M0H" secondAttribute="leadingMargin" constant="-20" id="vuB-m6-c7e"/>
                         </constraints>
                     </view>
@@ -757,6 +799,7 @@
     </scenes>
     <resources>
         <image name="back.png" width="50" height="50"/>
+        <image name="background2.png" width="640" height="1131"/>
         <image name="btn_in.png" width="300" height="50"/>
         <image name="btn_lesson.png" width="300" height="50"/>
         <image name="btn_memo.png" width="300" height="50"/>
