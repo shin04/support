@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		060DE44A1C545B5A00049664 /* outsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE4491C545B5A00049664 /* outsetViewController.swift */; };
-		061C4F6E1C52790400C20BC4 /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = 061C4F6D1C52790400C20BC4 /* background2.png */; };
 		0627BD0E1C53046F0084E845 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 0627BD0B1C53046F0084E845 /* Icon-40.png */; };
 		0627BD0F1C53046F0084E845 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0627BD0C1C53046F0084E845 /* Icon-40@2x.png */; };
 		0627BD101C53046F0084E845 /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0627BD0D1C53046F0084E845 /* Icon-40@3x.png */; };
@@ -22,11 +21,16 @@
 		0657F93A1C3BE17800CCCA72 /* Image File-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 0657F9391C3BE17800CCCA72 /* Image File-50.png */; };
 		065A05171C2E4E0A000C69B9 /* support-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 065A05101C2E4D3B000C69B9 /* support-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		066023281C02E9D300A61675 /* LessonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066023271C02E9D300A61675 /* LessonDetailViewController.swift */; };
+		06627E181C54814300791FF0 /* mplus-2p-black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06627E151C54814300791FF0 /* mplus-2p-black.ttf */; };
+		06627E191C54814300791FF0 /* mplus-2p-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06627E161C54814300791FF0 /* mplus-2p-light.ttf */; };
+		06627E1A1C54814300791FF0 /* mplus-2p-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06627E171C54814300791FF0 /* mplus-2p-regular.ttf */; };
 		0670FB851C1E9DD4005B39B8 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 0670FB811C1E9DD4005B39B8 /* edit.png */; };
 		0670FB861C1E9DD4005B39B8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0670FB821C1E9DD4005B39B8 /* back.png */; };
 		0670FB871C1E9DD4005B39B8 /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 0670FB831C1E9DD4005B39B8 /* new.png */; };
 		0670FB881C1E9DD4005B39B8 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 0670FB841C1E9DD4005B39B8 /* setting.png */; };
 		069E53871C1D089A004DEEA4 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069E53861C1D089A004DEEA4 /* ParseManager.swift */; };
+		06A52C641C54980A009ED275 /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = 06A52C631C54980A009ED275 /* background2.png */; };
+		06A52C701C549B60009ED275 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 06A52C6F1C549B60009ED275 /* logo.png */; };
 		06B622A31C22797500F896E9 /* memoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B622A21C22797500F896E9 /* memoDetailViewController.swift */; };
 		06B622A51C227C3E00F896E9 /* notificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B622A41C227C3E00F896E9 /* notificationManager.swift */; };
 		06B7A0431C22D7820068DE3B /* btn_lesson.png in Resources */ = {isa = PBXBuildFile; fileRef = 06B7A0411C22D7820068DE3B /* btn_lesson.png */; };
@@ -69,7 +73,6 @@
 
 /* Begin PBXFileReference section */
 		060DE4491C545B5A00049664 /* outsetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = outsetViewController.swift; sourceTree = "<group>"; };
-		061C4F6D1C52790400C20BC4 /* background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background2.png; sourceTree = "<group>"; };
 		0627BD0B1C53046F0084E845 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
 		0627BD0C1C53046F0084E845 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
 		0627BD0D1C53046F0084E845 /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@3x.png"; sourceTree = "<group>"; };
@@ -84,11 +87,16 @@
 		065A05101C2E4D3B000C69B9 /* support-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "support-Bridging-Header.h"; sourceTree = "<group>"; };
 		065A05111C2E4D3B000C69B9 /* supportTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "supportTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		066023271C02E9D300A61675 /* LessonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonDetailViewController.swift; sourceTree = "<group>"; };
+		06627E151C54814300791FF0 /* mplus-2p-black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-2p-black.ttf"; sourceTree = "<group>"; };
+		06627E161C54814300791FF0 /* mplus-2p-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-2p-light.ttf"; sourceTree = "<group>"; };
+		06627E171C54814300791FF0 /* mplus-2p-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-2p-regular.ttf"; sourceTree = "<group>"; };
 		0670FB811C1E9DD4005B39B8 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		0670FB821C1E9DD4005B39B8 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		0670FB831C1E9DD4005B39B8 /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
 		0670FB841C1E9DD4005B39B8 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		069E53861C1D089A004DEEA4 /* ParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
+		06A52C631C54980A009ED275 /* background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background2.png; sourceTree = "<group>"; };
+		06A52C6F1C549B60009ED275 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		06B622A21C22797500F896E9 /* memoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memoDetailViewController.swift; sourceTree = "<group>"; };
 		06B622A41C227C3E00F896E9 /* notificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = notificationManager.swift; sourceTree = "<group>"; };
 		06B7A0411C22D7820068DE3B /* btn_lesson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_lesson.png; sourceTree = "<group>"; };
@@ -155,8 +163,9 @@
 				06467C261C5235900080C6E8 /* icon-60.png */,
 				0627BD111C5305DB0084E845 /* Icon-60@2x.png */,
 				0627BD121C5305DB0084E845 /* Icon-60@3x.png */,
-				061C4F6D1C52790400C20BC4 /* background2.png */,
+				06A52C6F1C549B60009ED275 /* logo.png */,
 				06467C251C5235900080C6E8 /* background.png */,
+				06A52C631C54980A009ED275 /* background2.png */,
 				0657F9391C3BE17800CCCA72 /* Image File-50.png */,
 				06D800B71C2A830B0023C63F /* main.png */,
 				0670FB811C1E9DD4005B39B8 /* edit.png */,
@@ -197,6 +206,9 @@
 		06BECBD41BE4D438002C5FB5 /* support */ = {
 			isa = PBXGroup;
 			children = (
+				06627E151C54814300791FF0 /* mplus-2p-black.ttf */,
+				06627E161C54814300791FF0 /* mplus-2p-light.ttf */,
+				06627E171C54814300791FF0 /* mplus-2p-regular.ttf */,
 				0670FB801C1E9D1D005B39B8 /* image */,
 				06BECBD51BE4D438002C5FB5 /* AppDelegate.swift */,
 				069E53861C1D089A004DEEA4 /* ParseManager.swift */,
@@ -384,12 +396,15 @@
 				06F1A2821C241D38003FEC2A /* btn_in.png in Resources */,
 				06467C281C5235900080C6E8 /* icon-60.png in Resources */,
 				0627BD141C5305DB0084E845 /* Icon-60@3x.png in Resources */,
+				06627E191C54814300791FF0 /* mplus-2p-light.ttf in Resources */,
 				0670FB861C1E9DD4005B39B8 /* back.png in Resources */,
+				06A52C701C549B60009ED275 /* logo.png in Resources */,
 				06BECBE01BE4D438002C5FB5 /* LaunchScreen.storyboard in Resources */,
+				06A52C641C54980A009ED275 /* background2.png in Resources */,
+				06627E181C54814300791FF0 /* mplus-2p-black.ttf in Resources */,
 				06F1A2831C241D38003FEC2A /* btn_up.png in Resources */,
 				0670FB871C1E9DD4005B39B8 /* new.png in Resources */,
 				06D800B81C2A830B0023C63F /* main.png in Resources */,
-				061C4F6E1C52790400C20BC4 /* background2.png in Resources */,
 				0670FB851C1E9DD4005B39B8 /* edit.png in Resources */,
 				06B7A0441C22D7820068DE3B /* btn_memo.png in Resources */,
 				0627BD0F1C53046F0084E845 /* Icon-40@2x.png in Resources */,
@@ -401,6 +416,7 @@
 				0627BD171C53061E0084E845 /* Icon-Small@2x.png in Resources */,
 				06B7A0431C22D7820068DE3B /* btn_lesson.png in Resources */,
 				0657F93A1C3BE17800CCCA72 /* Image File-50.png in Resources */,
+				06627E1A1C54814300791FF0 /* mplus-2p-regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

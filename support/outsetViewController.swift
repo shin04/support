@@ -11,7 +11,18 @@ import Parse
 
 class outsetViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet var navi: UINavigationBar?
+    
     var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //ナビ透過
+        navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navi?.shadowImage = UIImage()
+        navi?.translucent = true
+    }
     
     @IBAction func signInAction() {
         let alert = UIAlertController(title: "Sign In",

@@ -11,11 +11,12 @@ import Parse
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet var inBtn: UIButton!
-    @IBOutlet var upBtn: UIButton!
-    @IBOutlet var outBtn: UIButton!
-    @IBOutlet var setBtn: UIButton!
-    @IBOutlet var contactBtn: UIButton!
+//    @IBOutlet var inBtn: UIButton!
+//    @IBOutlet var upBtn: UIButton!
+//    @IBOutlet var outBtn: UIButton!
+//    @IBOutlet var setBtn: UIButton!
+//    @IBOutlet var contactBtn: UIButton!
+    @IBOutlet var navi: UINavigationBar?
     
     var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -26,6 +27,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
 //        appDelegate.saveData.setObject(4, forKey: "cellCount")
         
+        //ナビ透過
+        navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navi?.shadowImage = UIImage()
+        navi?.translucent = true
     }
     
     override func viewWillAppear(animated: Bool) {
