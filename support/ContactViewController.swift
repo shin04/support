@@ -65,7 +65,7 @@ class ContactViewController: UIViewController {
             for object in objects {
                 query.getObjectInBackgroundWithId(object.objectId!) {
                     (memo: PFObject?, error: NSError?) -> Void in
-                    if memo?["checkRow"] as! Bool != true {
+                    if memo?["checkRow"] as? Bool != true {
                         return
                     }
                     self.appDelegate.contactTitle = memo?["title"] as! NSMutableArray

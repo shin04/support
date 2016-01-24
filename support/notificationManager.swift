@@ -15,8 +15,9 @@ class notificationManeger {
         let now = NSDate()
         let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
         let comps: NSDateComponents = calendar!.components([NSCalendarUnit.Weekday], fromDate: now)
+        print("Today is \(Int(comps.weekday))")
         
-        if Int(comps.weekday) == 0 {
+        if Int(comps.weekday) == 1 {
             return 0
         } else {
             return 1
