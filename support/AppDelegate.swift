@@ -39,15 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("6RrWmvlFfkgQDlXr65HAvlHv1nSHpAmah5JSECiH", clientKey: "9hbbjdkZQlIzhevLQQk0HnGJChEY0GdnvdRdeuqs")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
-        //google analyticsの設定
-        var configureError:NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
-        
-        let gai = GAI.sharedInstance()
-        gai.trackUncaughtExceptions = true
-        gai.logger.logLevel = GAILogLevel.Verbose
-        
         //通知の設定
         let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, .Badge, .Sound], categories: nil)
         application.registerUserNotificationSettings(settings)

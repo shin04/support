@@ -36,6 +36,8 @@
 		06B7A0431C22D7820068DE3B /* btn_lesson.png in Resources */ = {isa = PBXBuildFile; fileRef = 06B7A0411C22D7820068DE3B /* btn_lesson.png */; };
 		06B7A0441C22D7820068DE3B /* btn_memo.png in Resources */ = {isa = PBXBuildFile; fileRef = 06B7A0421C22D7820068DE3B /* btn_memo.png */; };
 		06B7A0461C22DC670068DE3B /* btn_out.png in Resources */ = {isa = PBXBuildFile; fileRef = 06B7A0451C22DC670068DE3B /* btn_out.png */; };
+		06BB5DD41C5C9422003C9EE5 /* Lessons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BB5DD31C5C9422003C9EE5 /* Lessons.swift */; };
+		06BB5DD61C5CBE66003C9EE5 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BB5DD51C5CBE66003C9EE5 /* Memo.swift */; };
 		06BECBD61BE4D438002C5FB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BECBD51BE4D438002C5FB5 /* AppDelegate.swift */; };
 		06BECBD81BE4D438002C5FB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BECBD71BE4D438002C5FB5 /* ViewController.swift */; };
 		06BECBDB1BE4D438002C5FB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06BECBD91BE4D438002C5FB5 /* Main.storyboard */; };
@@ -102,6 +104,8 @@
 		06B7A0411C22D7820068DE3B /* btn_lesson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_lesson.png; sourceTree = "<group>"; };
 		06B7A0421C22D7820068DE3B /* btn_memo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_memo.png; sourceTree = "<group>"; };
 		06B7A0451C22DC670068DE3B /* btn_out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_out.png; sourceTree = "<group>"; };
+		06BB5DD31C5C9422003C9EE5 /* Lessons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lessons.swift; sourceTree = "<group>"; };
+		06BB5DD51C5CBE66003C9EE5 /* Memo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		06BECBD21BE4D438002C5FB5 /* support.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = support.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06BECBD51BE4D438002C5FB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06BECBD71BE4D438002C5FB5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 				06BECBD51BE4D438002C5FB5 /* AppDelegate.swift */,
 				069E53861C1D089A004DEEA4 /* ParseManager.swift */,
 				06B622A41C227C3E00F896E9 /* notificationManager.swift */,
+				06BB5DD31C5C9422003C9EE5 /* Lessons.swift */,
+				06BB5DD51C5CBE66003C9EE5 /* Memo.swift */,
 				060DE4491C545B5A00049664 /* outsetViewController.swift */,
 				06BECBD71BE4D438002C5FB5 /* ViewController.swift */,
 				0642912F1BE840F00062C7F9 /* setLessonViewController.swift */,
@@ -494,10 +500,12 @@
 				06DA87001C228D24003D8143 /* MemoViewController.swift in Sources */,
 				069E53871C1D089A004DEEA4 /* ParseManager.swift in Sources */,
 				06BECBD81BE4D438002C5FB5 /* ViewController.swift in Sources */,
+				06BB5DD61C5CBE66003C9EE5 /* Memo.swift in Sources */,
 				06E177B31BECA63A001120E3 /* ContactViewController.swift in Sources */,
 				06B622A51C227C3E00F896E9 /* notificationManager.swift in Sources */,
 				06BECBD61BE4D438002C5FB5 /* AppDelegate.swift in Sources */,
 				06B622A31C22797500F896E9 /* memoDetailViewController.swift in Sources */,
+				06BB5DD41C5C9422003C9EE5 /* Lessons.swift in Sources */,
 				066023281C02E9D300A61675 /* LessonDetailViewController.swift in Sources */,
 				060DE44A1C545B5A00049664 /* outsetViewController.swift in Sources */,
 				064291301BE840F00062C7F9 /* setLessonViewController.swift in Sources */,

@@ -65,14 +65,6 @@ class memoDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        //google analyticsの設定
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "memoDetail")
-        
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
-        
-        
         //キーボードのだあ仕入れのの時に呼び出す通知をNotificationCenterクラスに登録
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "handleKeyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)

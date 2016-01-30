@@ -10,12 +10,6 @@ import UIKit
 import Parse
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    
-//    @IBOutlet var inBtn: UIButton!
-//    @IBOutlet var upBtn: UIButton!
-//    @IBOutlet var outBtn: UIButton!
-//    @IBOutlet var setBtn: UIButton!
-//    @IBOutlet var contactBtn: UIButton!
     @IBOutlet var navi: UINavigationBar?
     
     var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -31,15 +25,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navi?.shadowImage = UIImage()
         navi?.translucent = true
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        //google analyticsの設定
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "home")
-        
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     override func viewDidAppear(animated: Bool) {

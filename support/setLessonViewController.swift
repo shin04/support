@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import RealmSwift
 
 class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIScrollViewDelegate {
 
@@ -94,7 +95,7 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         swipeGesture.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeGesture)
         
-        //時間割の読み込み
+        //読み込み
         let query = PFQuery(className: "Lessons")
         query.whereKey("createBy", equalTo: appDelegate.username as! String)
         query.findObjectsInBackgroundWithBlock {
@@ -126,14 +127,6 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     }
     
     override func viewWillAppear(animated: Bool) {
-        //google analyticsの設定
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "setLesson")
-        
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
-        
-        
         //NotificationCenterクラスに通知を登録
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "handleKeyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
@@ -222,10 +215,21 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    //取得してきた時間割を表示
+    func writeLessons(array: NSArray) {
+        firstLesson.text = array[0] as? String
+        secondLesson.text = array[1] as? String
+        thirdLesson.text = array[2] as? String
+        fourthLesson.text = array[3] as? String
+        fifthLesson.text = array[4] as? String
+        sixthLesson.text = array[5] as? String
+        seventhLesson.text = array[6] as? String
+    }
+    
     //データ保存
     func save(lessonData: NSArray) {
-        ParseManager.saveData("Lessons",username: appDelegate.username as! String,
-            column: dayStr as String, data:lessonData)
+//        ParseManager.saveData("Lessons",username: appDelegate.username as! String,
+//            column: dayStr as String, data:lessonData)
     }
     
     

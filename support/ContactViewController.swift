@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import RealmSwift
 
 class ContactViewController: UIViewController {
     
@@ -44,72 +45,33 @@ class ContactViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        //google analyticsの設定
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "contact")
-        
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
-        
         //データ読み込み
-        let query = PFQuery(className: "memo")
-        query.whereKey("createBy", equalTo: appDelegate.username as! String)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error != nil {
-                return
-            }
-            guard let objects = objects else {
-                return
-            }
-            for object in objects {
-                query.getObjectInBackgroundWithId(object.objectId!) {
-                    (memo: PFObject?, error: NSError?) -> Void in
-                    if memo?["checkRow"] as? Bool != true {
-                        return
-                    }
-                    self.appDelegate.contactTitle = memo?["title"] as! NSMutableArray
-                    self.appDelegate.contactContent = memo?["contents"] as! NSMutableArray
-                    self.cellCount = memo?["cellCount"] as! Int
-                
-                    self.table.reloadData()
-                }
-            }
-        }
-        
-        table.reloadData()
-        
-//        if appDelegate.saveData.objectForKey("cellNum") != nil { //cellCountをcellNumに変更
-//            let query = PFQuery(className: "memo")
-//            query.whereKey("createBy", equalTo: appDelegate.username as! String)
-//            query.findObjectsInBackgroundWithBlock {
-//                (objects: [PFObject]?, error: NSError?) -> Void in
-//                if error != nil {
-//                    return
-//                }
-//                guard let objects = objects else {
-//                    return
-//                }
-//                for object in objects {
-//                    print("ID = \(object.objectId)")
-//                    query.getObjectInBackgroundWithId(object.objectId!) {
-//                        (memo: PFObject?, error: NSError?) -> Void in
-//                        self.appDelegate.contactTitle = memo?["title"] as! NSMutableArray
-//                        self.appDelegate.contactContent = memo?["contents"] as! NSMutableArray
-//                        self.cellCount = memo?["cellCount"] as! Int
-//                        
-//                        self.table.reloadData()
+//        let query = PFQuery(className: "memo")
+//        query.whereKey("createBy", equalTo: appDelegate.username as! String)
+//        query.findObjectsInBackgroundWithBlock {
+//            (objects: [PFObject]?, error: NSError?) -> Void in
+//            if error != nil {
+//                return
+//            }
+//            guard let objects = objects else {
+//                return
+//            }
+//            for object in objects {
+//                query.getObjectInBackgroundWithId(object.objectId!) {
+//                    (memo: PFObject?, error: NSError?) -> Void in
+//                    if memo?["checkRow"] as? Bool != true {
+//                        return
 //                    }
+//                    self.appDelegate.contactTitle = memo?["title"] as! NSMutableArray
+//                    self.appDelegate.contactContent = memo?["contents"] as! NSMutableArray
+//                    self.cellCount = memo?["cellCount"] as! Int
+//                
+//                    self.table.reloadData()
 //                }
 //            }
-//            
-//            //cellCount = appDelegate.saveData.objectForKey("cellCount") as! Int
-//            
-//            print("行数は\(cellCount)です")
-//            print("\(cellCount),\(appDelegate.contactTitle),\(appDelegate.contactContent)")
-//            
-//            table.reloadData()
 //        }
+        
+        table.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -148,21 +110,31 @@ class ContactViewController: UIViewController {
     }
     
     @IBAction func newContent() {
-        if cellCount == 0 {
-            ParseManager.saveData("memo", username: appDelegate.username as! String, column: "checkRow",
-                data: true)
-        }
+        print("newContent")
+        let memos = Memo()
+//        memos.title = "題名"
+//        memos.content = "内容"
+//        
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.add(memos)
+//        }
         
-        appDelegate.contactTitle?.insertObject("title", atIndex: cellCount)
-        appDelegate.contactContent?.insertObject("contents", atIndex: cellCount)
-        
-        self.saveDate(cellCount)
-        
-        cellCount++
-        ParseManager.saveData("memo", username: appDelegate.username as! String, column: "cellCount", data: cellCount)
-//        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
-//        appDelegate.saveData.synchronize()
-        print("cellcount = ",cellCount)
+//        if cellCount == 0 {
+//            ParseManager.saveData("memo", username: appDelegate.username as! String, column: "checkRow", data: true)
+//        }
+//        
+//        appDelegate.contactTitle?.insertObject("title", atIndex: cellCount)
+//        appDelegate.contactContent?.insertObject("contents", atIndex: cellCount)
+//        
+//        self.saveDate(cellCount)
+//        
+//        cellCount++
+//        
+//        ParseManager.saveData("memo", username: appDelegate.username as! String, column: "cellCount", data: cellCount)
+////        appDelegate.saveData.setObject(cellCount, forKey: "cellCount")
+////        appDelegate.saveData.synchronize()
+//        print("cellcount = ",cellCount)
         
         table.reloadData()
     }
@@ -187,7 +159,6 @@ class ContactViewController: UIViewController {
         appDelegate.saveData.synchronize()
         
         ParseManager.saveData("memo", username: appDelegate.username as! String, column: "cellCount", data: cellCount)
-        
         ParseManager.saveData("memo", username: appDelegate.username as! String, column: "title",
             data: appDelegate.contactTitle)
         ParseManager.saveData("memo", username: appDelegate.username as! String, column: "contents",
@@ -210,9 +181,12 @@ extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell!
         
-        if(appDelegate.contactTitle.count != 0){
-            cell.textLabel?.text = appDelegate.contactTitle![indexPath.row] as? String
-        }
+        let realm = try! Realm()
+        cell.textLabel?.text = realm.objects(Memo)[indexPath.row].title as String
+        
+//        if(appDelegate.contactTitle.count != 0){
+//            cell.textLabel?.text = appDelegate.contactTitle![indexPath.row] as? String
+//        }
         
         return cell
     }
