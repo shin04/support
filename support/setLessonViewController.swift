@@ -112,6 +112,14 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
+        firstLesson.resignFirstResponder()
+        secondLesson.resignFirstResponder()
+        thirdLesson.resignFirstResponder()
+        fourthLesson.resignFirstResponder()
+        fifthLesson.resignFirstResponder()
+        sixthLesson.resignFirstResponder()
+        seventhLesson.resignFirstResponder()
+        
         //NotificationCenterクラスの通知を解除
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)

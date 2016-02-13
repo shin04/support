@@ -165,17 +165,12 @@ extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
     //並び替え終了時に呼び出される
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         //TODO: cell並び替えの処理
-        // sourceIndexPathは移動前の行
-        // destinationIndexPathは移動後の行
-        print("\(sourceIndexPath.row),\(destinationIndexPath.row)")
+        // sourceIndexPathは移動前の位置
+        // destinationIndexPathは移動後の位置
         let realm = try! Realm()
         let selectedMemo = realm.objects(Memo)[sourceIndexPath.row]
         try! realm.write {
-            let title = realm.objects(Memo)[sourceIndexPath.row].title
-            let content = realm.objects(Memo)[sourceIndexPath.row].content
             realm.delete(selectedMemo)
-            realm.objects(Memo)[destinationIndexPath.row].title = title
-            realm.objects(Memo)[destinationIndexPath.row].content = content
         }
     }
     
