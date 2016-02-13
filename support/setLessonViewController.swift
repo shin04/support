@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 import RealmSwift
 
 class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIScrollViewDelegate {
@@ -25,17 +24,24 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     var activeText: UITextField!
     
     @IBOutlet var dayPicker: UIPickerView!
-    let dayArray: NSArray = ["choose", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+    let dayArray: NSArray = ["choose", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     
-    var dayStr: NSString = ""
+    //var dayStr: NSString = ""
     var dayNum: Int = 0
     
-    var lessonArray: NSMutableArray!
+    //var lessonArray: NSMutableArray!
     
     var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //初期化するかどうか
+        if appDelegate.saveData.boolForKey("checkInit") != true {
+            //初期化する
+            Initialization.lessonInit()
+            appDelegate.saveData.setBool(true, forKey: "checkInit")
+        }
         
         //ナビ透過
         navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -94,36 +100,6 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         swipeGesture.numberOfTouchesRequired = 1
         swipeGesture.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeGesture)
-        
-        //読み込み
-        let query = PFQuery(className: "Lessons")
-        query.whereKey("createBy", equalTo: appDelegate.username as! String)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error != nil {
-                return
-            }
-            guard let objects = objects else {
-                return
-            }
-            for object in objects {
-                print("ID = \(object.objectId)")
-                query.getObjectInBackgroundWithId(object.objectId!) {
-                    (lesson: PFObject?, error: NSError?) -> Void in
-                    if lesson![self.dayStr as String] != nil {
-                        let array = lesson![self.dayStr as String] as! NSMutableArray
-                        self.firstLesson.text = array[0] as? String
-                        self.secondLesson.text = array[1] as? String
-                        self.thirdLesson.text = array[2] as? String
-                        self.fourthLesson.text = array[3] as? String
-                        self.fifthLesson.text = array[4] as? String
-                        self.sixthLesson.text = array[5] as? String
-                        self.seventhLesson.text = array[6] as? String
-                    }
-                }
-            }
-        }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -144,6 +120,16 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func writeLessons(array: NSArray) {
+        self.firstLesson.text = array[0] as? String
+        self.secondLesson.text = array[1] as? String
+        self.thirdLesson.text = array[2] as? String
+        self.fourthLesson.text = array[3] as? String
+        self.fifthLesson.text = array[4] as? String
+        self.sixthLesson.text = array[5] as? String
+        self.seventhLesson.text = array[6] as? String
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -175,7 +161,6 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("row: \(row)")
         print("value: \(dayArray[row])")
-        dayStr = dayArray[row] as! NSString
         dayNum = row
         
         firstLesson.text = nil
@@ -186,7 +171,7 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         sixthLesson.text = nil
         seventhLesson.text = nil
         
-        self.viewDidLoad()
+        self.read()
     }
     
     @IBAction func back() {
@@ -195,8 +180,7 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     
     //データ保存のアクション
     @IBAction func saveAc() {
-        lessonArray = [firstLesson.text!, secondLesson.text!, thirdLesson.text!, fourthLesson.text!, fifthLesson.text!, sixthLesson.text!, seventhLesson.text!]
-        self.save(lessonArray)
+        self.save()
         
         let saveAlert = UIAlertController(title: "確認", message: "保存しました", preferredStyle: .Alert)
         let ok:UIAlertAction = UIAlertAction(title: "OK",
@@ -215,23 +199,85 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    //取得してきた時間割を表示
-    func writeLessons(array: NSArray) {
-        firstLesson.text = array[0] as? String
-        secondLesson.text = array[1] as? String
-        thirdLesson.text = array[2] as? String
-        fourthLesson.text = array[3] as? String
-        fifthLesson.text = array[4] as? String
-        sixthLesson.text = array[5] as? String
-        seventhLesson.text = array[6] as? String
+    //データ読み込み
+    func read() {
+        let realm = try! Realm()
+        switch dayNum {
+        case 1:
+            firstLesson.text = realm.objects(Monday)[0].first
+            secondLesson.text = realm.objects(Monday)[0].second
+            thirdLesson.text = realm.objects(Monday)[0].third
+            fourthLesson.text = realm.objects(Monday)[0].fourth
+            fifthLesson.text = realm.objects(Monday)[0].fifth
+            sixthLesson.text = realm.objects(Monday)[0].sixth
+            seventhLesson.text = realm.objects(Monday)[0].seventh
+        case 2:
+            firstLesson.text = realm.objects(Tuesday)[0].first
+            secondLesson.text = realm.objects(Tuesday)[0].second
+            thirdLesson.text = realm.objects(Tuesday)[0].third
+            fourthLesson.text = realm.objects(Tuesday)[0].fourth
+            fifthLesson.text = realm.objects(Tuesday)[0].fifth
+            sixthLesson.text = realm.objects(Tuesday)[0].sixth
+            seventhLesson.text = realm.objects(Tuesday)[0].seventh
+        case 3:
+            firstLesson.text = realm.objects(Wednesday)[0].first
+            secondLesson.text = realm.objects(Wednesday)[0].second
+            thirdLesson.text = realm.objects(Wednesday)[0].third
+            fourthLesson.text = realm.objects(Wednesday)[0].fourth
+            fifthLesson.text = realm.objects(Wednesday)[0].fifth
+            sixthLesson.text = realm.objects(Wednesday)[0].sixth
+            seventhLesson.text = realm.objects(Wednesday)[0].seventh
+        case 4:
+            firstLesson.text = realm.objects(Thursday)[0].first
+            secondLesson.text = realm.objects(Thursday)[0].second
+            thirdLesson.text = realm.objects(Thursday)[0].third
+            fourthLesson.text = realm.objects(Thursday)[0].fourth
+            fifthLesson.text = realm.objects(Thursday)[0].fifth
+            sixthLesson.text = realm.objects(Thursday)[0].sixth
+            seventhLesson.text = realm.objects(Thursday)[0].seventh
+            
+        case 5:
+            firstLesson.text = realm.objects(Friday)[0].first
+            secondLesson.text = realm.objects(Friday)[0].second
+            thirdLesson.text = realm.objects(Friday)[0].third
+            fourthLesson.text = realm.objects(Friday)[0].fourth
+            fifthLesson.text = realm.objects(Friday)[0].fifth
+            sixthLesson.text = realm.objects(Friday)[0].sixth
+            seventhLesson.text = realm.objects(Friday)[0].seventh
+            
+        case 6:
+            firstLesson.text = realm.objects(Saturday)[0].first
+            secondLesson.text = realm.objects(Saturday)[0].second
+            thirdLesson.text = realm.objects(Saturday)[0].third
+            fourthLesson.text = realm.objects(Saturday)[0].fourth
+            fifthLesson.text = realm.objects(Saturday)[0].fifth
+            sixthLesson.text = realm.objects(Saturday)[0].sixth
+            seventhLesson.text = realm.objects(Saturday)[0].seventh
+            
+        default:
+            print("エラー")
+        }
     }
     
     //データ保存
-    func save(lessonData: NSArray) {
-//        ParseManager.saveData("Lessons",username: appDelegate.username as! String,
-//            column: dayStr as String, data:lessonData)
+    func save() {
+        let realm = try! Realm()
+        try! realm.write {
+            switch dayNum {
+            case 1:
+                realm.objects(Monday)[0].first = firstLesson.text!
+                realm.objects(Monday)[0].second = secondLesson.text!
+                realm.objects(Monday)[0].third = thirdLesson.text!
+                realm.objects(Monday)[0].fourth = fourthLesson.text!
+                realm.objects(Monday)[0].fifth = fifthLesson.text!
+                realm.objects(Monday)[0].sixth = sixthLesson.text!
+                realm.objects(Monday)[0].seventh = seventhLesson.text!
+                
+            default:
+                print("エラー")
+            }
+        }
     }
-    
     
     func handleKeyboardWillShowNotification(notification: NSNotification) {
         if activeText == firstLesson || activeText == secondLesson ||

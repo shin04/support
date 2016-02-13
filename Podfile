@@ -5,7 +5,6 @@ use_frameworks!
 
 target 'support' do
 
-pod 'Parse'
 pod 'RealmSwift', '~> 0.97.0'
 
 end

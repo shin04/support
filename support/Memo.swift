@@ -1,4 +1,3 @@
-
 //
 //  Memo.swift
 //  support
@@ -10,6 +9,10 @@
 import RealmSwift
 
 class Memo: Object {
-    dynamic var title:NSString = "題名"
-    dynamic var content: NSString = "内容"
+    dynamic var title: String = ""
+    dynamic var content: String = ""
+    dynamic var memoCount: Int = 0
+    dynamic var noticeCheck: Bool = false
+    dynamic var noticeDate: NSDate = NSDate()
+    dynamic var noticeMg: String = ""
 }

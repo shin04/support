@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Parse
+import RealmSwift
 
 class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var navi: UINavigationBar?
@@ -19,33 +19,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
 //        let appDomain:String = NSBundle.mainBundle().bundleIdentifier!
 //        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
-//        appDelegate.saveData.setObject(4, forKey: "cellCount")
+        
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.deleteAll()
+//        }
         
         //ナビ透過
         navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navi?.shadowImage = UIImage()
         navi?.translucent = true
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        //ログインしているかどうか
-        let currentUser = PFUser.currentUser()
-        if currentUser != nil {
-            appDelegate.username = currentUser?.username
-            
-            if appDelegate.saveData.objectForKey("noticeDic") != nil {
-                appDelegate.noticeDic = appDelegate.saveData.objectForKey("noticeDic")?.mutableCopy() as! NSMutableDictionary
-            }
-            
-            print("You are a member of the app!")
-        } else {
-            print("You are not a member of the app.")
-            
-            let segue: outsetViewController = self.storyboard?.instantiateViewControllerWithIdentifier("outset") as! outsetViewController
-            segue.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
-            self.presentViewController(segue, animated: true, completion: nil)
-        }
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,12 +38,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         textField.resignFirstResponder()
         return true
-    }
-    
-    @IBAction func signOut() {
-        PFUser.logOut()
-        print("See you!")
-        viewDidAppear(true)
     }
     
 }

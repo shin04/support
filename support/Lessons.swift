@@ -8,11 +8,69 @@
 
 import RealmSwift
 
-class Lessons: Object {
-    dynamic var mondays: NSArray = []
-    dynamic var tuesdays: NSArray = []
-    dynamic var wednesdays: NSArray = []
-    dynamic var thursdays: NSArray = []
-    dynamic var fridays: NSArray = []
-    dynamic var saturdays: NSArray = []
+class Monday: Object {
+    dynamic var first = ""
+    dynamic var second = ""
+    dynamic var third = ""
+    dynamic var fourth = ""
+    dynamic var fifth = ""
+    dynamic var sixth = ""
+    dynamic var seventh = ""
+}
+
+class Tuesday: Object {
+    dynamic var first = ""
+    dynamic var second = ""
+    dynamic var third = ""
+    dynamic var fourth = ""
+    dynamic var fifth = ""
+    dynamic var sixth = ""
+    dynamic var seventh = ""
+}
+
+class Wednesday: Object {
+    dynamic var first = ""
+    dynamic var second = ""
+    dynamic var third = ""
+    dynamic var fourth = ""
+    dynamic var fifth = ""
+    dynamic var sixth = ""
+    dynamic var seventh = ""
+}
+
+class Thursday: Object {
+    dynamic var first = ""
+    dynamic var second = ""
+    dynamic var third = ""
+    dynamic var fourth = ""
+    dynamic var fifth = ""
+    dynamic var sixth = ""
+    dynamic var seventh = ""
+}
+
+class Friday: Object {
+    dynamic var first = ""
+    dynamic var second = ""
+    dynamic var third = ""
+    dynamic var fourth = ""
+    dynamic var fifth = ""
+    dynamic var sixth = ""
+    dynamic var seventh = ""
+}
+
+class Saturday: Object {
+    dynamic var first = ""
+    dynamic var second = ""
+    dynamic var third = ""
+    dynamic var fourth = ""
+    dynamic var fifth = ""
+    dynamic var sixth = ""
+    dynamic var seventh = ""
+}
+
+class Notice: Object {
+    dynamic var noticeHour = 0
+    dynamic var noticeMinute = 0
+    dynamic var noticeMg = ""
+    dynamic var noticeCheck = true
 }

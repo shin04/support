@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class LessonDetailViewController: UIViewController, UITextViewDelegate {
     
@@ -46,23 +47,20 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
         accessoryView.addSubview(closeButton)
         noticeMessage.inputAccessoryView = accessoryView
         
-        //appDelegate.saveData.setBool(false, forKey: "lessonState")
-        
-        if appDelegate.saveData.objectForKey("lessonState") as? Bool == true{
+        let realm = try! Realm()
+        if realm.objects(Notice)[0].noticeCheck == true {
             noticeSwich.on = true
-            //picker.date = appDelegate.noticeDic["lessonDate"] as! NSDate
+            
             let now = NSDate()
-            print(now)
             let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
             let comps:NSDateComponents = calendar!.components([NSCalendarUnit.Year, .Month, .Day], fromDate: now)
             comps.calendar = calendar
-            comps.hour = appDelegate.noticeDic["lessonHour"] as! Int
-            comps.minute = appDelegate.noticeDic["lessonMinute"] as! Int
+            comps.hour = realm.objects(Notice)[0].noticeHour
+            comps.minute = realm.objects(Notice)[0].noticeMinute
             let now2 = comps.date
             print(now2!)
-            
             picker.date = now2!
-            noticeMessage.text = appDelegate.noticeDic["lessonMg"] as! String
+            noticeMessage.text = realm.objects(Notice)[0].noticeMg
         } else {
             noticeSwich.on = false
         }
@@ -108,24 +106,31 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func swichAc() {
+        let realm = try! Realm()
         if noticeSwich.on == true {
             print("noticeSwich is on")
-            appDelegate.saveData.setBool(true, forKey: "lessonState")
+            try! realm.write {
+                realm.objects(Notice)[0].noticeCheck = true
+            }
+            //appDelegate.saveData.setBool(true, forKey: "lessonState")
         } else {
             print("noticeSwich is off")
-            appDelegate.saveData.setBool(false, forKey: "lessonState")
+            try! realm.write {
+                realm.objects(Notice)[0].noticeCheck = false
+            }
+            //appDelegate.saveData.setBool(false, forKey: "lessonState")
         }
     }
     
     @IBAction func saveAc() {
         noticeMessage.resignFirstResponder()
-        
-        if appDelegate.saveData.objectForKey("lessonState") as! Bool == true{
-            appDelegate.noticeDic["lessonMg"] = noticeMessage.text!
-            appDelegate.noticeDic["lessonHour"] = Int(hour)!
-            appDelegate.noticeDic["lessonMinute"] = Int(minute)!
-            appDelegate.noticeDic["lessonDate"] = date
-        print("\(noticeMessage.text!) and \(hour):\(minute) is saved")
+        let realm = try! Realm()
+        if realm.objects(Notice)[0].noticeCheck == true {
+            try! realm.write {
+                realm.objects(Notice)[0].noticeHour = Int(hour)!
+                realm.objects(Notice)[0].noticeMinute = Int(minute)!
+                realm.objects(Notice)[0].noticeMg = noticeMessage.text!
+            }
         }
         
         let saveAlert = UIAlertController(title: "確認", message: "保存しました", preferredStyle: .Alert)

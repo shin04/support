@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Parse
-import WebKit
 import RealmSwift
 
 class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
@@ -45,8 +43,12 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
         cellNum = appDelegate.saveData.objectForKey("cellNum") as! Int
         
-        titleText.text = appDelegate.contactTitle[cellNum] as? String
-        contentText.text = appDelegate.contactContent[cellNum] as? String
+        //titleText.text = appDelegate.contactTitle[cellNum] as? String
+        //contentText.text = appDelegate.contactContent[cellNum] as? String
+        
+        let realm = try! Realm()
+        titleText.text = realm.objects(Memo)[cellNum].title as String
+        contentText.text = realm.objects(Memo)[cellNum].content as String
         
         //左スワイプ
         let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipe:")
@@ -72,14 +74,13 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         titleText.resignFirstResponder()
         contentText.resignFirstResponder()
         
-        appDelegate.contactTitle[cellNum] = titleText.text!
-        appDelegate.contactContent[cellNum] = contentText.text
-        print("\(appDelegate.contactTitle[cellNum]),\(appDelegate.contactContent[cellNum])を保存しました")
+        let realm = try! Realm()
+        try! realm.write {
+            realm.objects(Memo)[cellNum].title = titleText.text!
+            realm.objects(Memo)[cellNum].content = contentText.text!
+        }
         
-        ParseManager.saveData("memo", username: appDelegate.username as! String, column: "title",
-            data: appDelegate.contactTitle)
-        ParseManager.saveData("memo", username: appDelegate.username as! String, column: "contents",
-            data: appDelegate.contactContent)
+        print("\(realm.objects(Memo)[cellNum].title as String)に更新")
         
         let saveAlert = UIAlertController(title: "確認", message: "保存しました", preferredStyle: .Alert)
         let ok:UIAlertAction = UIAlertAction(title: "OK",

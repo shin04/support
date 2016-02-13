@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class memoDetailViewController: UIViewController {
     @IBOutlet var noticeSwich: UISwitch!
@@ -34,14 +35,11 @@ class memoDetailViewController: UIViewController {
         keyStr = "memoState" + String(selectCell)
         print("key is \"\(keyStr)\"")
         
-        
-        //appDelegate.saveData.setBool(false, forKey: keyStr)
-        
-        if appDelegate.saveData.objectForKey(keyStr) as? Bool == true{
+        let realm = try! Realm()
+        if realm.objects(Memo)[selectCell].noticeCheck == true {
             noticeSwich.on = true
-            noticeMessage.text = appDelegate.noticeDic[keyStr] as! String
-            let dateKey: String = keyStr + "date"
-            picker.date = appDelegate.noticeDic[dateKey] as! NSDate
+            noticeMessage.text = realm.objects(Memo)[selectCell].noticeMg
+            picker.date = realm.objects(Memo)[selectCell].noticeDate
         } else {
             noticeSwich.on = false
         }
@@ -92,20 +90,30 @@ class memoDetailViewController: UIViewController {
     @IBAction func swichAc() {
         if noticeSwich.on == true {
             print("noticeSwich is on")
-            appDelegate.saveData.setBool(true, forKey: keyStr)
+            //appDelegate.saveData.setBool(true, forKey: keyStr)
+            let realm = try! Realm()
+            try! realm.write {
+                realm.objects(Memo)[selectCell].noticeCheck = true
+            }
+            
         } else {
             print("noticeSwich is off")
-            appDelegate.saveData.setBool(false, forKey: keyStr)
+            let realm = try! Realm()
+            try! realm.write {
+                realm.objects(Memo)[selectCell].noticeCheck = false
+            }
+            //appDelegate.saveData.setBool(false, forKey: keyStr)
         }
     }
     
     @IBAction func saveAc() {
         noticeMessage.resignFirstResponder()
         
-        let dateKey: String = keyStr + "date"
-        appDelegate.noticeDic[keyStr] = noticeMessage.text!
-        appDelegate.noticeDic[dateKey] = date
-        print("keyStr = \(keyStr), \(appDelegate.noticeDic[dateKey])")
+        let realm = try! Realm()
+        try! realm.write {
+            realm.objects(Memo)[selectCell].noticeDate = date
+            realm.objects(Memo)[selectCell].noticeMg = noticeMessage.text!
+        }
         
         let saveAlert = UIAlertController(title: "確認", message: "保存しました", preferredStyle: .Alert)
         let ok:UIAlertAction = UIAlertAction(title: "OK",

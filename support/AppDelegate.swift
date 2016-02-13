@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Parse
+import RealmSwift
 import Foundation
 
 @UIApplicationMain
@@ -15,29 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    //emailを保存
-    var username: NSString?
-    
-    //時間割の通知時間を保存
-    var noticeDic: NSMutableDictionary = ["lessonHour": 0, "lessonMinute": 0, "lessonMg": "hoge"]
-    //var noticeDic: NSMutableDictionary?
-    var noticeTime: NSDate?
-    
-    //メモの数、通知のon/offの状態を保存
+    //メモの数を保存
     var saveData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-    
-    //メモのPFObjectを保存
-    var memoObjects = [PFObject]()
-    
-    //メモのタイトルと内容を保存する配列
-    var contactTitle: NSMutableArray! = []
-    var contactContent: NSMutableArray! = []
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        Parse.setApplicationId("6RrWmvlFfkgQDlXr65HAvlHv1nSHpAmah5JSECiH", clientKey: "9hbbjdkZQlIzhevLQQk0HnGJChEY0GdnvdRdeuqs")
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         //通知の設定
         let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, .Badge, .Sound], categories: nil)
@@ -56,9 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         // Store the deviceToken in the current Installation and save it to Parse
-        let installation = PFInstallation.currentInstallation()
-        installation.setDeviceTokenFromData(deviceToken)
-        installation.saveInBackground()
     }
 
 
@@ -71,28 +50,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        //通知のデータを保存
-        saveData.setObject(noticeDic, forKey: "noticeDic")
-        saveData.synchronize()
-        
         application.cancelAllLocalNotifications()
         
+        let realm = try! Realm()
+        
         // 時間割の通知
-        if saveData.objectForKey("lessonState") as? Bool == true {
-            // 日曜なら通知しない
-            if notificationManeger.checkSun() == 0 {
-                print("通知しませーん")
-            } else {
-                application.scheduleLocalNotification(notificationManeger.settingLs(noticeDic["lessonMg"] as! String, hour: noticeDic["lessonHour"] as! Int, minute: noticeDic["lessonMinute"] as! Int))
+        if realm.objects(Notice)[0].noticeCheck == true {
+            //日曜なら通知なし
+            if notificationManeger.checkSun() != 0 {
+                application.scheduleLocalNotification(notificationManeger.settingLs(realm.objects(Notice)[0].noticeMg, hour: realm.objects(Notice)[0].noticeHour, minute: realm.objects(Notice)[0].noticeMinute))
             }
         }
         
         // 連絡事項の通知
-        for (var i = 0; saveData.objectForKey("cellCount") as! Int > i; i++) {
-            let keyStr: String = "memoState" + String(i)
-            let dateKey: String = keyStr + "date"
-            if saveData.objectForKey(keyStr) as? Bool == true {
-                application.scheduleLocalNotification(notificationManeger.settingMm(noticeDic[keyStr] as! String, date: noticeDic[dateKey] as! NSDate, key: keyStr))
+        for (var i = 0; realm.objects(Memo).count > i; i++) {
+            if realm.objects(Memo)[i].noticeCheck == true {
+                application.scheduleLocalNotification(notificationManeger.settingMm(realm.objects(Memo)[i].noticeMg, date: realm.objects(Memo)[i].noticeDate, key: "number\(i)"))
             }
         }
     }
@@ -121,17 +94,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //ローカル通知を受け取った時の処理
     func localPushRecieve(application: UIApplication, notification: UILocalNotification) {
-        for (var i = 0; saveData.objectForKey("cellCount") as! Int > i; i++) {
-            let keyStr: String = "memoState" + String(i)
-            let dateKey: String = keyStr + "date"
+        let realm = try! Realm()
+        for (var i = 0; realm.objects(Memo).count > i; i++) {
             if let info = notification.userInfo as! [String: String]! {
-                if info["memoId"] == keyStr {
-                    UIApplication.sharedApplication().cancelLocalNotification(notification)
-                    noticeDic.removeObjectForKey(keyStr)
-                    noticeDic.removeObjectForKey(dateKey)
-                    saveData.setBool(false, forKey: keyStr)
-                    saveData.setObject(noticeDic, forKey: "noticeDic")
-                    saveData.synchronize()
+                UIApplication.sharedApplication().cancelLocalNotification(notification)
+                if info["memoId"] == "number\(i)" {
+                    try! realm.write {
+                        realm.objects(Memo)[i].noticeCheck = false
+                        realm.objects(Memo)[i].noticeDate = NSDate()
+                        realm.objects(Memo)[i].noticeMg = ""
+                    }
                 }
             }
         }
