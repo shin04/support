@@ -16,6 +16,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageControl: UIPageControl!
     
+    let pageSize: Int = 6
+    
     var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
@@ -26,8 +28,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         navi?.shadowImage = UIImage()
         navi?.translucent = true
         
-        let pageSize = 6
-        
         print("横のサイズは\(self.view.frame.width * 6),スクロールビューの横のサイズは\(scrollView.frame.width)")
         scrollView.contentSize = CGSizeMake(self.view.frame.width * CGFloat(pageSize), 0)
         scrollView.showsHorizontalScrollIndicator = false
@@ -35,11 +35,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         scrollView.pagingEnabled = true
         scrollView.delegate = self
         
-        // ページ数分ボタンを生成する.
+        pageControl.numberOfPages = pageSize
+        pageControl.currentPage = 0
+        pageControl.userInteractionEnabled = false
+        
         for var i = 0; i < pageSize; i++ {
             let width = self.view.frame.width * CGFloat(i) + 5
             
-            if app.saveData.boolForKey("checkInit") == true {
+            if app.saveData.boolForKey("checkInit") == false {
                 let label: UILabel = UILabel(frame: CGRectMake(width, 0, 100, 30))
                 label.text = "NO DATA"
                 scrollView.addSubview(label)
@@ -54,29 +57,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             let sixth: UILabel = UILabel(frame: CGRectMake(width, 140, 100, 30))
             let seventh: UILabel = UILabel(frame: CGRectMake(width, 170, 100, 30))
             
-            let realm = try! Realm()
-            switch i {
-            case 0:
-                first.text = realm.objects(Monday)[0].first
-                second.text = realm.objects(Monday)[0].second
-                third.text = realm.objects(Monday)[0].third
-                fourth.text = realm.objects(Monday)[0].fourth
-                fifth.text = realm.objects(Monday)[0].fifth
-                sixth.text = realm.objects(Monday)[0].sixth
-                seventh.text = realm.objects(Monday)[0].seventh
-                
-            case 1:
-                first.text = realm.objects(Tuesday)[0].first
-                first.text = realm.objects(Tuesday)[0].second
-                first.text = realm.objects(Tuesday)[0].third
-                first.text = realm.objects(Tuesday)[0].fourth
-                first.text = realm.objects(Tuesday)[0].fifth
-                first.text = realm.objects(Tuesday)[0].sixth
-                first.text = realm.objects(Tuesday)[0].seventh
-                
-            default:
-                print("")
-            }
+            self.loadLesson(i, first: first, second: second, third: third, fourth: fourth, fifth: fifth, sixth: sixth, seventh: seventh)
             
             scrollView.addSubview(first)
             scrollView.addSubview(second)
@@ -86,10 +67,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             scrollView.addSubview(sixth)
             scrollView.addSubview(seventh)
         }
-        
-        pageControl.numberOfPages = pageSize
-        pageControl.currentPage = 0
-        pageControl.userInteractionEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,6 +85,32 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         return true
     }
     
+    func loadLesson(dayNum: Int, first: UILabel, second: UILabel, third: UILabel, fourth: UILabel, fifth: UILabel, sixth: UILabel, seventh: UILabel) {
+        
+        let realm = try! Realm()
+        switch dayNum {
+        case 0:
+            first.text = realm.objects(Monday)[0].first
+            second.text = realm.objects(Monday)[0].second
+            third.text = realm.objects(Monday)[0].third
+            fourth.text = realm.objects(Monday)[0].fourth
+            fifth.text = realm.objects(Monday)[0].fifth
+            sixth.text = realm.objects(Monday)[0].sixth
+            seventh.text = realm.objects(Monday)[0].seventh
+            
+        case 1:
+            first.text = realm.objects(Tuesday)[0].first
+            first.text = realm.objects(Tuesday)[0].second
+            first.text = realm.objects(Tuesday)[0].third
+            first.text = realm.objects(Tuesday)[0].fourth
+            first.text = realm.objects(Tuesday)[0].fifth
+            first.text = realm.objects(Tuesday)[0].sixth
+            first.text = realm.objects(Tuesday)[0].seventh
+            
+        default:
+            print("")
+        }
+    }
     
 }
 
