@@ -89,10 +89,6 @@ class ContactViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func back() {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     @IBAction func newContent() {
         let memo = Memo()
         memo.title = "題名"

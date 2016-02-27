@@ -27,7 +27,6 @@
         <!--ホーム-->
         <scene sceneID="MEg-zr-IP9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8u-Mz-oQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ViewController" id="hxy-Ke-f9N" customClass="ViewController" customModule="support" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WXj-a7-Z5C"/>
@@ -37,6 +36,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2.png" translatesAutoresizingMaskIntoConstraints="NO" id="BLZ-ua-BjX">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="kdI-wC-F2R"/>
+                                </constraints>
+                            </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghk-KA-8Ae">
                                 <rect key="frame" x="-4" y="15" width="328" height="44"/>
                                 <items>
@@ -64,7 +69,7 @@
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="ueg-Yh-4sq">
                                 <rect key="frame" x="-4" y="269" width="328" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.064798492680551156" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.70196078431372544" green="1" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="JLM-5I-2Gq"/>
                                 </constraints>
@@ -97,6 +102,7 @@
                             <constraint firstItem="ueg-Yh-4sq" firstAttribute="leading" secondItem="h2O-na-avm" secondAttribute="leadingMargin" constant="-20" id="83H-f1-eoa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="m1R-8V-YK5" secondAttribute="trailing" constant="-20" id="87f-68-di1"/>
                             <constraint firstItem="m1R-8V-YK5" firstAttribute="leading" secondItem="h2O-na-avm" secondAttribute="leadingMargin" constant="-20" id="Jwf-84-RJt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BLZ-ua-BjX" secondAttribute="trailing" constant="-20" id="Ngn-Ct-GnB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ueg-Yh-4sq" secondAttribute="trailing" constant="-20" id="O0U-vE-uL8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bYi-iv-H1Y" secondAttribute="trailing" constant="-7" id="P6g-zh-U1M"/>
                             <constraint firstItem="bYi-iv-H1Y" firstAttribute="top" secondItem="Ghk-KA-8Ae" secondAttribute="bottom" id="VNE-87-r4E"/>
@@ -104,6 +110,8 @@
                             <constraint firstItem="Ghk-KA-8Ae" firstAttribute="top" secondItem="h2O-na-avm" secondAttribute="topMargin" constant="15" id="VnM-wU-cDy"/>
                             <constraint firstItem="ueg-Yh-4sq" firstAttribute="top" secondItem="mW6-gJ-Aw3" secondAttribute="bottom" id="Zxl-jb-qyA"/>
                             <constraint firstItem="m1R-8V-YK5" firstAttribute="top" secondItem="q12-am-6ar" secondAttribute="bottom" id="cu8-Wf-8lE"/>
+                            <constraint firstItem="BLZ-ua-BjX" firstAttribute="leading" secondItem="h2O-na-avm" secondAttribute="leadingMargin" constant="-20" id="dDY-3Q-ZLk"/>
+                            <constraint firstItem="BLZ-ua-BjX" firstAttribute="top" secondItem="h2O-na-avm" secondAttribute="topMargin" id="dRS-5h-0Fc"/>
                             <constraint firstItem="WUi-Mb-DGT" firstAttribute="top" secondItem="m1R-8V-YK5" secondAttribute="bottom" constant="49" id="hOa-qC-xY2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mW6-gJ-Aw3" secondAttribute="trailing" constant="-16" id="pFH-tA-tHp"/>
                             <constraint firstItem="q12-am-6ar" firstAttribute="top" secondItem="ueg-Yh-4sq" secondAttribute="bottom" constant="2" id="rwz-JT-AMW"/>
@@ -112,7 +120,7 @@
                             <constraint firstItem="mW6-gJ-Aw3" firstAttribute="top" secondItem="Ghk-KA-8Ae" secondAttribute="bottom" constant="30" id="xew-op-cXL"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ホーム" image="Icon-40.png" id="ZCw-cB-Nxf"/>
+                    <tabBarItem key="tabBarItem" title="ホーム" image="Home-50.png" id="ZCw-cB-Nxf"/>
                     <connections>
                         <outlet property="navi" destination="Ghk-KA-8Ae" id="VyD-wg-rmH"/>
                         <outlet property="pageControl" destination="ueg-Yh-4sq" id="CId-pr-Lnd"/>
@@ -120,6 +128,7 @@
                         <outlet property="tableView" destination="m1R-8V-YK5" id="n2S-OC-tHu"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8u-Mz-oQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="590" y="-1004"/>
         </scene>
@@ -142,7 +151,7 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Fh-26-0AC">
-                                <rect key="frame" x="-4" y="120" width="328" height="448"/>
+                                <rect key="frame" x="-4" y="120" width="328" height="399"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="j80-8V-9MQ">
@@ -162,12 +171,6 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="連絡事項" id="3qP-cX-twT">
-                                        <barButtonItem key="leftBarButtonItem" image="back.png" id="x39-YA-iM5">
-                                            <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                            <connections>
-                                                <action selector="back" destination="dTU-Qb-odl" id="CoV-mK-Kox"/>
-                                            </connections>
-                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="edit.png" id="MUB-bF-UfW">
                                             <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                             <connections>
@@ -192,20 +195,20 @@
                         <constraints>
                             <constraint firstItem="qYU-oo-yJ3" firstAttribute="leading" secondItem="fb1-oU-u0a" secondAttribute="leadingMargin" constant="-20" id="4AP-We-u2N"/>
                             <constraint firstItem="6Fh-26-0AC" firstAttribute="top" secondItem="fb1-oU-u0a" secondAttribute="topMargin" constant="120" id="Bm5-Zt-Je6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6Fh-26-0AC" secondAttribute="trailing" constant="-20" id="HJW-Gz-Lt2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Fh-26-0AC" secondAttribute="trailing" constant="-20" id="EFM-i2-ngv"/>
                             <constraint firstItem="2Xi-ej-Rt4" firstAttribute="leading" secondItem="fb1-oU-u0a" secondAttribute="leadingMargin" constant="-20" id="IyE-VS-EnS"/>
                             <constraint firstItem="3ss-vA-GDu" firstAttribute="leading" secondItem="fb1-oU-u0a" secondAttribute="leadingMargin" constant="-20" id="JNJ-EQ-yRf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2Xi-ej-Rt4" secondAttribute="trailing" constant="-20" id="UXn-48-A0U"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3ss-vA-GDu" secondAttribute="trailing" constant="-20" id="XZR-CC-eZc"/>
-                            <constraint firstItem="6Fh-26-0AC" firstAttribute="leading" secondItem="fb1-oU-u0a" secondAttribute="leadingMargin" constant="-20" id="cHd-YG-XJg"/>
                             <constraint firstItem="qYU-oo-yJ3" firstAttribute="top" secondItem="fb1-oU-u0a" secondAttribute="topMargin" constant="15" id="ear-iW-mpe"/>
                             <constraint firstItem="3ss-vA-GDu" firstAttribute="top" secondItem="qYU-oo-yJ3" secondAttribute="bottom" id="f2q-e8-hdx"/>
                             <constraint firstItem="2Xi-ej-Rt4" firstAttribute="top" secondItem="fb1-oU-u0a" secondAttribute="topMargin" id="gRi-OJ-MXh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qYU-oo-yJ3" secondAttribute="trailing" constant="-20" id="gXH-yI-TIK"/>
                             <constraint firstItem="5OM-iX-xGw" firstAttribute="top" secondItem="6Fh-26-0AC" secondAttribute="bottom" id="qNH-MT-ERs"/>
+                            <constraint firstItem="6Fh-26-0AC" firstAttribute="leading" secondItem="fb1-oU-u0a" secondAttribute="leadingMargin" constant="-20" id="qwN-ev-Mkm"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="連絡事項" image="Icon-40.png" id="6lC-sI-pcr"/>
+                    <tabBarItem key="tabBarItem" title="連絡事項" image="Note-50.png" id="6lC-sI-pcr"/>
                     <connections>
                         <outlet property="editBtn" destination="MUB-bF-UfW" id="SWl-4t-tNe"/>
                         <outlet property="navi" destination="qYU-oo-yJ3" id="JVB-a7-WYG"/>
@@ -563,12 +566,6 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="時間割" id="Jda-P8-ud4">
-                                        <barButtonItem key="leftBarButtonItem" image="back.png" id="apn-oY-A98">
-                                            <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                            <connections>
-                                                <action selector="back" destination="AgA-X3-uSU" id="G70-e2-96k"/>
-                                            </connections>
-                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="保存" id="3Ti-rI-WqT">
                                             <connections>
                                                 <action selector="saveAc" destination="AgA-X3-uSU" id="Gyr-3j-0re"/>
@@ -605,7 +602,7 @@
                             <constraint firstItem="d00-NI-Fxy" firstAttribute="top" secondItem="Wem-dX-ngB" secondAttribute="bottom" constant="20" id="vfT-b5-rTr"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="時間割" image="Icon-40.png" id="O6z-Dd-7mu"/>
+                    <tabBarItem key="tabBarItem" title="時間割" image="List-50.png" id="O6z-Dd-7mu"/>
                     <connections>
                         <outlet property="dayPicker" destination="d00-NI-Fxy" id="LAt-Qa-A8H"/>
                         <outlet property="fifthLesson" destination="I7f-W7-DSw" id="ykd-6Y-3qT"/>
@@ -622,7 +619,7 @@
             </objects>
             <point key="canvasLocation" x="590" y="-334"/>
         </scene>
-        <!--通知設定-->
+        <!--Lesson Detail View Controller-->
         <scene sceneID="Rfx-co-ab2">
             <objects>
                 <viewController id="DKr-TH-LoV" customClass="LessonDetailViewController" customModule="support" customModuleProvider="target" sceneMemberID="viewController">
@@ -727,11 +724,11 @@
                             <constraint firstItem="zJO-m3-aQW" firstAttribute="top" secondItem="z0L-tm-5rD" secondAttribute="bottom" constant="9" id="QXu-kA-2xo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zJO-m3-aQW" secondAttribute="trailing" constant="-20" id="UnS-K0-gdO"/>
                             <constraint firstItem="z0L-tm-5rD" firstAttribute="top" secondItem="9TL-sy-7RV" secondAttribute="bottom" constant="29" id="XHw-ot-caF"/>
-                            <constraint firstItem="Vd2-4x-Qk2" firstAttribute="top" secondItem="Hj0-se-Hw2" secondAttribute="bottom" constant="30" id="XSt-ov-qgt"/>
                             <constraint firstItem="z0L-tm-5rD" firstAttribute="leading" secondItem="vVj-vc-fFZ" secondAttribute="leadingMargin" id="Xt8-Qp-JkQ"/>
                             <constraint firstItem="Hj0-se-Hw2" firstAttribute="top" secondItem="Wno-4f-j7c" secondAttribute="bottom" constant="9" id="dEP-md-eAh"/>
                             <constraint firstItem="tCF-fA-r0a" firstAttribute="centerX" secondItem="vVj-vc-fFZ" secondAttribute="centerX" id="djV-iE-dLI"/>
                             <constraint firstItem="Hj0-se-Hw2" firstAttribute="trailing" secondItem="vVj-vc-fFZ" secondAttribute="trailingMargin" id="gSf-KI-yPE"/>
+                            <constraint firstItem="Vd2-4x-Qk2" firstAttribute="top" secondItem="Hj0-se-Hw2" secondAttribute="bottom" constant="30" id="gd0-18-B7s"/>
                             <constraint firstItem="tCF-fA-r0a" firstAttribute="leading" secondItem="vVj-vc-fFZ" secondAttribute="leadingMargin" constant="-20" id="heC-wc-Ed4"/>
                             <constraint firstItem="juQ-nh-dhS" firstAttribute="top" secondItem="vVj-vc-fFZ" secondAttribute="topMargin" id="iLZ-xv-291"/>
                             <constraint firstAttribute="trailingMargin" secondItem="juQ-nh-dhS" secondAttribute="trailing" constant="-20" id="lGa-GP-AW9"/>
@@ -740,7 +737,7 @@
                             <constraint firstItem="zJO-m3-aQW" firstAttribute="leading" secondItem="vVj-vc-fFZ" secondAttribute="leadingMargin" constant="-20" id="oKN-Ep-iTj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="通知設定" image="Icon-40.png" id="Ie9-zF-3BA"/>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="Ie9-zF-3BA"/>
                     <connections>
                         <outlet property="navi" destination="tCF-fA-r0a" id="DDy-lN-n87"/>
                         <outlet property="noticeMessage" destination="Hj0-se-Hw2" id="FJ0-MJ-W3N"/>
@@ -754,7 +751,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-40.png" width="40" height="40"/>
+        <image name="Home-50.png" width="30" height="30"/>
+        <image name="List-50.png" width="30" height="30"/>
+        <image name="Note-50.png" width="30" height="30"/>
         <image name="back.png" width="50" height="50"/>
         <image name="background2.png" width="640" height="104"/>
         <image name="edit.png" width="50" height="50"/>
@@ -763,7 +762,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dyk-Fb-lln"/>
-        <segue reference="H8k-PJ-4ZR"/>
-        <segue reference="ceZ-aE-2wT"/>
+        <segue reference="RJD-aj-vSI"/>
+        <segue reference="IqE-rd-N8I"/>
     </inferredMetricsTieBreakers>
 </document>

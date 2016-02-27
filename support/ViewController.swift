@@ -62,13 +62,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
                 break
             }
             
-            first = UILabel(frame: CGRectMake(width, 0, 100, 20))
-            second = UILabel(frame: CGRectMake(width, 20, 100, 30))
-            third = UILabel(frame: CGRectMake(width, 50, 100, 30))
-            fourth = UILabel(frame: CGRectMake(width, 80, 100, 30))
-            fifth = UILabel(frame: CGRectMake(width, 110, 100, 30))
-            sixth = UILabel(frame: CGRectMake(width, 140, 100, 30))
-            seventh = UILabel(frame: CGRectMake(width, 170, 100, 30))
+            first = UILabel(frame: CGRectMake(width, 0, 200, 20))
+            second = UILabel(frame: CGRectMake(width, 25, 200, 20))
+            third = UILabel(frame: CGRectMake(width, 50, 200, 20))
+            fourth = UILabel(frame: CGRectMake(width, 75, 200, 20))
+            fifth = UILabel(frame: CGRectMake(width, 100, 200, 20))
+            sixth = UILabel(frame: CGRectMake(width, 125, 200, 20))
+            seventh = UILabel(frame: CGRectMake(width, 150, 200, 20))
             
             self.loadLesson(i, first: first, second: second, third: third, fourth: fourth, fifth: fifth, sixth: sixth, seventh: seventh)
             
@@ -134,22 +134,22 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         let realm = try! Realm()
         switch dayNum {
         case 0:
-            first.text = "１時間目\(realm.objects(Monday)[0].first)"
-            second.text = "２時間目\(realm.objects(Monday)[0].second)"
-            third.text = "３時間目\(realm.objects(Monday)[0].third)"
-            fourth.text = "４時間目\(realm.objects(Monday)[0].fourth)"
-            fifth.text = "５時間目\(realm.objects(Monday)[0].fifth)"
-            sixth.text = "６時間目\(realm.objects(Monday)[0].sixth)"
-            seventh.text = "７時間目\(realm.objects(Monday)[0].seventh)"
+            first.text = "１時間目：\(realm.objects(Monday)[0].first)"
+            second.text = "２時間目：\(realm.objects(Monday)[0].second)"
+            third.text = "３時間目：\(realm.objects(Monday)[0].third)"
+            fourth.text = "４時間目：\(realm.objects(Monday)[0].fourth)"
+            fifth.text = "５時間目：\(realm.objects(Monday)[0].fifth)"
+            sixth.text = "６時間目：\(realm.objects(Monday)[0].sixth)"
+            seventh.text = "７時間目：\(realm.objects(Monday)[0].seventh)"
             
         case 1:
-            first.text = "１時間目\(realm.objects(Tuesday)[0].first)"
-            second.text = "２時間目\(realm.objects(Tuesday)[0].second)"
-            third.text = "３時間目\(realm.objects(Tuesday)[0].third)"
-            fourth.text = "４時間目\(realm.objects(Tuesday)[0].fourth)"
-            fifth.text = "５時間目\(realm.objects(Tuesday)[0].fifth)"
-            sixth.text = "６時間目\(realm.objects(Tuesday)[0].sixth)"
-            seventh.text = "７時間目\(realm.objects(Tuesday)[0].seventh)"
+            first.text = "１時間目：\(realm.objects(Tuesday)[0].first)"
+            second.text = "２時間目：\(realm.objects(Tuesday)[0].second)"
+            third.text = "３時間目：\(realm.objects(Tuesday)[0].third)"
+            fourth.text = "４時間目：\(realm.objects(Tuesday)[0].fourth)"
+            fifth.text = "５時間目：\(realm.objects(Tuesday)[0].fifth)"
+            sixth.text = "６時間目：\(realm.objects(Tuesday)[0].sixth)"
+            seventh.text = "７時間目：\(realm.objects(Tuesday)[0].seventh)"
             
         default:
             print("")

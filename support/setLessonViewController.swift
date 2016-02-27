@@ -182,11 +182,6 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
         self.read()
     }
     
-    @IBAction func back() {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
-    
     //データ保存のアクション
     @IBAction func saveAc() {
         self.save()
