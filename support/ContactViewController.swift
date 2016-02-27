@@ -93,15 +93,13 @@ class ContactViewController: UIViewController {
         let memo = Memo()
         memo.title = "題名"
         memo.content = "内容"
-        
         let realm = try! Realm()
         try! realm.write {
             realm.add(memo)
         }
         
         cellCount++
-        
-        table.reloadData()
+        //table.reloadData()
     }
     
     @IBAction func edit() {

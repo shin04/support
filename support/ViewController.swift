@@ -17,13 +17,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var tableView: UITableView!
     
-    var first: UILabel!
-    var second: UILabel!
-    var third: UILabel!
-    var fourth: UILabel!
-    var fifth: UILabel!
-    var sixth: UILabel!
-    var seventh: UILabel!
+    var first: NSMutableArray = []
+    var second: NSMutableArray = []
+    var third: NSMutableArray = []
+    var fourth: NSMutableArray = []
+    var fifth: NSMutableArray = []
+    var sixth: NSMutableArray = []
+    var seventh: NSMutableArray = []
     
     let pageSize: Int = 6
     var selectCell: Int = 0
@@ -62,28 +62,30 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
                 break
             }
             
-            first = UILabel(frame: CGRectMake(width, 0, 200, 20))
-            second = UILabel(frame: CGRectMake(width, 25, 200, 20))
-            third = UILabel(frame: CGRectMake(width, 50, 200, 20))
-            fourth = UILabel(frame: CGRectMake(width, 75, 200, 20))
-            fifth = UILabel(frame: CGRectMake(width, 100, 200, 20))
-            sixth = UILabel(frame: CGRectMake(width, 125, 200, 20))
-            seventh = UILabel(frame: CGRectMake(width, 150, 200, 20))
+            first[i] = UILabel(frame: CGRectMake(width, 0, 200, 20))
+            second[i] = UILabel(frame: CGRectMake(width, 25, 200, 20))
+            third[i] = UILabel(frame: CGRectMake(width, 50, 200, 20))
+            fourth[i] = UILabel(frame: CGRectMake(width, 75, 200, 20))
+            fifth[i] = UILabel(frame: CGRectMake(width, 100, 200, 20))
+            sixth[i] = UILabel(frame: CGRectMake(width, 125, 200, 20))
+            seventh[i] = UILabel(frame: CGRectMake(width, 150, 200, 20))
             
-            self.loadLesson(i, first: first, second: second, third: third, fourth: fourth, fifth: fifth, sixth: sixth, seventh: seventh)
-            
-            scrollView.addSubview(first)
-            scrollView.addSubview(second)
-            scrollView.addSubview(third)
-            scrollView.addSubview(fourth)
-            scrollView.addSubview(fifth)
-            scrollView.addSubview(sixth)
-            scrollView.addSubview(seventh)
+            scrollView.addSubview(first[i] as! UILabel)
+            scrollView.addSubview(second[i] as! UILabel)
+            scrollView.addSubview(third[i] as! UILabel)
+            scrollView.addSubview(fourth[i] as! UILabel)
+            scrollView.addSubview(fifth[i] as! UILabel)
+            scrollView.addSubview(sixth[i] as! UILabel)
+            scrollView.addSubview(seventh[i] as! UILabel)
         }
         
     }
     
     override func viewWillAppear(animated: Bool) {
+        for var i = 0; i < 6; i++ {
+            self.loadLesson(i, first: first[i] as! UILabel, second: second[i] as! UILabel, third: third[i] as! UILabel, fourth: fourth[i] as! UILabel, fifth: fifth[i] as! UILabel, sixth: sixth[i] as! UILabel, seventh: seventh[i] as! UILabel)
+        }
+        
         tableView.reloadData()
     }
     
@@ -150,6 +152,42 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             fifth.text = "５時間目：\(realm.objects(Tuesday)[0].fifth)"
             sixth.text = "６時間目：\(realm.objects(Tuesday)[0].sixth)"
             seventh.text = "７時間目：\(realm.objects(Tuesday)[0].seventh)"
+            
+        case 2:
+            first.text = "１時間目：\(realm.objects(Wednesday)[0].first)"
+            second.text = "２時間目：\(realm.objects(Wednesday)[0].second)"
+            third.text = "３時間目：\(realm.objects(Wednesday)[0].third)"
+            fourth.text = "４時間目：\(realm.objects(Wednesday)[0].fourth)"
+            fifth.text = "５時間目：\(realm.objects(Wednesday)[0].fifth)"
+            sixth.text = "６時間目：\(realm.objects(Wednesday)[0].sixth)"
+            seventh.text = "７時間目：\(realm.objects(Wednesday)[0].seventh)"
+            
+        case 3:
+            first.text = "１時間目：\(realm.objects(Thursday)[0].first)"
+            second.text = "２時間目：\(realm.objects(Thursday)[0].second)"
+            third.text = "３時間目：\(realm.objects(Thursday)[0].third)"
+            fourth.text = "４時間目：\(realm.objects(Thursday)[0].fourth)"
+            fifth.text = "５時間目：\(realm.objects(Thursday)[0].fifth)"
+            sixth.text = "６時間目：\(realm.objects(Thursday)[0].sixth)"
+            seventh.text = "７時間目：\(realm.objects(Thursday)[0].seventh)"
+            
+        case 4:
+            first.text = "１時間目：\(realm.objects(Friday)[0].first)"
+            second.text = "２時間目：\(realm.objects(Friday)[0].second)"
+            third.text = "３時間目：\(realm.objects(Friday)[0].third)"
+            fourth.text = "４時間目：\(realm.objects(Friday)[0].fourth)"
+            fifth.text = "５時間目：\(realm.objects(Friday)[0].fifth)"
+            sixth.text = "６時間目：\(realm.objects(Friday)[0].sixth)"
+            seventh.text = "７時間目：\(realm.objects(Friday)[0].seventh)"
+            
+        case 5:
+            first.text = "１時間目：\(realm.objects(Saturday)[0].first)"
+            second.text = "２時間目：\(realm.objects(Saturday)[0].second)"
+            third.text = "３時間目：\(realm.objects(Saturday)[0].third)"
+            fourth.text = "４時間目：\(realm.objects(Saturday)[0].fourth)"
+            fifth.text = "５時間目：\(realm.objects(Saturday)[0].fifth)"
+            sixth.text = "６時間目：\(realm.objects(Saturday)[0].sixth)"
+            seventh.text = "７時間目：\(realm.objects(Saturday)[0].seventh)"
             
         default:
             print("")

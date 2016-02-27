@@ -286,6 +286,42 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
                 realm.objects(Tuesday)[0].sixth = sixthLesson.text!
                 realm.objects(Tuesday)[0].seventh = seventhLesson.text!
                 
+            case 3:
+                realm.objects(Wednesday)[0].first = firstLesson.text!
+                realm.objects(Wednesday)[0].second = secondLesson.text!
+                realm.objects(Wednesday)[0].third = thirdLesson.text!
+                realm.objects(Wednesday)[0].fourth = fourthLesson.text!
+                realm.objects(Wednesday)[0].fifth = fifthLesson.text!
+                realm.objects(Wednesday)[0].sixth = sixthLesson.text!
+                realm.objects(Wednesday)[0].seventh = seventhLesson.text!
+                
+            case 4:
+                realm.objects(Thursday)[0].first = firstLesson.text!
+                realm.objects(Thursday)[0].second = secondLesson.text!
+                realm.objects(Thursday)[0].third = thirdLesson.text!
+                realm.objects(Thursday)[0].fourth = fourthLesson.text!
+                realm.objects(Thursday)[0].fifth = fifthLesson.text!
+                realm.objects(Thursday)[0].sixth = sixthLesson.text!
+                realm.objects(Thursday)[0].seventh = seventhLesson.text!
+                
+            case 5:
+                realm.objects(Friday)[0].first = firstLesson.text!
+                realm.objects(Friday)[0].second = secondLesson.text!
+                realm.objects(Friday)[0].third = thirdLesson.text!
+                realm.objects(Friday)[0].fourth = fourthLesson.text!
+                realm.objects(Friday)[0].fifth = fifthLesson.text!
+                realm.objects(Friday)[0].sixth = sixthLesson.text!
+                realm.objects(Friday)[0].seventh = seventhLesson.text!
+                
+            case 6:
+                realm.objects(Saturday)[0].first = firstLesson.text!
+                realm.objects(Saturday)[0].second = secondLesson.text!
+                realm.objects(Saturday)[0].third = thirdLesson.text!
+                realm.objects(Saturday)[0].fourth = fourthLesson.text!
+                realm.objects(Saturday)[0].fifth = fifthLesson.text!
+                realm.objects(Saturday)[0].sixth = sixthLesson.text!
+                realm.objects(Saturday)[0].seventh = seventhLesson.text!
+                
             default:
                 print("エラー")
             }

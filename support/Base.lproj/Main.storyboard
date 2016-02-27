@@ -5,6 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="mplus-2p-regular.ttf">
+            <string>mplus-2p-regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Outset View Controller-->
         <scene sceneID="59C-K3-FfC">
@@ -44,6 +49,9 @@
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghk-KA-8Ae">
                                 <rect key="frame" x="-4" y="15" width="328" height="44"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="ホーム" id="CBC-4R-aN4">
                                         <barButtonItem key="rightBarButtonItem" title="通知設定" id="3RE-aP-N4W">
@@ -150,7 +158,7 @@
                                     <constraint firstAttribute="height" constant="60" id="bnV-Fe-Jhh"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Fh-26-0AC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Fh-26-0AC">
                                 <rect key="frame" x="-4" y="120" width="328" height="399"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -185,9 +193,13 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="3Vt-nc-Wxi"/>
                                 </constraints>
-                                <state key="normal" image="new.png"/>
+                                <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="25"/>
+                                <state key="normal" title="新規作成" image="new.png">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="newContent" destination="dTU-Qb-odl" eventType="touchUpInside" id="uVm-zp-IiA"/>
+                                    <segue destination="i0J-FL-6e8" kind="modal" id="O5L-fN-Maj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -200,11 +212,11 @@
                             <constraint firstItem="3ss-vA-GDu" firstAttribute="leading" secondItem="fb1-oU-u0a" secondAttribute="leadingMargin" constant="-20" id="JNJ-EQ-yRf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2Xi-ej-Rt4" secondAttribute="trailing" constant="-20" id="UXn-48-A0U"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3ss-vA-GDu" secondAttribute="trailing" constant="-20" id="XZR-CC-eZc"/>
+                            <constraint firstItem="5OM-iX-xGw" firstAttribute="top" secondItem="6Fh-26-0AC" secondAttribute="bottom" id="acS-Jb-O8d"/>
                             <constraint firstItem="qYU-oo-yJ3" firstAttribute="top" secondItem="fb1-oU-u0a" secondAttribute="topMargin" constant="15" id="ear-iW-mpe"/>
                             <constraint firstItem="3ss-vA-GDu" firstAttribute="top" secondItem="qYU-oo-yJ3" secondAttribute="bottom" id="f2q-e8-hdx"/>
                             <constraint firstItem="2Xi-ej-Rt4" firstAttribute="top" secondItem="fb1-oU-u0a" secondAttribute="topMargin" id="gRi-OJ-MXh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qYU-oo-yJ3" secondAttribute="trailing" constant="-20" id="gXH-yI-TIK"/>
-                            <constraint firstItem="5OM-iX-xGw" firstAttribute="top" secondItem="6Fh-26-0AC" secondAttribute="bottom" id="qNH-MT-ERs"/>
                             <constraint firstItem="6Fh-26-0AC" firstAttribute="leading" secondItem="fb1-oU-u0a" secondAttribute="leadingMargin" constant="-20" id="qwN-ev-Mkm"/>
                         </constraints>
                     </view>
@@ -762,7 +774,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dyk-Fb-lln"/>
-        <segue reference="RJD-aj-vSI"/>
-        <segue reference="IqE-rd-N8I"/>
+        <segue reference="ceZ-aE-2wT"/>
+        <segue reference="H8k-PJ-4ZR"/>
     </inferredMetricsTieBreakers>
 </document>
