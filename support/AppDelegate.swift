@@ -14,6 +14,7 @@ import Foundation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var tabBar: UITabBarController!
     
     //メモの数を保存
     var saveData: NSUserDefaults = NSUserDefaults.standardUserDefaults()

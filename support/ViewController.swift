@@ -9,14 +9,24 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var navi: UINavigationBar?
     
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageControl: UIPageControl!
+    @IBOutlet var tableView: UITableView!
+    
+    var first: UILabel!
+    var second: UILabel!
+    var third: UILabel!
+    var fourth: UILabel!
+    var fifth: UILabel!
+    var sixth: UILabel!
+    var seventh: UILabel!
     
     let pageSize: Int = 6
+    var selectCell: Int = 0
     
     var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -27,6 +37,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navi?.shadowImage = UIImage()
         navi?.translucent = true
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         print("横のサイズは\(self.view.frame.width * 6),スクロールビューの横のサイズは\(scrollView.frame.width)")
         scrollView.contentSize = CGSizeMake(self.view.frame.width * CGFloat(pageSize), 0)
@@ -49,13 +62,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
                 break
             }
             
-            let first: UILabel = UILabel(frame: CGRectMake(width, 0, 100, 20))
-            let second: UILabel = UILabel(frame: CGRectMake(width, 20, 100, 30))
-            let third: UILabel = UILabel(frame: CGRectMake(width, 50, 100, 30))
-            let fourth: UILabel = UILabel(frame: CGRectMake(width, 80, 100, 30))
-            let fifth: UILabel = UILabel(frame: CGRectMake(width, 110, 100, 30))
-            let sixth: UILabel = UILabel(frame: CGRectMake(width, 140, 100, 30))
-            let seventh: UILabel = UILabel(frame: CGRectMake(width, 170, 100, 30))
+            first = UILabel(frame: CGRectMake(width, 0, 100, 20))
+            second = UILabel(frame: CGRectMake(width, 20, 100, 30))
+            third = UILabel(frame: CGRectMake(width, 50, 100, 30))
+            fourth = UILabel(frame: CGRectMake(width, 80, 100, 30))
+            fifth = UILabel(frame: CGRectMake(width, 110, 100, 30))
+            sixth = UILabel(frame: CGRectMake(width, 140, 100, 30))
+            seventh = UILabel(frame: CGRectMake(width, 170, 100, 30))
             
             self.loadLesson(i, first: first, second: second, third: third, fourth: fourth, fifth: fifth, sixth: sixth, seventh: seventh)
             
@@ -67,10 +80,41 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
             scrollView.addSubview(sixth)
             scrollView.addSubview(seventh)
         }
+        
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let realm = try! Realm()
+        print("\(realm.objects(Memo).count)行です")
+        return realm.objects(Memo).count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell!
+        
+        let realm = try! Realm()
+        cell.textLabel?.text = realm.objects(Memo)[indexPath.row].title as String
+        
+        return cell
+    }
+    
+    //セルが押されたときの処理
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectCell = indexPath.row
+        
+        app.saveData.setObject(selectCell, forKey: "cellNum")
+        
+        let segue: MemoViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Memo") as! MemoViewController
+        segue.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        self.presentViewController(segue, animated: true, completion: nil)
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
@@ -90,22 +134,22 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         let realm = try! Realm()
         switch dayNum {
         case 0:
-            first.text = realm.objects(Monday)[0].first
-            second.text = realm.objects(Monday)[0].second
-            third.text = realm.objects(Monday)[0].third
-            fourth.text = realm.objects(Monday)[0].fourth
-            fifth.text = realm.objects(Monday)[0].fifth
-            sixth.text = realm.objects(Monday)[0].sixth
-            seventh.text = realm.objects(Monday)[0].seventh
+            first.text = "１時間目\(realm.objects(Monday)[0].first)"
+            second.text = "２時間目\(realm.objects(Monday)[0].second)"
+            third.text = "３時間目\(realm.objects(Monday)[0].third)"
+            fourth.text = "４時間目\(realm.objects(Monday)[0].fourth)"
+            fifth.text = "５時間目\(realm.objects(Monday)[0].fifth)"
+            sixth.text = "６時間目\(realm.objects(Monday)[0].sixth)"
+            seventh.text = "７時間目\(realm.objects(Monday)[0].seventh)"
             
         case 1:
-            first.text = realm.objects(Tuesday)[0].first
-            first.text = realm.objects(Tuesday)[0].second
-            first.text = realm.objects(Tuesday)[0].third
-            first.text = realm.objects(Tuesday)[0].fourth
-            first.text = realm.objects(Tuesday)[0].fifth
-            first.text = realm.objects(Tuesday)[0].sixth
-            first.text = realm.objects(Tuesday)[0].seventh
+            first.text = "１時間目\(realm.objects(Tuesday)[0].first)"
+            second.text = "２時間目\(realm.objects(Tuesday)[0].second)"
+            third.text = "３時間目\(realm.objects(Tuesday)[0].third)"
+            fourth.text = "４時間目\(realm.objects(Tuesday)[0].fourth)"
+            fifth.text = "５時間目\(realm.objects(Tuesday)[0].fifth)"
+            sixth.text = "６時間目\(realm.objects(Tuesday)[0].sixth)"
+            seventh.text = "７時間目\(realm.objects(Tuesday)[0].seventh)"
             
         default:
             print("")
@@ -113,5 +157,3 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     }
     
 }
-
-

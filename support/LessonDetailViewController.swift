@@ -86,10 +86,6 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func back() {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     @IBAction func pickerAc() {
         date = picker.date
         print("date")

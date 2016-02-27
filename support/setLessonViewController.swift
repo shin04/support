@@ -184,6 +184,7 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     
     @IBAction func back() {
         self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
     //データ保存のアクション
@@ -280,6 +281,15 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
                 realm.objects(Monday)[0].fifth = fifthLesson.text!
                 realm.objects(Monday)[0].sixth = sixthLesson.text!
                 realm.objects(Monday)[0].seventh = seventhLesson.text!
+                
+            case 2:
+                realm.objects(Tuesday)[0].first = firstLesson.text!
+                realm.objects(Tuesday)[0].second = secondLesson.text!
+                realm.objects(Tuesday)[0].third = thirdLesson.text!
+                realm.objects(Tuesday)[0].fourth = fourthLesson.text!
+                realm.objects(Tuesday)[0].fifth = fifthLesson.text!
+                realm.objects(Tuesday)[0].sixth = sixthLesson.text!
+                realm.objects(Tuesday)[0].seventh = seventhLesson.text!
                 
             default:
                 print("エラー")

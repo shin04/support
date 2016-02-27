@@ -17,6 +17,8 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     var cellNum: Int = 0
     
+    var indicator: UIActivityIndicatorView!
+    
     var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override func viewDidLoad() {
@@ -71,6 +73,8 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     }
     
     @IBAction func saveAc() {
+        self.makeIndicator()
+        
         titleText.resignFirstResponder()
         contentText.resignFirstResponder()
         
@@ -81,6 +85,8 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         }
         
         print("\(realm.objects(Memo)[cellNum].title as String)に更新")
+        
+        indicator.stopAnimating()
         
         let saveAlert = UIAlertController(title: "確認", message: "保存しました", preferredStyle: .Alert)
         let ok:UIAlertAction = UIAlertAction(title: "OK",
@@ -101,6 +107,20 @@ class MemoViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     func swipe(sender: UISwipeGestureRecognizer) {
         print("スワイプ")
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func makeIndicator() {
+        // インジケータを作成する.
+        indicator = UIActivityIndicatorView()
+        indicator.frame = CGRectMake(0, 0, 50, 50)
+        indicator.center = self.view.center
+        indicator.color = UIColor.blackColor()
+        
+        // アニメーションを開始する.
+        indicator.startAnimating()
+        
+        // インジケータをViewに追加する.
+        self.view.addSubview(indicator)
     }
 
 }

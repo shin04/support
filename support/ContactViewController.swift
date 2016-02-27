@@ -18,6 +18,8 @@ class ContactViewController: UIViewController {
     var cellCount: Int = 0 //セル数を保存
     var selectCell: Int = 0 //選択されたセルを保存
     
+    var indicator: UIActivityIndicatorView!
+    
     var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override func viewDidLoad() {
@@ -42,11 +44,15 @@ class ContactViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.makeIndicator()
+        
         //データ読み込み
         let realm = try! Realm()
         let memos = realm.objects(Memo)
         cellCount = realm.objects(Memo).count
         print(memos)
+        
+        indicator.stopAnimating()
         
         table.reloadData()
     }
@@ -120,6 +126,20 @@ class ContactViewController: UIViewController {
     func swipe(sender: UISwipeGestureRecognizer) {
         print("スワイプ")
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func makeIndicator() {
+        // インジケータを作成する.
+        indicator = UIActivityIndicatorView()
+        indicator.frame = CGRectMake(0, 0, 50, 50)
+        indicator.center = self.view.center
+        indicator.color = UIColor.blackColor()
+        
+        // アニメーションを開始する.
+        indicator.startAnimating()
+        
+        // インジケータをViewに追加する.
+        self.view.addSubview(indicator)
     }
 
 }
