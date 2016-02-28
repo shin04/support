@@ -62,13 +62,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
                 break
             }
             
-            first[i] = UILabel(frame: CGRectMake(width, 0, 200, 20))
-            second[i] = UILabel(frame: CGRectMake(width, 25, 200, 20))
-            third[i] = UILabel(frame: CGRectMake(width, 50, 200, 20))
-            fourth[i] = UILabel(frame: CGRectMake(width, 75, 200, 20))
-            fifth[i] = UILabel(frame: CGRectMake(width, 100, 200, 20))
-            sixth[i] = UILabel(frame: CGRectMake(width, 125, 200, 20))
-            seventh[i] = UILabel(frame: CGRectMake(width, 150, 200, 20))
+            first[i] = UILabel(frame: CGRectMake(width + 50, 0, 200, 20))
+            second[i] = UILabel(frame: CGRectMake(width + 50, 25, 200, 20))
+            third[i] = UILabel(frame: CGRectMake(width + 50, 50, 200, 20))
+            fourth[i] = UILabel(frame: CGRectMake(width + 50, 75, 200, 20))
+            fifth[i] = UILabel(frame: CGRectMake(width + 50, 100, 200, 20))
+            sixth[i] = UILabel(frame: CGRectMake(width + 50, 125, 200, 20))
+            seventh[i] = UILabel(frame: CGRectMake(width + 50, 150, 200, 20))
             
             scrollView.addSubview(first[i] as! UILabel)
             scrollView.addSubview(second[i] as! UILabel)

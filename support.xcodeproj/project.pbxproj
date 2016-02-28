@@ -24,6 +24,7 @@
 		06627E181C54814300791FF0 /* mplus-2p-black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06627E151C54814300791FF0 /* mplus-2p-black.ttf */; };
 		06627E191C54814300791FF0 /* mplus-2p-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06627E161C54814300791FF0 /* mplus-2p-light.ttf */; };
 		06627E1A1C54814300791FF0 /* mplus-2p-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06627E171C54814300791FF0 /* mplus-2p-regular.ttf */; };
+		066E1BE91C82896E006817B0 /* RAMPaperSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066E1BE81C82896E006817B0 /* RAMPaperSwitch.swift */; };
 		0670FB851C1E9DD4005B39B8 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 0670FB811C1E9DD4005B39B8 /* edit.png */; };
 		0670FB861C1E9DD4005B39B8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0670FB821C1E9DD4005B39B8 /* back.png */; };
 		0670FB871C1E9DD4005B39B8 /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 0670FB831C1E9DD4005B39B8 /* new.png */; };
@@ -90,6 +91,7 @@
 		06627E151C54814300791FF0 /* mplus-2p-black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-2p-black.ttf"; sourceTree = "<group>"; };
 		06627E161C54814300791FF0 /* mplus-2p-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-2p-light.ttf"; sourceTree = "<group>"; };
 		06627E171C54814300791FF0 /* mplus-2p-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-2p-regular.ttf"; sourceTree = "<group>"; };
+		066E1BE81C82896E006817B0 /* RAMPaperSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMPaperSwitch.swift; sourceTree = "<group>"; };
 		0670FB811C1E9DD4005B39B8 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		0670FB821C1E9DD4005B39B8 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		0670FB831C1E9DD4005B39B8 /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				06B622A41C227C3E00F896E9 /* notificationManager.swift */,
 				06BB5DD31C5C9422003C9EE5 /* Lessons.swift */,
 				06BB5DD51C5CBE66003C9EE5 /* Memo.swift */,
+				066E1BE81C82896E006817B0 /* RAMPaperSwitch.swift */,
 				060DE4491C545B5A00049664 /* outsetViewController.swift */,
 				06BECBD71BE4D438002C5FB5 /* ViewController.swift */,
 				0642912F1BE840F00062C7F9 /* setLessonViewController.swift */,
@@ -491,6 +494,7 @@
 			files = (
 				06DA87001C228D24003D8143 /* MemoViewController.swift in Sources */,
 				06BECBD81BE4D438002C5FB5 /* ViewController.swift in Sources */,
+				066E1BE91C82896E006817B0 /* RAMPaperSwitch.swift in Sources */,
 				06BB5DD61C5CBE66003C9EE5 /* Memo.swift in Sources */,
 				06E177B31BECA63A001120E3 /* ContactViewController.swift in Sources */,
 				06B622A51C227C3E00F896E9 /* notificationManager.swift in Sources */,

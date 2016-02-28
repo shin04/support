@@ -11,10 +11,11 @@ import RealmSwift
 
 class LessonDetailViewController: UIViewController, UITextViewDelegate {
     
-    @IBOutlet var noticeSwich: UISwitch!
+    @IBOutlet var noticeSwich: RAMPaperSwitch!
     @IBOutlet var noticeMessage: UITextView!
     @IBOutlet var picker: UIDatePicker!
     @IBOutlet var navi: UINavigationBar?
+    @IBOutlet var backgroundLabel: UILabel!
     
     var hour: String!
     var minute: String!
@@ -29,6 +30,13 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
         navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navi?.shadowImage = UIImage()
         navi?.translucent = true
+        
+        //switchの設定
+        noticeSwich.animationDidStartClosure = {(onAnimation: Bool) in
+            UIView.transitionWithView(self.backgroundLabel, duration: self.noticeSwich.duration, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+                self.backgroundLabel.textColor = onAnimation ? UIColor.whiteColor() : UIColor(red: 31/255.0, green: 183/255.0, blue: 252/255.0, alpha: 1)
+                }, completion:nil)
+        }
         
         //左スワイプ
         let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipe:")
@@ -125,7 +133,11 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
             try! realm.write {
                 realm.objects(Notice)[0].noticeHour = Int(hour)!
                 realm.objects(Notice)[0].noticeMinute = Int(minute)!
-                realm.objects(Notice)[0].noticeMg = noticeMessage.text!
+                if noticeMessage.text == nil {
+                    realm.objects(Notice)[0].noticeMg = "今日の時間割です"
+                } else {
+                    realm.objects(Notice)[0].noticeMg = noticeMessage.text!
+                }
             }
         }
         

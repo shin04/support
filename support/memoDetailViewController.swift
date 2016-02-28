@@ -10,7 +10,8 @@ import UIKit
 import RealmSwift
 
 class memoDetailViewController: UIViewController {
-    @IBOutlet var noticeSwich: UISwitch!
+    @IBOutlet var noticeSwich: RAMPaperSwitch!
+    @IBOutlet var backgroundLabel: UILabel!
     @IBOutlet var noticeMessage: UITextView!
     @IBOutlet var picker: UIDatePicker!
     @IBOutlet var navi: UINavigationBar?
@@ -29,6 +30,13 @@ class memoDetailViewController: UIViewController {
         navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navi?.shadowImage = UIImage()
         navi?.translucent = true
+        
+        //switchの設定
+        noticeSwich.animationDidStartClosure = {(onAnimation: Bool) in
+            UIView.transitionWithView(self.backgroundLabel, duration: self.noticeSwich.duration, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+                self.backgroundLabel.textColor = onAnimation ? UIColor.whiteColor() : UIColor(red: 31/255.0, green: 183/255.0, blue: 252/255.0, alpha: 1)
+                }, completion:nil)
+        }
         
         selectCell = appDelegate.saveData.objectForKey("cellNum") as! Int
         
@@ -112,7 +120,11 @@ class memoDetailViewController: UIViewController {
         let realm = try! Realm()
         try! realm.write {
             realm.objects(Memo)[selectCell].noticeDate = date
-            realm.objects(Memo)[selectCell].noticeMg = noticeMessage.text!
+            if noticeMessage.text == nil {
+                realm.objects(Memo)[selectCell].noticeMg = "連絡事項が１件あります"
+            } else {
+                realm.objects(Memo)[selectCell].noticeMg = noticeMessage.text!
+            }
         }
         
         let saveAlert = UIAlertController(title: "確認", message: "保存しました", preferredStyle: .Alert)
