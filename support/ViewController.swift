@@ -62,13 +62,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
                 break
             }
             
-            first[i] = UILabel(frame: CGRectMake(width + 50, 0, 200, 20))
-            second[i] = UILabel(frame: CGRectMake(width + 50, 25, 200, 20))
-            third[i] = UILabel(frame: CGRectMake(width + 50, 50, 200, 20))
-            fourth[i] = UILabel(frame: CGRectMake(width + 50, 75, 200, 20))
-            fifth[i] = UILabel(frame: CGRectMake(width + 50, 100, 200, 20))
-            sixth[i] = UILabel(frame: CGRectMake(width + 50, 125, 200, 20))
-            seventh[i] = UILabel(frame: CGRectMake(width + 50, 150, 200, 20))
+            first[i] = UILabel(frame: CGRectMake(width + 80, 0, 200, 20))
+            second[i] = UILabel(frame: CGRectMake(width + 80, 25, 200, 20))
+            third[i] = UILabel(frame: CGRectMake(width + 80, 50, 200, 20))
+            fourth[i] = UILabel(frame: CGRectMake(width + 80, 75, 200, 20))
+            fifth[i] = UILabel(frame: CGRectMake(width + 80, 100, 200, 20))
+            sixth[i] = UILabel(frame: CGRectMake(width + 80, 125, 200, 20))
+            seventh[i] = UILabel(frame: CGRectMake(width + 80, 150, 200, 20))
             
             scrollView.addSubview(first[i] as! UILabel)
             scrollView.addSubview(second[i] as! UILabel)
@@ -82,8 +82,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     }
     
     override func viewWillAppear(animated: Bool) {
-        for var i = 0; i < 6; i++ {
-            self.loadLesson(i, first: first[i] as! UILabel, second: second[i] as! UILabel, third: third[i] as! UILabel, fourth: fourth[i] as! UILabel, fifth: fifth[i] as! UILabel, sixth: sixth[i] as! UILabel, seventh: seventh[i] as! UILabel)
+        if (first.count != 0) {
+            for var i = 0; i < 6; i++ {
+                self.loadLesson(i, first: first[i] as! UILabel, second: second[i] as! UILabel, third: third[i] as! UILabel, fourth: fourth[i] as! UILabel, fifth: fifth[i] as! UILabel, sixth: sixth[i] as! UILabel, seventh: seventh[i] as! UILabel)
+            }
         }
         
         tableView.reloadData()
@@ -91,6 +93,21 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func toSetteing() {
+        let vc = self.tabBarController?.viewControllers![3]
+        self.tabBarController?.selectedViewController = vc
+    }
+    
+    @IBAction func toLessons() {
+        let vc = self.tabBarController?.viewControllers![1]
+        self.tabBarController?.selectedViewController = vc
+    }
+    
+    @IBAction func toMemos() {
+        let vc = self.tabBarController?.viewControllers![2]
+        self.tabBarController?.selectedViewController = vc
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

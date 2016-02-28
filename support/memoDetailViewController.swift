@@ -133,8 +133,8 @@ class memoDetailViewController: UIViewController {
             handler:{
                 (action:UIAlertAction!) -> Void in
                 print("OK")
+                self.dismissViewControllerAnimated(true, completion: nil)
         })
-        
         saveAlert.addAction(ok)
         presentViewController(saveAlert, animated: true, completion: nil)
     }

@@ -148,7 +148,6 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
                 (action:UIAlertAction!) -> Void in
                 print("OK")
         })
-        
         saveAlert.addAction(ok)
         presentViewController(saveAlert, animated: true, completion: nil)
     }

@@ -27,7 +27,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Iu-Hn-Dbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-305" y="-26"/>
+            <point key="canvasLocation" x="-745" y="-334"/>
         </scene>
         <!--ホーム-->
         <scene sceneID="MEg-zr-IP9">
@@ -56,19 +56,12 @@
                                     <navigationItem title="ホーム" id="CBC-4R-aN4">
                                         <barButtonItem key="rightBarButtonItem" title="通知設定" id="3RE-aP-N4W">
                                             <connections>
-                                                <segue destination="DKr-TH-LoV" kind="modal" id="y8H-xu-4HK"/>
+                                                <action selector="toSetteing" destination="hxy-Ke-f9N" id="myI-JX-6sc"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q12-am-6ar">
-                                <rect key="frame" x="281" y="301" width="30" height="30"/>
-                                <state key="normal" title="メモ"/>
-                                <connections>
-                                    <segue destination="dTU-Qb-odl" kind="modal" id="ceZ-aE-2wT"/>
-                                </connections>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mW6-gJ-Aw3">
                                 <rect key="frame" x="0.0" y="89" width="320" height="180"/>
                                 <constraints>
@@ -83,10 +76,14 @@
                                 </constraints>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYi-iv-H1Y">
-                                <rect key="frame" x="266" y="59" width="45" height="30"/>
-                                <state key="normal" title="時間割"/>
+                                <rect key="frame" x="236" y="59" width="75" height="30"/>
+                                <state key="normal">
+                                    <string key="title" base64-UTF8="YES">
+5pmC6ZaT5YmyCAjoqK3lrpo
+</string>
+                                </state>
                                 <connections>
-                                    <segue destination="AgA-X3-uSU" kind="modal" id="H8k-PJ-4ZR"/>
+                                    <action selector="toLessons" destination="hxy-Ke-f9N" eventType="touchUpInside" id="faX-ep-vBV"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m1R-8V-YK5">
@@ -103,6 +100,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q12-am-6ar">
+                                <rect key="frame" x="251" y="301" width="60" height="30"/>
+                                <state key="normal" title="メモ編集"/>
+                                <connections>
+                                    <action selector="toMemos" destination="hxy-Ke-f9N" eventType="touchUpInside" id="Vxh-67-gKE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -138,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8u-Mz-oQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="590" y="-1004"/>
+            <point key="canvasLocation" x="152" y="-334"/>
         </scene>
         <!--連絡事項-->
         <scene sceneID="O12-gW-4gO">
@@ -199,7 +203,7 @@
                                 </state>
                                 <connections>
                                     <action selector="newContent" destination="dTU-Qb-odl" eventType="touchUpInside" id="uVm-zp-IiA"/>
-                                    <segue destination="i0J-FL-6e8" kind="modal" id="O5L-fN-Maj"/>
+                                    <segue destination="i0J-FL-6e8" kind="modal" modalTransitionStyle="flipHorizontal" id="j6A-GV-y6f"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -221,6 +225,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="連絡事項" image="Note-50.png" id="6lC-sI-pcr"/>
+                    <navigationItem key="navigationItem" id="E1L-99-gkG"/>
                     <connections>
                         <outlet property="editBtn" destination="MUB-bF-UfW" id="SWl-4t-tNe"/>
                         <outlet property="navi" destination="qYU-oo-yJ3" id="JVB-a7-WYG"/>
@@ -229,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5uX-It-lfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596" y="372"/>
+            <point key="canvasLocation" x="590" y="372"/>
         </scene>
         <!--Memo View Controller-->
         <scene sceneID="roZ-ch-veg">
@@ -287,7 +292,7 @@
                                 </constraints>
                                 <state key="normal" title="設定" image="setting.png"/>
                                 <connections>
-                                    <segue destination="lXa-vr-73W" kind="modal" modalTransitionStyle="flipHorizontal" id="EBc-0k-zJu"/>
+                                    <segue destination="lXa-vr-73W" kind="modal" modalTransitionStyle="flipHorizontal" id="ha3-DQ-mM1"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aVn-vi-xmR">
@@ -319,6 +324,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="0To-nA-NDn" secondAttribute="trailing" constant="-4" id="zf1-Ow-2Z9"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="0bc-Pt-eCa"/>
                     <connections>
                         <outlet property="contentText" destination="0To-nA-NDn" id="VfE-n7-NbM"/>
                         <outlet property="navi" destination="ewM-ZZ-h98" id="Ax4-as-x22"/>
@@ -327,7 +333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUr-zO-PC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="372"/>
+            <point key="canvasLocation" x="976" y="372"/>
         </scene>
         <!--Memo Detail View Controller-->
         <scene sceneID="xJI-SZ-ARa">
@@ -371,7 +377,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIy-L0-u3K">
                                 <rect key="frame" x="0.0" y="59" width="320" height="509"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92z-B2-J24">
@@ -471,7 +477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqq-2s-gbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1482" y="372"/>
+            <point key="canvasLocation" x="1352" y="372"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="IcP-gL-znh">
@@ -491,7 +497,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o30-TS-ias" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="-334"/>
+            <point key="canvasLocation" x="-307" y="-334"/>
         </scene>
         <!--時間割-->
         <scene sceneID="e7A-NA-Bwm">
@@ -641,7 +647,7 @@
             </objects>
             <point key="canvasLocation" x="590" y="-334"/>
         </scene>
-        <!--Lesson Detail View Controller-->
+        <!--通知設定-->
         <scene sceneID="Rfx-co-ab2">
             <objects>
                 <viewController id="DKr-TH-LoV" customClass="LessonDetailViewController" customModule="support" customModuleProvider="target" sceneMemberID="viewController">
@@ -662,7 +668,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtK-5z-nfg">
                                 <rect key="frame" x="0.0" y="59" width="320" height="460"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCF-fA-r0a">
@@ -768,7 +774,8 @@
                             <constraint firstItem="juQ-nh-dhS" firstAttribute="leading" secondItem="vVj-vc-fFZ" secondAttribute="leadingMargin" constant="-20" id="mFY-68-Vkr"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="history" id="Ie9-zF-3BA"/>
+                    <tabBarItem key="tabBarItem" title="通知設定" image="setting.png" id="Ie9-zF-3BA"/>
+                    <navigationItem key="navigationItem" id="KYc-uR-4ct"/>
                     <connections>
                         <outlet property="backgroundLabel" destination="WtK-5z-nfg" id="2jc-eJ-S7B"/>
                         <outlet property="navi" destination="tCF-fA-r0a" id="DDy-lN-n87"/>
@@ -779,7 +786,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9c-0t-bL6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="-1015"/>
+            <point key="canvasLocation" x="590" y="-1005"/>
         </scene>
     </scenes>
     <resources>
@@ -790,11 +797,6 @@
         <image name="background2.png" width="640" height="104"/>
         <image name="edit.png" width="50" height="50"/>
         <image name="new.png" width="50" height="50"/>
-        <image name="setting.png" width="50" height="50"/>
+        <image name="setting.png" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="IqE-rd-N8I"/>
-        <segue reference="dyk-Fb-lln"/>
-        <segue reference="H8k-PJ-4ZR"/>
-    </inferredMetricsTieBreakers>
 </document>
