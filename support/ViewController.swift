@@ -33,6 +33,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //初期化するかどうか
+        if app.saveData.boolForKey("checkInit") != true {
+            //初期化する
+            Initialization.lessonInit()
+            app.saveData.setBool(true, forKey: "checkInit")
+        }
+        
         //ナビ透過
         navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navi?.shadowImage = UIImage()
@@ -49,26 +56,30 @@ class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegat
         scrollView.delegate = self
         
         pageControl.numberOfPages = pageSize
-        pageControl.currentPage = 0
+        let now = NSDate()
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+        let comps: NSDateComponents = calendar!.components([NSCalendarUnit.Weekday], fromDate: now)
+        print("Today is \(Int(comps.weekday))")
+        pageControl.currentPage = comps.weekday - 2
         pageControl.userInteractionEnabled = false
         
+        let dayArray = ["monday.png", "tuesday.png", "wednesday.png", "thursday.png", "friday.png", "saturday.png"]
+        
         for var i = 0; i < pageSize; i++ {
-            let width = self.view.frame.width * CGFloat(i) + 5
+            let width = self.view.frame.width * CGFloat(i)
             
-            if app.saveData.boolForKey("checkInit") == false {
-                let label: UILabel = UILabel(frame: CGRectMake(width, 0, 100, 30))
-                label.text = "NO DATA"
-                scrollView.addSubview(label)
-                break
-            }
+            let dayImageView = UIImageView(frame: CGRectMake(width + 20, 50, 80, 80))
+            let dayImage = UIImage(named: dayArray[i])
+            dayImageView.image = dayImage
+            scrollView.addSubview(dayImageView)
             
-            first[i] = UILabel(frame: CGRectMake(width + 80, 0, 200, 20))
-            second[i] = UILabel(frame: CGRectMake(width + 80, 25, 200, 20))
-            third[i] = UILabel(frame: CGRectMake(width + 80, 50, 200, 20))
-            fourth[i] = UILabel(frame: CGRectMake(width + 80, 75, 200, 20))
-            fifth[i] = UILabel(frame: CGRectMake(width + 80, 100, 200, 20))
-            sixth[i] = UILabel(frame: CGRectMake(width + 80, 125, 200, 20))
-            seventh[i] = UILabel(frame: CGRectMake(width + 80, 150, 200, 20))
+            first[i] = UILabel(frame: CGRectMake(width + 120, 0, 200, 20))
+            second[i] = UILabel(frame: CGRectMake(width + 120, 25, 200, 20))
+            third[i] = UILabel(frame: CGRectMake(width + 120, 50, 200, 20))
+            fourth[i] = UILabel(frame: CGRectMake(width + 120, 75, 200, 20))
+            fifth[i] = UILabel(frame: CGRectMake(width + 120, 100, 200, 20))
+            sixth[i] = UILabel(frame: CGRectMake(width + 120, 125, 200, 20))
+            seventh[i] = UILabel(frame: CGRectMake(width + 120, 150, 200, 20))
             
             scrollView.addSubview(first[i] as! UILabel)
             scrollView.addSubview(second[i] as! UILabel)

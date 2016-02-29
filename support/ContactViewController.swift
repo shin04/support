@@ -99,7 +99,7 @@ class ContactViewController: UIViewController {
         }
         
         cellCount++
-        //table.reloadData()
+        table.reloadData()
     }
     
     @IBAction func edit() {

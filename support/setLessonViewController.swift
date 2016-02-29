@@ -36,12 +36,7 @@ class setLessonViewController: UIViewController, UITextFieldDelegate, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //初期化するかどうか
-        if appDelegate.saveData.boolForKey("checkInit") != true {
-            //初期化する
-            Initialization.lessonInit()
-            appDelegate.saveData.setBool(true, forKey: "checkInit")
-        }
+        
         
         //ナビ透過
         navi?.setBackgroundImage(UIImage(), forBarMetrics: .Default)

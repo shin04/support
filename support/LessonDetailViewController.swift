@@ -56,22 +56,36 @@ class LessonDetailViewController: UIViewController, UITextViewDelegate {
         noticeMessage.inputAccessoryView = accessoryView
         
         let realm = try! Realm()
-        if realm.objects(Notice)[0].noticeCheck == true {
-            noticeSwich.on = true
-            
-            let now = NSDate()
-            let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
-            let comps:NSDateComponents = calendar!.components([NSCalendarUnit.Year, .Month, .Day], fromDate: now)
-            comps.calendar = calendar
-            comps.hour = realm.objects(Notice)[0].noticeHour
-            comps.minute = realm.objects(Notice)[0].noticeMinute
-            let now2 = comps.date
-            print(now2!)
-            picker.date = now2!
-            noticeMessage.text = realm.objects(Notice)[0].noticeMg
+        if realm.objects(Notice).count != 0 {
+            if realm.objects(Notice)[0].noticeCheck == true {
+                noticeSwich.on = true
+                
+                let now = NSDate()
+                let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+                let comps:NSDateComponents = calendar!.components([NSCalendarUnit.Year, .Month, .Day], fromDate: now)
+                comps.calendar = calendar
+                comps.hour = realm.objects(Notice)[0].noticeHour
+                comps.minute = realm.objects(Notice)[0].noticeMinute
+                let now2 = comps.date
+                print(now2!)
+                picker.date = now2!
+                noticeMessage.text = realm.objects(Notice)[0].noticeMg
+            } else {
+                noticeSwich.on = false
+            }
         } else {
-            noticeSwich.on = false
+            //時間割を設定していない場合
+            let alert = UIAlertController(title: "", message: "時間割を設定してください", preferredStyle: .Alert)
+            let segue: UIAlertAction = UIAlertAction(title: "時間割設定",
+                style:UIAlertActionStyle.Default,
+                handler: {(action:UIAlertAction!) -> Void in
+                    let vc = self.tabBarController?.viewControllers![1]
+                    self.tabBarController?.selectedViewController = vc
+            })
+            alert.addAction(segue)
+            presentViewController(alert, animated: true, completion: nil)
         }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
